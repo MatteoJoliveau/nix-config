@@ -1,6 +1,18 @@
 { ... }:
 
 {
+	# Enable Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
+  
+  services.blueman.enable = true;
   environment.etc = {
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
       		bluez_monitor.properties = {

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../modules/bluetooth.nix
-    ../modules/wifi.nix
+    ../../modules/bluetooth.nix
+    ../../modules/wifi.nix
   ];
 }
