@@ -9,8 +9,7 @@
     }
   ];
 
-  users.extraUsers.root.password = "";
-  users.mutableUsers = false;
+  users.mutableUsers = true;
 
   # OpenDoas
   security.doas = {

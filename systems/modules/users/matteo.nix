@@ -5,7 +5,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "networkmanager" "libvirtd" ];
     shell = pkgs.fish;
-    password = "";
   };
 
   home-manager.users.matteo = import ../../../home-manager/matteo/home.nix {
