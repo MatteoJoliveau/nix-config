@@ -12,10 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, ... }@attrs:
@@ -30,7 +27,7 @@
           (self: super: {
             unstable = import nixpkgs-unstable {
               inherit system;
-              
+
               config = {
                 allowUnfree = true;
               };

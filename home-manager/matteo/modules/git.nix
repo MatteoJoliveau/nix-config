@@ -6,7 +6,7 @@
     userName = "Matteo Joliveau";
     userEmail = "matteo@matteojoliveau.com";
     signing = {
-      key = "matte@matteojoliveau.com";
+      key = "matteo@matteojoliveau.com";
       signByDefault = true;
     };
     ignores = [ "*.iml" ".idea/" ".vscode" ".direnv" ];
