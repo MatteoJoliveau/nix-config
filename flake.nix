@@ -5,6 +5,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = github:nix-community/home-manager/release-22.11;
@@ -17,33 +18,45 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, ... }@attrs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, ... }@attrs:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+
+        config.allowUnfree = true;
+
+        overlays = [
+          (self: super: {
+            unstable = import nixpkgs-unstable {
+              inherit system;
+              
+              config = {
+                allowUnfree = true;
+              };
+            };
+
+            krew = super.callPackage nixpkgs/krew.nix { };
+            calc = super.callPackage nixpkgs/calc { };
+            httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
+          })
+        ];
+      };
     in
     {
       nixosConfigurations = {
         frenchpenguin = nixpkgs.lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
 
           specialArgs = attrs;
           modules = [ ./systems/frenchpenguin ];
         };
 
         microwave = nixpkgs.lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
 
           specialArgs = attrs;
           modules = [ ./systems/microwave ];
-        };
-      };
-
-      # This I stole from https://gvolpe.com/blog/nix-flakes, thanks a lot!
-      homeConfigurations = {
-        matteo = import ./home-manager/matteo {
-          inherit system nixpkgs home-manager;
-
-          stateVersion = "22.11";
         };
       };
     } // flake-utils.lib.eachDefaultSystem (system:

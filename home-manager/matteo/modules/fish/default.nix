@@ -75,11 +75,13 @@
         end
       '';
     };
-    xdg.configFile = {
-      "starship.toml".source = ./starship.toml;
-    };
+  };
 
-    home.file = {
-      ".kube/kubie.yaml".source = ./kubie.yaml;
-    };
-  }
+  xdg.configFile = {
+    "starship.toml".source = ./starship.toml;
+  };
+
+  home.file = {
+    ".kube/kubie.yaml".source = ./kubie.yaml;
+  };
+}

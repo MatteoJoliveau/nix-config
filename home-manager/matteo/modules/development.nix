@@ -4,15 +4,15 @@ in
 {
   home.packages = with pkgs; [
     rustup
-    unstable.httpie
+    httpie
     insomnia
-    unstable.awscli2
-    unstable.ssm-session-manager-plugin
+    awscli2
+    ssm-session-manager-plugin
     kubectl
     k9s
     kubectx
     kubie
-    unstable.kubernetes-helm
+    kubernetes-helm
     kustomize
     krew
     minikube
@@ -24,13 +24,13 @@ in
     lazygit
     git-town
     doctl
-    unstable.saml2aws
+    saml2aws
     jo
     vpnc
     remmina
     velero
     google-cloud-sdk
-    httpie-desktop
+    # httpie-desktop
   ];
 
   programs.vscode.enable = true;

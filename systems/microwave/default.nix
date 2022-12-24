@@ -12,11 +12,10 @@
       ../modules/users
       ../modules/users/matteo.nix
       ../modules/virtualization.nix
-      # ./hardware-configuration.nix
-      # nixos-hardware.nixosModules.common-cpu-amd
-      # nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-      # nixos-hardware.nixosModules.common-pc-ssd
-      home-manager.nixosModule
+      ./hardware-configuration.nix
+      nixos-hardware.nixosModules.common-cpu-amd
+      nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+      nixos-hardware.nixosModules.common-pc-ssd
     ];
 
   system.stateVersion = "22.11";

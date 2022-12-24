@@ -58,7 +58,7 @@
   # System packages
   environment.systemPackages = with pkgs; [
     bind
-    wget
+    unstable.wget
     vim
     neofetch
     cpufetch

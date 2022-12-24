@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-let
-  sysconfig = (import <nixpkgs/nixos> { }).config;
-  hostname = sysconfig.networking.hostName;
-in
+{ pkgs, hostname, stateVersion, ... }:
 {
   imports = [
     (./hosts + "/${hostname}")
@@ -13,7 +9,6 @@ in
     ./modules/fish
     ./modules/git.nix
     ./modules/gpg.nix
-    ./modules/xmonad
   ];
 
   nixpkgs.overlays = [
@@ -23,4 +18,5 @@ in
 
   programs.home-manager.enable = true;
   manual.manpages.enable = false;
+  home.stateVersion = stateVersion;
 }

@@ -8,8 +8,10 @@
     password = "";
   };
 
-  home-manager.users.matteo = { pkgs, ... }: {
-    programs.fish.enable = true;
-    home.stateVersion = "22.11";
+  home-manager.users.matteo = import ../../../home-manager/matteo/home.nix {
+    inherit pkgs;
+
+    hostname = config.networking.hostName;
+    stateVersion = config.system.stateVersion;
   };
 }
