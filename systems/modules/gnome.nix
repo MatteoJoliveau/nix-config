@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  pano = import ../overlays/gnome-pano;
-in
 {
   services.xserver = {
     displayManager.gdm.enable = true;
@@ -14,11 +11,9 @@ in
     gnomeExtensions.tiling-assistant
     gnomeExtensions.pano
     gnomeExtensions.mpris-indicator-button
+    gnomeExtensions.dash-to-dock
+
     gnome.gnome-tweaks
   ];
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-  nixpkgs.overlays = [
-    pano
-  ];
 }
