@@ -18,8 +18,6 @@ in
     tdesktop
     bitwarden
     spotify
-    steam
-    steam-run
     libreoffice-fresh
     deluge
     audacity
