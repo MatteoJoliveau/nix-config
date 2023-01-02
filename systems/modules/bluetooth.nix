@@ -1,7 +1,7 @@
 { ... }:
 
 {
-	# Enable Bluetooth
+  # Enable Bluetooth
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -11,7 +11,7 @@
       };
     };
   };
-  
+
   services.blueman.enable = true;
   environment.etc = {
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
