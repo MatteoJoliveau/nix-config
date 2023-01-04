@@ -1,5 +1,10 @@
 { pkgs, ... }:
 let
+  lsps = with pkgs; [
+    elixir_ls
+    gopls
+    rust-analyzer
+  ];
 in
 {
   home.packages = with pkgs; [
@@ -30,8 +35,8 @@ in
     remmina
     velero
     google-cloud-sdk
-    # httpie-desktop
-  ];
+    lapce
+  ] ++ lsps;
 
   programs.vscode.enable = true;
 }

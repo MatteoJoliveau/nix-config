@@ -11,7 +11,6 @@
     ripgrep
     fd
     jetbrains-mono
-    vim
     p7zip
     nmap
     file
@@ -26,6 +25,6 @@
   programs.direnv.enable = true;
 
   home.sessionVariables = {
-    EDITOR = "${pkgs.vim}/bin/vim";
+    EDITOR = "${pkgs.neovim}/bin/nvim";
   };
 }

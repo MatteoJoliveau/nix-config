@@ -3,10 +3,11 @@
   imports = [
     (./hosts + "/${hostname}")
     ./modules/alacritty
+    ./modules/fish
+    ./modules/neovim
     ./modules/coreutils.nix
     ./modules/desktop.nix
     ./modules/development.nix
-    ./modules/fish
     ./modules/git.nix
     ./modules/gpg.nix
   ];
