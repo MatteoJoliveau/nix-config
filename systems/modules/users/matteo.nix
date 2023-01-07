@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixneovim, ... }:
 
 {
   users.users.matteo = {
@@ -8,7 +8,7 @@
   };
 
   home-manager.users.matteo = import ../../../home-manager/matteo/home.nix {
-    inherit pkgs;
+    inherit pkgs nixneovim;
 
     hostname = config.networking.hostName;
     stateVersion = config.system.stateVersion;

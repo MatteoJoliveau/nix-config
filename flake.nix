@@ -15,9 +15,10 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     pano-overlay.url = "github:michojel/nixpkgs/gnome-shell-extension-pano";
+    nixneovim.url = "github:nixneovim/nixneovim";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, pano-overlay, ... }@attrs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, pano-overlay, nixneovim, ... }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -26,6 +27,8 @@
         config.allowUnfree = true;
 
         overlays = [
+          (import ./systems/overlays/gnome-pano { inherit pano-overlay; })
+          nixneovim.overlays.default
           (self: super: {
             unstable = import nixpkgs-unstable {
               inherit system;
@@ -39,7 +42,6 @@
             calc = super.callPackage nixpkgs/calc { };
             httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
           })
-          (import ./systems/overlays/gnome-pano { inherit pano-overlay; })
         ];
       };
     in

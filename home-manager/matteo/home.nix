@@ -1,6 +1,7 @@
-{ pkgs, hostname, stateVersion, ... }:
+{ pkgs, hostname, stateVersion, nixneovim, ... }:
 {
   imports = [
+    nixneovim.nixosModules.default
     (./hosts + "/${hostname}")
     ./modules/alacritty
     ./modules/fish
