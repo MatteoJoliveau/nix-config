@@ -1,10 +1,11 @@
-{ pkgs, hostname, stateVersion, nixneovim, ... }:
+{ config, pkgs, nixosConfig, ... }:
+
 {
   imports = [
-    nixneovim.nixosModules.default
-    (./hosts + "/${hostname}")
+    (./hosts + "/${nixosConfig.networking.hostName}")
     ./modules/alacritty
     ./modules/fish
+    ./modules/hyprland
     ./modules/neovim
     ./modules/coreutils.nix
     ./modules/desktop.nix
@@ -18,7 +19,7 @@
     # (import ./overlays/discord.nix)
   ];
 
-  programs.home-manager.enable = true;
+  programs.home-manager.enable = true; 
   manual.manpages.enable = false;
-  home.stateVersion = stateVersion;
+  home.stateVersion = nixosConfig.system.stateVersion;
 }

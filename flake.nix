@@ -15,10 +15,11 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     pano-overlay.url = "github:michojel/nixpkgs/gnome-shell-extension-pano";
-    nixneovim.url = "github:nixneovim/nixneovim";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprpaper.url = "github:hyprwm/hyprpaper";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, pano-overlay, nixneovim, ... }@attrs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, pano-overlay, hyprland, hyprpaper, ... }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -28,7 +29,6 @@
 
         overlays = [
           (import ./systems/overlays/gnome-pano { inherit pano-overlay; })
-          nixneovim.overlays.default
           (self: super: {
             unstable = import nixpkgs-unstable {
               inherit system;
@@ -44,6 +44,7 @@
           })
         ];
       };
+      homeManagerWithArgs = { home-manager.extraSpecialArgs = attrs // { inherit system; }; };
     in
     {
       nixosConfigurations = {
@@ -51,14 +52,14 @@
           inherit system pkgs;
 
           specialArgs = attrs;
-          modules = [ ./systems/frenchpenguin ];
+          modules = [ ./systems/frenchpenguin homeManagerWithArgs ];
         };
 
         microwave = nixpkgs.lib.nixosSystem {
           inherit system pkgs;
 
           specialArgs = attrs;
-          modules = [ ./systems/microwave ];
+          modules = [ ./systems/microwave homeManagerWithArgs ];
         };
       };
     } // flake-utils.lib.eachDefaultSystem (system:

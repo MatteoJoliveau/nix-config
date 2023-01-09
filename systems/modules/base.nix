@@ -64,9 +64,6 @@
     cpufetch
     git
     xorg.xmodmap
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
     plymouth
     usbutils
     glxinfo # glxinfo, eglinfo
@@ -75,6 +72,15 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  # Fonts
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    font-awesome
+    jetbrains-mono
+  ];
 
   # Look, I don't like this either, but they are slow to fix those CVEs
   nixpkgs.config.permittedInsecurePackages = [ ];

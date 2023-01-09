@@ -36,6 +36,7 @@ in
     velero
     google-cloud-sdk
     lapce
+    nodejs
   ] ++ lsps;
 
   programs.vscode.enable = true;

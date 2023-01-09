@@ -8,6 +8,7 @@
       ../modules/docker.nix
       ../modules/fingerprint.nix
       ../modules/gnome.nix
+      ../modules/hyprland.nix
       ../modules/games.nix
       ../modules/kernel.nix
       ../modules/networking.nix

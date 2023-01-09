@@ -82,6 +82,13 @@ packer.startup(function(use)
     use "ahmedkhalf/project.nvim"
     
     use { 'mg979/vim-visual-multi', branch = "master" }
+
+   -- Rust goodies
+   use 'neovim/nvim-lspconfig'
+   use 'simrat39/rust-tools.nvim'
+   -- debugging
+   use 'nvim-lua/plenary.nvim'
+   use 'mfussenegger/nvim-dap'
 end)
 
 require('settings')
