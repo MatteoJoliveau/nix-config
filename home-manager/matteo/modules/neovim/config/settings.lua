@@ -45,3 +45,9 @@ vim.g.loaded_netrwPlugin = 1
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
+
+-- spaces and tabs. Send hate to idontcareilikespaces@matteojoliveau.com. It goes straight to /dev/null
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2

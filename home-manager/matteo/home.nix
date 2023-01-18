@@ -19,7 +19,7 @@
     # (import ./overlays/discord.nix)
   ];
 
-  programs.home-manager.enable = true; 
+  programs.home-manager.enable = true;
   manual.manpages.enable = false;
   home.stateVersion = nixosConfig.system.stateVersion;
 }

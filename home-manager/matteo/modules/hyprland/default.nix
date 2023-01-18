@@ -7,8 +7,10 @@ in
   imports = [
     ./hyprpaper
     ./swappy
+    ./swayidle
+    ./swaync
     ./waybar
-    ./mako.nix
+    ./avizo
     ./swaylock.nix
   ];
 

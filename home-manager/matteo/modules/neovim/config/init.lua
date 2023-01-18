@@ -89,6 +89,10 @@ packer.startup(function(use)
    -- debugging
    use 'nvim-lua/plenary.nvim'
    use 'mfussenegger/nvim-dap'
+
+  -- autocomment
+  use "terrortylor/nvim-comment"
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 end)
 
 require('settings')

@@ -19,7 +19,17 @@
     hyprpaper.url = "github:hyprwm/hyprpaper";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, pano-overlay, hyprland, hyprpaper, ... }@attrs:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-unstable
+    , flake-utils
+    , home-manager
+    , pano-overlay
+    , hyprland
+    , hyprpaper
+    , ...
+    }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -63,15 +73,15 @@
         };
       };
     } // flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
-      rec {
-        formatter = pkgs.nixpkgs-fmt;
+    let pkgs = nixpkgs.legacyPackages.${system}; in
+    rec {
+      formatter = pkgs.nixpkgs-fmt;
 
-        devShells.default = pkgs.mkShell
-          {
-            buildInputs = with pkgs; [
-            ];
-          };
-      }
+      devShells.default = pkgs.mkShell
+        {
+          buildInputs = with pkgs; [
+          ];
+        };
+    }
     );
 }
