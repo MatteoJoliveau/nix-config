@@ -23,12 +23,13 @@ in
         modules-center = [ "clock" ];
         modules-right = [ "network" "battery" "pulseaudio" "custom/notification" ] ;
         "wlr/workspaces" = {
-          format = "{name}";
-          on-click = "activate";
-          sort-by-number = true;
+          "format" = "{name}";
+          "on-click" = "activate";
+          "sort-by-number" = true;
         };
         "hyprland/window" = {
-          separate-outputs = true;
+          "separate-outputs" = true;
+          "max-length" = 25;
         };
         "clock" = {
           "format" = "{:%a %d %b %t %R}";  
