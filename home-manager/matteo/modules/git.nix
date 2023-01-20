@@ -25,14 +25,19 @@
       psu = "push -u origin HEAD";
       psf = "push --force-with-lease";
       me = "merge";
+      unst = "restore --staged";
     };
     lfs.enable = true;
+    delta.enable = true;
     extraConfig = {
       init = {
         defaultBranch = "main";
       };
       pull = {
         rebase = false;
+      };
+      merge = {
+        conflictStyle = "diff3";
       };
     };
   };
