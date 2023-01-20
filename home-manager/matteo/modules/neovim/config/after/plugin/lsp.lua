@@ -30,3 +30,5 @@ lsp.setup()
 
 -- Turn on lsp status information
 require('fidget').setup()
+
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { silent = true })
