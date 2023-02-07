@@ -37,6 +37,7 @@ in
     google-cloud-sdk
     lapce
     nodejs
+    cargo-dist
   ] ++ lsps;
 
   programs.vscode.enable = true;

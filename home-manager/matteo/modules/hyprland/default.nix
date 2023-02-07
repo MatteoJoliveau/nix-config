@@ -20,6 +20,7 @@ in
     playerctl
     brightnessctl
     wl-clipboard
+    cliphist
     # Screenshots
     grim
     slurp
