@@ -17,8 +17,6 @@
     pano-overlay.url = "github:michojel/nixpkgs/gnome-shell-extension-pano";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
-
-    naersk.url = "github:nix-community/naersk/master";
   };
 
   outputs =
@@ -30,7 +28,7 @@
     , pano-overlay
     , hyprland
     , hyprpaper
-    , naersk
+    , foundry
     , ...
     }@attrs:
     let
@@ -54,7 +52,7 @@
             krew = super.callPackage nixpkgs/krew.nix { };
             calc = super.callPackage nixpkgs/calc { };
             httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
-            cargo-dist = super.callPackage nixpkgs/cargo-dist.nix { naersk = naersk.lib."${system}"; };
+            # cargo-dist = super.callPackage nixpkgs/cargo-dist.nix { inherit naersk; };
           })
         ];
       };
@@ -76,9 +74,8 @@
           modules = [ ./systems/microwave homeManagerWithArgs ];
         };
       };
-
     } // flake-utils.lib.eachDefaultSystem (system:
-    let pkgs = import nixpkgs { inherit system; }; in
+    let pkgs = nixpkgs.legacyPackages.${system}; in
     rec {
       formatter = pkgs.nixpkgs-fmt;
 
