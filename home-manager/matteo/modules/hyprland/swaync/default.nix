@@ -19,7 +19,7 @@
       Type = "dbus";
       BusName = "org.freedesktop.Notifications";
       ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
-      ExecReload="${pkgs.swaynotificationcenter}/swaync-client --reload-config ; ${pkgs.swaynotificationcenter}/swaync-client --reload-css";
+      ExecReload = "${pkgs.swaynotificationcenter}/swaync-client --reload-config ; ${pkgs.swaynotificationcenter}/swaync-client --reload-css";
       RestartSec = 5;
       Restart = "always";
     };

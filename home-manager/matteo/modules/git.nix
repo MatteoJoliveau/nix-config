@@ -40,5 +40,16 @@
         conflictStyle = "diff3";
       };
     };
+    includes = [
+      {
+        condition = "gitdir:~/Software/prima";
+        contents = {
+          user = {
+            name = "Matteo Joliveau";
+            email = "matteo.joliveau@prima.it";
+          };
+        };
+      }
+    ];
   };
 }

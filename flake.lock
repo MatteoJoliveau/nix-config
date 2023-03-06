@@ -15,26 +15,6 @@
         "type": "github"
       }
     },
-    "foundry": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1672187504,
-        "narHash": "sha256-NGyE73pHVd+7veP08uR0ARjrW6L6/AFFzvqw4xnkH9M=",
-        "owner": "matteojoliveau",
-        "repo": "nix-foundryvtt",
-        "rev": "322aa565490d862b4f38cca684ed17898cbcb33f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "matteojoliveau",
-        "repo": "nix-foundryvtt",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -216,7 +196,6 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "foundry": "foundry",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprpaper": "hyprpaper",

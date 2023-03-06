@@ -11,7 +11,7 @@ in
     firefox
     google-chrome
     slack
-    teams
+    # teams
     discord
     zoom-us
     glib

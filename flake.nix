@@ -28,7 +28,6 @@
     , pano-overlay
     , hyprland
     , hyprpaper
-    , foundry
     , ...
     }@attrs:
     let

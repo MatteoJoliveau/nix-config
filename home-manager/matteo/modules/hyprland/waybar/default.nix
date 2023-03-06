@@ -21,7 +21,7 @@ in
         spacing = 10;
         modules-left = [ "wlr/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "network" "battery" "pulseaudio" "custom/notification" ] ;
+        modules-right = [ "network" "battery" "pulseaudio" "custom/notification" ];
         "wlr/workspaces" = {
           "format" = "{name}";
           "on-click" = "activate";
@@ -32,7 +32,7 @@ in
           "max-length" = 25;
         };
         "clock" = {
-          "format" = "{:%a %d %b %t %R}";  
+          "format" = "{:%a %d %b %t %R}";
           "calendar-weeks-pos" = "right";
           "today-calendar" = "<span color='#ff6699'><b><u>{}</u></b></span>";
           "format-calendar" = "<span color='#ecc6d9'><b>{}</b></span>";
