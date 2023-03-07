@@ -22,7 +22,6 @@
       cp = "cp -a --reflink=auto";
       rebar = "rebar3";
       compose = "docker-compose";
-      clip = "xclip -sel clip";
       nethack = "telnet nethack.alt.org";
       ed = "emacs -nw";
       cat = "bat";
@@ -33,6 +32,8 @@
       tree = "exa -T";
       ecrlogin = "eval (aws ecr get-login --no-include-email)";
       sb = "sonobuoy";
+      sp = "suite-py";
+      v = "nvim";
     };
 
     interactiveShellInit = "eval (starship init fish)";
