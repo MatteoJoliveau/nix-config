@@ -29,7 +29,6 @@ in
     lazygit
     git-town
     doctl
-    saml2aws
     jo
     vpnc
     remmina
@@ -37,6 +36,7 @@ in
     google-cloud-sdk
     lapce
     nodejs
+    suite-py
     # cargo-dist
   ] ++ lsps;
 

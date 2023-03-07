@@ -17,6 +17,7 @@
     pano-overlay.url = "github:michojel/nixpkgs/gnome-shell-extension-pano";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
+    mach-nix.url = "github:DavHau/mach-nix/3.5.0";
   };
 
   outputs =
@@ -28,6 +29,7 @@
     , pano-overlay
     , hyprland
     , hyprpaper
+    , mach-nix
     , ...
     }@attrs:
     let
@@ -51,6 +53,9 @@
             krew = super.callPackage nixpkgs/krew.nix { };
             calc = super.callPackage nixpkgs/calc { };
             httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
+            suite-py = mach-nix.lib."${system}".mkPython {
+              requirements = "suite-py";
+            };
             # cargo-dist = super.callPackage nixpkgs/cargo-dist.nix { inherit naersk; };
           })
         ];
