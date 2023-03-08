@@ -100,6 +100,7 @@
     layout = "us";
     xkbVariant = "altgr-intl";
     xkbOptions = "eurosign:e ctrl:nocaps";
+    displayManager.gdm.enable = true;
   };
 
   location.provider = "geoclue2";
