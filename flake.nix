@@ -18,7 +18,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
     pypi-deps-db.url = "github:DavHau/pypi-deps-db/5aee18e82980d5d62679a8c4a33ddbd57aab8522";
-    suite-py.url = "./nixpkgs/suite-py/";
+    # suite-py.url = "./nixpkgs/suite-py/";
       };
 
     outputs =
@@ -30,7 +30,7 @@
       , pano-overlay
       , hyprland
       , hyprpaper
-      , suite-py
+      # , suite-py
       , ...
       }@attrs:
       let
