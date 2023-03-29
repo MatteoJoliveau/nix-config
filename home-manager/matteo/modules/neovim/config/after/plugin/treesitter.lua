@@ -1,3 +1,5 @@
+local lsp = require('lsp-zero')
+
 require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'nix', 'elixir' },
@@ -67,7 +69,7 @@ require('nvim-treesitter.configs').setup {
   
   -- LSP settings.
   --  This function gets run when an LSP connects to a particular buffer.
-  local on_attach = function(_, bufnr)
+  lsp.on_attach(function(_, bufnr)
     -- NOTE: Remember that lua is a real programming language, and as such it is possible
     -- to define small helper and utility functions so you don't have to repeat yourself
     -- many times.
@@ -108,4 +110,4 @@ require('nvim-treesitter.configs').setup {
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
       vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
-  end
+  end)

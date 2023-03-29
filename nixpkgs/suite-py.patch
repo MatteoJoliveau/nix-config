@@ -1,0 +1,62 @@
+--- a/cli.py	2023-03-20 11:17:37.184610696 +0100
++++ b/cli.py	2023-03-20 11:18:19.893148396 +0100
+@@ -25,51 +25,6 @@
+ ALLOW_NO_HOME_SUBCOMMAND = ["login", "qa", "aggregator"]
+ 
+ 
+-def fetch_latest_version() -> Optional[pkg_resources.packaging.version.Version]:
+-    """
+-    Fetches the latest version of suite-py as a pkg_resources parsed version
+-    Returns None on error
+-    """
+-    try:
+-        # pylint: disable-next=missing-timeout
+-        pkg_info = requests.get("https://pypi.org/pypi/suite-py/json").json()
+-        return pkg_resources.parse_version(pkg_info["info"]["version"])
+-    except Exception:
+-        logger.warning("Failed to fetch latest version of suite-py!")
+-        return None
+-
+-
+-def upgrade_suite_py_if_needed(break_on_missing_package: bool = False) -> None:
+-    """
+-    Sometimes, when `suite-py` is launched with a virtual environment active, autoupgrade
+-    cannot see the package as installed (as the command is used from the "global" user environment)
+-    and raises an exception.
+-    """
+-
+-    try:
+-        pkg_resources.get_distribution("suite_py")
+-    except pkg_resources.DistributionNotFound as error:
+-        # We are in a virtual environment where suite-py is not installed, don't bother trying to upgrade
+-        if break_on_missing_package:
+-            raise error
+-
+-        logger.warning(
+-            "Skipping Suite-Py autoupgrade because the package was not found in the current environment."
+-        )
+-        return
+-
+-    current_version = pkg_resources.parse_version(__version__)
+-
+-    try:
+-        # If available, upgrade (if needed)
+-        latest_version = fetch_latest_version()
+-        if latest_version is None or latest_version > current_version:
+-            # If we fail to fetch the latest version, fallback to attempting the upgrade anyway
+-            Package("suite_py").upgrade()
+-    except Exception as error:
+-        logger.warning(f"An error occurred whilst trying to upgrade suite-py: {error}")
+-
+-
+ @click.group()
+ @click.option(
+     "--project",
+@@ -85,7 +40,6 @@
+ @click.option("-v", "--verbose", count=True)
+ @click.pass_context
+ def main(ctx, project, timeout, verbose):
+-    upgrade_suite_py_if_needed(break_on_missing_package=False)
+     print(f"v{__version__}")
+ 
+     config = Config()

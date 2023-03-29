@@ -36,7 +36,7 @@ in
     google-cloud-sdk
     lapce
     nodejs
-    suite-py
+    # suite-py
     # cargo-dist
   ] ++ lsps;
 

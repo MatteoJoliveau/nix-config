@@ -7,6 +7,18 @@ tree.setup({
     enable = true,
     update_root = true
   },
+  filters = { dotfiles = false, custom = { '^.git$' }},
+  git = {
+    enable = true,
+    ignore = false,
+  },
+  view = {
+    renderer = {
+      icons = {
+        git_placement = "after",
+      },
+    },
+  },
 })
 
 vim.keymap.set('n', 'tt', tree.toggle)

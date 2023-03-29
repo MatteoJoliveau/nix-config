@@ -13,6 +13,7 @@ in
     slack
     # teams
     discord
+    unstable.webcord
     zoom-us
     glib
     tdesktop
