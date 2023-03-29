@@ -569,11 +569,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-sbkGw+O2I17yuvI6cFmKwj76QCWCzc8U9KuqZ/INwhY=",
-        "path": "/nix/store/rzvd3jgpqkwpbb74yh3zsd36abmgls21-source/nixpkgs/suite-py",
+        "path": "/nix/store/lbxgg8ymq5xz50v6hncx0jywxxs997mv-source/nixpkgs/suite-py",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/rzvd3jgpqkwpbb74yh3zsd36abmgls21-source/nixpkgs/suite-py",
+        "path": "/nix/store/lbxgg8ymq5xz50v6hncx0jywxxs997mv-source/nixpkgs/suite-py",
         "type": "path"
       }
     },

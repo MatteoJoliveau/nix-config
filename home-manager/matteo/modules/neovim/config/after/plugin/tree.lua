@@ -12,11 +12,9 @@ tree.setup({
     enable = true,
     ignore = false,
   },
-  view = {
-    renderer = {
-      icons = {
-        git_placement = "after",
-      },
+  renderer = {
+    icons = {
+      git_placement = "after",
     },
   },
 })
