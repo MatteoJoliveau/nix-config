@@ -93,6 +93,16 @@ packer.startup(function(use)
   -- autocomment
   use "terrortylor/nvim-comment"
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+  }
+
+  use {
+    "kristijanhusak/vim-dadbod-ui",
+    requires = "tpope/vim-dadbod"
+  }
 end)
 
 require('settings')

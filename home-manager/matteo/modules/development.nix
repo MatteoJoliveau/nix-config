@@ -36,6 +36,9 @@ in
     google-cloud-sdk
     lapce
     nodejs
+    sqlite
+    postgresql
+    go
     # suite-py
     # cargo-dist
   ] ++ lsps;

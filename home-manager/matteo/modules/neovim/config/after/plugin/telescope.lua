@@ -19,8 +19,8 @@ pcall(telescope.load_extension, 'projects')
 vim.keymap.set("n", "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects(require('telescope.themes').get_dropdown({hidden=true}))<cr>", opts) -- find projects
   
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', builtins.oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', builtins.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><space>', builtins.oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>?', builtins.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   builtins.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
