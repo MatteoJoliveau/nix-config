@@ -3,7 +3,7 @@ let
   lsps = with pkgs; [
     elixir_ls
     gopls
-    rust-analyzer
+    unstable.rust-analyzer
   ];
 in
 {
