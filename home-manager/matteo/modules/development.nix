@@ -39,8 +39,8 @@ in
     sqlite
     postgresql
     go
-    # suite-py
-    # cargo-dist
+    luajitPackages.luarocks
+    gnumake
   ] ++ lsps;
 
   programs.vscode.enable = true;

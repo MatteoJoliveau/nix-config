@@ -1,3 +1,1 @@
-local project = require('project_nvim')
-
-project.setup()
+require("project_nvim").setup {}
