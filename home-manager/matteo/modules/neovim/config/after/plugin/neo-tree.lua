@@ -3,6 +3,13 @@ local tree = require('neo-tree')
 tree.setup {
   filesystem = {
     follow_current_file = true,
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_by_name = {
+        "node_modules",
+      },
+    },
   },
 }
 

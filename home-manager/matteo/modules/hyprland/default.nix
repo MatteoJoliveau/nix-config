@@ -7,10 +7,10 @@ in
   imports = [
     ./hyprpaper
     ./swappy
-    ./swayidle
     ./swaync
     ./waybar
     ./avizo
+    ./swayidle.nix
     ./swaylock.nix
   ];
 
@@ -21,6 +21,7 @@ in
     brightnessctl
     wl-clipboard
     cliphist
+    swayidle
     # Screenshots
     grim
     slurp
