@@ -12,6 +12,7 @@ in
     ./avizo
     ./swayidle.nix
     ./swaylock.nix
+    ./kanshi.nix
   ];
 
   home.packages = with pkgs; [

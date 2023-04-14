@@ -58,3 +58,5 @@ require('nvim-treesitter.configs').setup {
       },
     },
 }
+
+require('tree-sitter-just').setup {}

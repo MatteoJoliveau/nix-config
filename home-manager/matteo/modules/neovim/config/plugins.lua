@@ -59,4 +59,5 @@ return {
   'lewis6991/gitsigns.nvim',
   'lukas-reineke/indent-blankline.nvim',
   'ahmedkhalf/project.nvim',
+  'IndianBoy42/tree-sitter-just',
 }

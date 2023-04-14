@@ -20,6 +20,7 @@
     vips
     pciutils
     calc
+    unstable.via
   ];
 
   programs.direnv.enable = true;

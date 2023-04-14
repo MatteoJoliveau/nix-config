@@ -1,5 +1,5 @@
 require("project_nvim").setup {
-  detection_methods = {"patterns", "lsp"},
+  detection_methods = {"patterns"},
   patterns = {
     ".git",
     "_darcs",
