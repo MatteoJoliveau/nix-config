@@ -3,12 +3,6 @@
 let
   hyprpkgs = hyprland.packages."${system}";
   waybar = hyprpkgs.waybar-hyprland;
-
-  # This fixes the "hyprctl: command not found" issues I was having
-  start-waybar = pkgs.writeShellScriptBin "start-waybar" ''
-    export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/matteo/bin
-    ${waybar}/bin/waybar
-  '';
 in
 {
   programs.waybar = {
@@ -114,7 +108,8 @@ in
     };
     Service = {
       Type = "simple";
-      ExecStart = "${start-waybar}/bin/start-waybar";
+      Environment = "PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/matteo/bin";
+      ExecStart = "${waybar}/bin/waybar";
       ExecReload = "${pkgs.killall}/bin/killall -SIGUSR2 waybar";
       RestartSec = 5;
       Restart = "on-failure";

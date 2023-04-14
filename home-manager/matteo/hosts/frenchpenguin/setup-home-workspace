@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# *
+# This script is run by kanshi when switching to the home profile
+# *
+
+# Rethe = wallpaper
+`systemctl restart --user hyprpaper`
+
+# workspaces
+chats = 1
+browsers = 2
+editor = 3
+terminal = 4
+quick_browser = 5
+scratch = 6
+comms = 7
+
+# monitors
+laptop = 0
+left = 1
+right = 2
+
+[
+  [chats, laptop],
+  [browsers, left],
+  [editor, right],
+  [terminal, right],
+  [quick_browser, right],
+  [scratch, left],
+  [comms, left]
+].each do |workspace, monitor|
+  `hyprctl dispatch moveworkspacetomonitor #{workspace} #{monitor}`
+end
