@@ -18,6 +18,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
     pypi-deps-db.url = "github:DavHau/pypi-deps-db/5aee18e82980d5d62679a8c4a33ddbd57aab8522";
+    suite-py.url = "git+ssh://git@github.com/primait/suite_py?ref=PLATFORM-1026/user-story/make-sure-suite-py-works-on-nixos&rev=2f608ef172177acd9e5c6887bff9481126923fe4";
     # suite-py.url = "./nixpkgs/suite-py/";
       };
 
@@ -30,7 +31,7 @@
       , pano-overlay
       , hyprland
       , hyprpaper
-      # , suite-py
+      , suite-py
       , ...
       }@attrs:
       let
@@ -54,7 +55,7 @@
               krew = super.callPackage nixpkgs/krew.nix { };
               calc = super.callPackage nixpkgs/calc { };
               httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
-              # suite-py = suite-py.packages.${system}.default;
+              suite-py = suite-py.packages.${system}.default;
               # cargo-dist = super.callPackage nixpkgs/cargo-dist.nix { inherit naersk; };
             })
           ];

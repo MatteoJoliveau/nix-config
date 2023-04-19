@@ -21,6 +21,7 @@
     pciutils
     calc
     unstable.via
+    unzip
   ];
 
   programs.direnv.enable = true;

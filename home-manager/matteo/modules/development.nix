@@ -41,6 +41,7 @@ in
     go
     luajitPackages.luarocks
     gnumake
+    suite-py
   ] ++ lsps;
 
   programs.vscode.enable = true;

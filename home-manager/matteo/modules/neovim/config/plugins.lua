@@ -39,7 +39,12 @@ return {
         "SmiteshP/nvim-navic",
       },
   },
-  'TimUntersberger/neogit',
+  {
+    'TimUntersberger/neogit',
+    dependencies = {
+      "sindrets/diffview.nvim",
+    },
+  },
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
@@ -60,4 +65,5 @@ return {
   'lukas-reineke/indent-blankline.nvim',
   'ahmedkhalf/project.nvim',
   'IndianBoy42/tree-sitter-just',
+  'NvChad/nvterm',
 }

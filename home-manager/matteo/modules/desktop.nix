@@ -32,6 +32,7 @@ in
     krita
     nextcloud-client
     freeplane
+    nautilus
   ];
 
   home.file.".face".source = ../../../images/propic.jpg;
