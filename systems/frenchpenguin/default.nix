@@ -5,9 +5,9 @@
     [
       ../modules/base.nix
       ../modules/bluetooth.nix
+      ../modules/cloudflare-warp.nix
       ../modules/docker.nix
       ../modules/fingerprint.nix
-      # ../modules/gnome.nix
       ../modules/hyprland.nix
       ../modules/games.nix
       ../modules/kernel.nix
@@ -35,4 +35,19 @@
 
   # Enable Thunderbolt
   services.hardware.bolt.enable = true;
+
+  # Enable work VPN
+  services.cloudflare-warp = {
+    enable = true;
+    certificate = pkgs.fetchurl {
+      url = "https://developers.cloudflare.com/cloudflare-one/static/documentation/connections/Cloudflare_CA.pem";
+      sha256 = "sha256-7p2+Y657zy1TZAsOnZIKk+7haQ9myGTDukKdmupHVNU=";
+    };
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [
+      19000 # Expo mobile app
+    ];
+  };
 }

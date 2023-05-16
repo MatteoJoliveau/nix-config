@@ -6,7 +6,6 @@
       ../modules/base.nix
       ../modules/docker.nix
       ../modules/games.nix
-      ../modules/gnome.nix
       ../modules/kernel.nix
       ../modules/networking.nix
       ../modules/sound.nix

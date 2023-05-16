@@ -32,7 +32,7 @@ in
     krita
     nextcloud-client
     freeplane
-    nautilus
+    gnome.nautilus
   ];
 
   home.file.".face".source = ../../../images/propic.jpg;

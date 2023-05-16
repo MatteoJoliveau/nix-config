@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-setup-home-workspace = pkgs.writeScriptBin "setup-home-workspace" (builtins.readFile ./setup-home-workspace);
+  setup-home-workspace = pkgs.writeScriptBin "setup-home-workspace" (builtins.readFile ./setup-home-workspace);
 in
 {
   imports = [

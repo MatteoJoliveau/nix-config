@@ -88,6 +88,9 @@ require("rust-tools").setup {
           checkOnSave = {
             command = "clippy",
           },
+          files = {
+            watcher = "server",
+          },
         },
       },
     }, 

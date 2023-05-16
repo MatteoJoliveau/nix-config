@@ -15,7 +15,7 @@
     };
     Service = {
       Type = "simple";
-      Environment="PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/matteo/bin";
+      Environment = "PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/matteo/bin";
       ExecStart = "${pkgs.kanshi}/bin/kanshi";
       RestartSec = 5;
       Restart = "on-failure";

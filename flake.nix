@@ -14,80 +14,74 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    pano-overlay.url = "github:michojel/nixpkgs/gnome-shell-extension-pano";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
-    pypi-deps-db.url = "github:DavHau/pypi-deps-db/5aee18e82980d5d62679a8c4a33ddbd57aab8522";
-    suite-py.url = "git+ssh://git@github.com/primait/suite_py?ref=PLATFORM-1026/user-story/make-sure-suite-py-works-on-nixos&rev=2f608ef172177acd9e5c6887bff9481126923fe4";
-    # suite-py.url = "./nixpkgs/suite-py/";
-      };
+    suite-py.url = "suite-py";
+  };
 
-    outputs =
-      { self
-      , nixpkgs
-      , nixpkgs-unstable
-      , flake-utils
-      , home-manager
-      , pano-overlay
-      , hyprland
-      , hyprpaper
-      , suite-py
-      , ...
-      }@attrs:
-      let
-        system = "x86_64-linux";
-        pkgs = import nixpkgs {
-          inherit system;
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-unstable
+    , flake-utils
+    , home-manager
+    , hyprland
+    , hyprpaper
+    , suite-py
+    , ...
+    }@attrs:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
 
-          config.allowUnfree = true;
+        config.allowUnfree = true;
 
-          overlays = [
-            (import ./systems/overlays/gnome-pano { inherit pano-overlay; })
-            (self: super: {
-              unstable = import nixpkgs-unstable {
-                inherit system;
+        overlays = [
+          suite-py.overlays.default
+          (self: super: {
+            unstable = import nixpkgs-unstable {
+              inherit system;
 
-                config = {
-                  allowUnfree = true;
-                };
+              config = {
+                allowUnfree = true;
               };
+            };
 
-              krew = super.callPackage nixpkgs/krew.nix { };
-              calc = super.callPackage nixpkgs/calc { };
-              httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
-              suite-py = suite-py.packages.${system}.default;
-              # cargo-dist = super.callPackage nixpkgs/cargo-dist.nix { inherit naersk; };
-            })
+            krew = super.callPackage nixpkgs/krew.nix { };
+            calc = super.callPackage nixpkgs/calc { };
+            httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
+          })
+        ];
+      };
+      homeManagerWithArgs = { home-manager.extraSpecialArgs = attrs // { inherit system; }; };
+    in
+    {
+      nixosConfigurations = {
+        frenchpenguin = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+
+          specialArgs = attrs;
+          modules = [ ./systems/frenchpenguin homeManagerWithArgs ];
+        };
+
+        microwave = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+
+          specialArgs = attrs;
+          modules = [ ./systems/microwave homeManagerWithArgs ];
+        };
+      };
+    } // flake-utils.lib.eachDefaultSystem (system:
+    let pkgs = nixpkgs.legacyPackages.${system}; in
+    rec {
+      formatter = pkgs.nixpkgs-fmt;
+
+      devShells.default = pkgs.mkShell
+        {
+          buildInputs = with pkgs; [
           ];
         };
-        homeManagerWithArgs = { home-manager.extraSpecialArgs = attrs // { inherit system; }; };
-      in
-      {
-        nixosConfigurations = {
-          frenchpenguin = nixpkgs.lib.nixosSystem {
-            inherit system pkgs;
-
-            specialArgs = attrs;
-            modules = [ ./systems/frenchpenguin homeManagerWithArgs ];
-          };
-
-          microwave = nixpkgs.lib.nixosSystem {
-            inherit system pkgs;
-
-            specialArgs = attrs;
-            modules = [ ./systems/microwave homeManagerWithArgs ];
-          };
-        };
-      } // flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
-      rec {
-        formatter = pkgs.nixpkgs-fmt;
-
-        devShells.default = pkgs.mkShell
-          {
-            buildInputs = with pkgs; [
-            ];
-          };
-      }
-      );
-  }
+    }
+    );
+}
