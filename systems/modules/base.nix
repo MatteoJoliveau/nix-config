@@ -116,6 +116,10 @@
   xdg.portal.enable = true;
   services.flatpak.enable = true;
 
+  # Keyring
+  services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
+
   system = {
     autoUpgrade.enable = true;
     autoUpgrade.allowReboot = false;
