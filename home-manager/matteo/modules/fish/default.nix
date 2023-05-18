@@ -40,7 +40,7 @@
 
     shellInit = ''
       eval (direnv hook fish)
-      set -gx PATH $PATH $HOME/.krew/bin
+      set -gx PATH $PATH $HOME/.local/bin
     '';
 
     plugins = [

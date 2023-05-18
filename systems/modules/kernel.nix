@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   # Pretty much means that there's logitech hardware.
   # This ensures they always can be used during initrd.
