@@ -10,8 +10,10 @@
     ./modules/coreutils.nix
     ./modules/desktop.nix
     ./modules/development.nix
+    ./modules/games.nix
     ./modules/git.nix
     ./modules/gpg.nix
+    ./modules/helix.nix
   ];
 
   nixpkgs.overlays = [

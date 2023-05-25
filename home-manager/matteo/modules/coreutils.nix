@@ -22,6 +22,7 @@
     calc
     unstable.via
     unzip
+    pv
   ];
 
   programs.direnv.enable = true;

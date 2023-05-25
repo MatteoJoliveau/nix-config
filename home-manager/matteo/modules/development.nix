@@ -4,6 +4,11 @@ let
     elixir_ls
     gopls
     unstable.rust-analyzer
+    elmPackages.elm-language-server
+    nodePackages.typescript-language-server
+    nil
+    marksman
+    nodePackages.svelte-language-server
   ];
 in
 {
