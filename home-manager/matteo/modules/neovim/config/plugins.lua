@@ -66,4 +66,5 @@ return {
   'ahmedkhalf/project.nvim',
   'IndianBoy42/tree-sitter-just',
   'NvChad/nvterm',
+  'f-person/git-blame.nvim',
 }

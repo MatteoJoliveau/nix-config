@@ -51,6 +51,7 @@
             krew = super.callPackage nixpkgs/krew.nix { };
             calc = super.callPackage nixpkgs/calc { };
             httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
+            biscuit = super.callPackage nixpkgs/biscuit.nix { };
           })
         ];
       };
