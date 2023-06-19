@@ -38,7 +38,7 @@
 
   # Enable work VPN
   services.cloudflare-warp = {
-    enable = true;
+    enable = false; # Problems downloading the cloudflare-warp package
     certificate = pkgs.fetchurl {
       url = "https://developers.cloudflare.com/cloudflare-one/static/documentation/connections/Cloudflare_CA.pem";
       sha256 = "sha256-7p2+Y657zy1TZAsOnZIKk+7haQ9myGTDukKdmupHVNU=";
