@@ -14,4 +14,5 @@ in
   ];
 
   xdg.configFile."kanshi/config".source = ./kanshi.conf;
+  home.file.".cargo/config.toml".source = ./cargo.toml;
 }

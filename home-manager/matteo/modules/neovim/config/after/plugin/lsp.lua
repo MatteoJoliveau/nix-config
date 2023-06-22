@@ -86,7 +86,7 @@ require("rust-tools").setup {
       settings = {
         ["rust-analyzer"] = {
           checkOnSave = {
-            command = "clippy",
+            command = "check",
           },
           files = {
             watcher = "server",
