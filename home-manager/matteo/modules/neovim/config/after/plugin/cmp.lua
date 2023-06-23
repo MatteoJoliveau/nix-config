@@ -1,5 +1,7 @@
 local cmp = require('cmp')
 
+require('crates').setup()
+
 cmp.setup({
     snippet = {
       expand = function(args)
@@ -29,5 +31,6 @@ cmp.setup({
       { name = 'snippy' },
       { name = 'path' },
       { name = 'buffer' },
+      { name = 'crates' },
     })
   })

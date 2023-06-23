@@ -67,4 +67,8 @@ return {
   'IndianBoy42/tree-sitter-just',
   'NvChad/nvterm',
   'f-person/git-blame.nvim',
+  {
+    'saecki/crates.nvim',
+    dependencies = {'nvim-lua/plenary.nvim'},
+  },
 }
