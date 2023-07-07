@@ -1,53 +1,54 @@
 { pkgs, ... }:
 let
   lsps = with pkgs; [
+    # rust-analyzer # already installed by rustup
     elixir_ls
-    gopls
-    unstable.rust-analyzer
     elmPackages.elm-language-server
-    nodePackages.typescript-language-server
-    nil
+    gopls
     marksman
+    nil
     nodePackages.svelte-language-server
+    nodePackages.typescript-language-server
   ];
 in
 {
   home.packages = with pkgs; [
+    asciinema
+    awscli2
+    bacon
     biscuit
-    rustup
+    doctl
+    git-town
+    gnumake
+    go
+    google-cloud-sdk
     httpie
     insomnia
-    awscli2
-    ssm-session-manager-plugin
-    kubectl
-    k9s
-    kubectx
-    kubie
-    kubernetes-helm
-    kustomize
-    krew
-    minikube
-    kind
-    asciinema
-    jq
-    yq
-    ruby_3_1
-    lazygit
-    git-town
-    doctl
     jo
-    vpnc
-    remmina
-    velero
-    google-cloud-sdk
+    jq
+    k9s
+    kind
+    krew
+    kubectl
+    kubectx
+    kubernetes-helm
+    kubie
+    kustomize
     lapce
-    nodejs
-    sqlite
-    postgresql
-    go
+    lazygit
     luajitPackages.luarocks
-    gnumake
+    minikube
+    nodejs
+    postgresql
+    remmina
+    ruby_3_1
+    rustup
+    sqlite
+    ssm-session-manager-plugin
     suite_py
+    velero
+    vpnc
+    yq
   ] ++ lsps;
 
   programs.vscode.enable = true;

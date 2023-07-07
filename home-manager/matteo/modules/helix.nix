@@ -33,7 +33,5 @@
         V = ["select_mode" "extend_to_line_bounds"];
       };
     };
-    
-    languages = [];
   };
 }

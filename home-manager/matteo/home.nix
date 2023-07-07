@@ -14,6 +14,7 @@
     ./modules/git.nix
     ./modules/gpg.nix
     ./modules/helix.nix
+    ./modules/ssh.nix
   ];
 
   nixpkgs.overlays = [

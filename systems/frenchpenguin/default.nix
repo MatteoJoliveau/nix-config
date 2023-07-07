@@ -21,7 +21,7 @@
       nixos-hardware.nixosModules.dell-xps-15-9500-nvidia
     ];
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
   networking.hostName = "frenchpenguin";
 
   hardware.opengl = {
@@ -35,15 +35,6 @@
 
   # Enable Thunderbolt
   services.hardware.bolt.enable = true;
-
-  # Enable work VPN
-  services.cloudflare-warp = {
-    enable = false; # Problems downloading the cloudflare-warp package
-    certificate = pkgs.fetchurl {
-      url = "https://developers.cloudflare.com/cloudflare-one/static/documentation/connections/Cloudflare_CA.pem";
-      sha256 = "sha256-7p2+Y657zy1TZAsOnZIKk+7haQ9myGTDukKdmupHVNU=";
-    };
-  };
 
   networking.firewall = {
     allowedTCPPorts = [
