@@ -217,6 +217,20 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1686767166,
+        "narHash": "sha256-zrdYWQc6KaTXSFTI9LBbnrJ/X7UKaYp2HEXl97tSSmU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ff1cd885da89c8f27091d7cf45af95b97970170f",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1681303793,
         "narHash": "sha256-JEdQHsYuCfRL2PICHlOiH/2ue3DwoxUX7DJ6zZxZXFk=",
         "owner": "NixOS",
@@ -253,6 +267,24 @@
         "type": "github"
       }
     },
+    "prima-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1688462707,
+        "narHash": "sha256-9TeQcJOPjfpO3hQwg3mptxz/zd3Gz4pMidimqJOCWH8=",
+        "ref": "refs/heads/master",
+        "rev": "77d0502b3351405b48f3f3ebb06cbeb16e0b4ce1",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/primait/prima.nix.git"
+      },
+      "original": {
+        "id": "prima-nix",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -262,13 +294,14 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "prima-nix": "prima-nix",
         "suite-py": "suite-py"
       }
     },
     "suite-py": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "poetry2nix": "poetry2nix"
       },
       "locked": {

@@ -17,6 +17,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
     suite-py.url = "suite-py";
+    prima-nix.url = "prima-nix";
   };
 
   outputs =
@@ -28,6 +29,7 @@
     , hyprland
     , hyprpaper
     , suite-py
+    , prima-nix
     , ...
     }@attrs:
     let
@@ -63,7 +65,11 @@
           inherit system pkgs;
 
           specialArgs = attrs;
-          modules = [ ./systems/frenchpenguin homeManagerWithArgs ];
+          modules = [
+            prima-nix.nixosModules.default
+            ./systems/frenchpenguin
+            homeManagerWithArgs
+          ];
         };
 
         microwave = nixpkgs.lib.nixosSystem {
