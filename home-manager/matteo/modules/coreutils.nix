@@ -23,11 +23,12 @@
     unstable.via
     unzip
     pv
+    fzf
   ];
 
   programs.direnv.enable = true;
 
   home.sessionVariables = {
-    EDITOR = "${pkgs.neovim}/bin/nvim";
+    EDITOR = "${pkgs.helix}/bin/hx";
   };
 }
