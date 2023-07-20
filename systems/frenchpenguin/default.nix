@@ -6,7 +6,7 @@
       ../modules/base.nix
       ../modules/bluetooth.nix
       ../modules/cloudflare-warp.nix
-      ../modules/crowdstrike.nix
+      # ../modules/crowdstrike.nix # still broken
       ../modules/docker.nix
       ../modules/fingerprint.nix
       ../modules/hyprland.nix
@@ -19,7 +19,8 @@
       ../modules/users/matteo.nix
       ../modules/virtualization.nix
       ./hardware-configuration.nix
-      nixos-hardware.nixosModules.dell-xps-15-9500-nvidia
+      nixos-hardware.nixosModules.lenovo-thinkpad
+      nixos-hardware.nixosModules.common-pc-laptop-ssd
     ];
 
   system.stateVersion = "23.05";

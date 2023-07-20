@@ -272,11 +272,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1688462707,
-        "narHash": "sha256-9TeQcJOPjfpO3hQwg3mptxz/zd3Gz4pMidimqJOCWH8=",
+        "lastModified": 1689666947,
+        "narHash": "sha256-8Sp+mas0cAZbVazCv9hJRfAQcWqonwO+kot6S6kJoUc=",
         "ref": "refs/heads/master",
-        "rev": "77d0502b3351405b48f3f3ebb06cbeb16e0b4ce1",
-        "revCount": 2,
+        "rev": "3ca3f4c7c0fd771cf896644fe59983dddaee3729",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/primait/prima.nix.git"
       },
