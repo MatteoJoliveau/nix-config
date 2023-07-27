@@ -6,7 +6,7 @@
       ../modules/base.nix
       ../modules/bluetooth.nix
       ../modules/cloudflare-warp.nix
-      # ../modules/crowdstrike.nix # still broken
+      ../modules/crowdstrike.nix # still broken
       ../modules/docker.nix
       ../modules/fingerprint.nix
       ../modules/hyprland.nix

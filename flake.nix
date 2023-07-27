@@ -40,6 +40,7 @@
         config.allowUnfree = true;
 
         overlays = [
+          prima-nix.overlays.default
           suite-py.overlays.default
           (self: super: {
             unstable = import nixpkgs-unstable {
