@@ -52,7 +52,10 @@ return {
   'hrsh7th/cmp-nvim-lsp',
   'dcampos/nvim-snippy',
   'dcampos/cmp-snippy',
-  'j-hui/fidget.nvim',
+  {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+  },
   {
       "kristijanhusak/vim-dadbod-ui",
       dependencies = {"tpope/vim-dadbod"},
@@ -71,4 +74,5 @@ return {
     'saecki/crates.nvim',
     dependencies = {'nvim-lua/plenary.nvim'},
   },
+  'tpope/vim-abolish',
 }

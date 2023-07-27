@@ -38,6 +38,8 @@
   # Enable Thunderbolt
   services.hardware.bolt.enable = true;
 
+  services.throttled.enable = true;
+
   networking.firewall = {
     allowedTCPPorts = [
       19000 # Expo mobile app

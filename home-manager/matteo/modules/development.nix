@@ -17,6 +17,9 @@ in
     awscli2
     bacon
     biscuit
+    clang
+    unstable.cargo-leptos
+    cargo-generate
     doctl
     git-town
     gnumake
