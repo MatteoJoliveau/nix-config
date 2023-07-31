@@ -21,7 +21,7 @@
       rng = "ranger";
       cp = "cp -a --reflink=auto";
       rebar = "rebar3";
-      compose = "docker-compose";
+      compose = "docker compose";
       nethack = "telnet nethack.alt.org";
       ed = "emacs -nw";
       cat = "bat";
