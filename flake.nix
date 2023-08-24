@@ -14,8 +14,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprpaper.url = "github:hyprwm/hyprpaper";
     suite-py.url = "suite-py";
     prima-nix.url = "prima-nix";
   };
@@ -26,8 +24,6 @@
     , nixpkgs-unstable
     , flake-utils
     , home-manager
-    , hyprland
-    , hyprpaper
     , suite-py
     , prima-nix
     , ...

@@ -1,8 +1,5 @@
-{ pkgs, hyprland, system, ... }:
+{ pkgs, system, ... }:
 
-let
-  hyprpkgs = hyprland.packages."${system}";
-in
 {
   imports = [
     ./hyprpaper
@@ -17,7 +14,7 @@ in
 
   home.packages = with pkgs; [
     wofi
-    hyprpkgs.xdg-desktop-portal-hyprland
+    unstable.xdg-desktop-portal-hyprland
     playerctl
     brightnessctl
     wl-clipboard

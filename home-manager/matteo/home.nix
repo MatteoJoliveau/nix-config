@@ -7,6 +7,7 @@
     ./modules/fish
     ./modules/hyprland
     ./modules/neovim
+    ./modules/emacs
     ./modules/coreutils.nix
     ./modules/desktop.nix
     ./modules/development.nix

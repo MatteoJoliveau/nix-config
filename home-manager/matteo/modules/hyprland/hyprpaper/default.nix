@@ -1,7 +1,7 @@
-{ hyprpaper, system, ... }:
+{ pkgs, system, ... }:
 
 let
-  hyprpaper-pkg = hyprpaper.packages."${system}".default;
+  hyprpaper-pkg = pkgs.unstable.hyprpaper;
 in
 {
   home.packages = [

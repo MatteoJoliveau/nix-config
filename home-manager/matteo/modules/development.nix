@@ -18,6 +18,7 @@ in
     bacon
     biscuit
     clang
+    cmake
     unstable.cargo-leptos
     cargo-generate
     doctl

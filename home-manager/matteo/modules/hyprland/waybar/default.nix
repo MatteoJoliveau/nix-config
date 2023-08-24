@@ -1,8 +1,7 @@
-{ pkgs, system, hyprland, ... }:
+{ pkgs, system,  ... }:
 
 let
-  hyprpkgs = hyprland.packages."${system}";
-  waybar = hyprpkgs.waybar-hyprland;
+  waybar = pkgs.unstable.waybar-hyprland;
 in
 {
   programs.waybar = {
