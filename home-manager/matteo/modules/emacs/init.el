@@ -263,12 +263,9 @@
   :hook (lsp-mode . efs/lsp-mode-setup)
   :init
   (setq lsp-keymap-prefix "C-c l")
-  ;;  (setq lsp-elm-elm-path "/usr/local/bin/elm")
-  ;;  (add-to-list 'exec-path "~/Dev/elixir/elixir-ls")
   :config
   (lsp-enable-which-key-integration t)
   :custom
-  ;; (lsp-progress-function 'lsp-on-progress-legacy)
   (lsp-rust-server 'rust-analyzer)
   (rustic-lsp-server 'rust-analyzer)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
@@ -282,6 +279,9 @@
   (lsp-progress-spinner-type 'moon)
   (lsp-elm-only-update-diagnostics-on-save t)
   (lsp-elm-disable-elmls-diagnostics t))
+
+(global-set-key (kbd "C-c a") 'lsp-execute-code-action)
+(global-set-key (kbd "C-c f") 'lsp-format-buffer)
 
 (use-package lsp-ui
   :straight t
@@ -321,7 +321,6 @@
   :config
   (add-to-list 'eglot-server-programs
                '(svelte-mode . ("svelteserver" "--stdio"))))
-(global-set-key (kbd "C-c a") 'eglot-code-actions)
 
 (use-package eldoc-box
   :straight t)
