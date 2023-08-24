@@ -388,9 +388,7 @@
   :straight t
   :config
   (setq rustic-spinner-type 'moon)
-  (setq rustic-format-on-save t)
-  (setq rustic-lsp-client 'eglot)
-  )
+  (setq rustic-format-on-save t))
 
 ;;; Elixir
 (use-package elixir-mode
