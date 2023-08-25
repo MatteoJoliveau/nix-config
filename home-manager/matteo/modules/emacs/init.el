@@ -45,6 +45,11 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 (defun save-all ()
   (interactive)
   (save-some-buffers t))
@@ -292,7 +297,11 @@
   (lsp-ui-doc-enable nil)
   (lsp-ui-sideline-show-diagnostics nil)
   (lsp-ui-sideline-show-hover nil)
+  (lsp-ui-doc-show-with-mouse nil)
+  (lsp-ui-doc-position 'at-point)
   (lsp-ui-sideline-show-code-actions nil))
+
+(global-set-key (kbd "C-c k") 'lsp-ui-doc-glance)
 
 (use-package flycheck
   :straight t
@@ -315,17 +324,6 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook 'yas-minor-mode)
   (add-hook 'text-mode-hook 'yas-minor-mode))
-    
-(use-package eglot
-  :straight t
-  :config
-  (add-to-list 'eglot-server-programs
-               '(svelte-mode . ("svelteserver" "--stdio"))))
-
-(use-package eldoc-box
-  :straight t)
-(global-set-key (kbd "C-c j") 'eldoc-doc-buffer)
-(global-set-key (kbd "C-c k") 'eldoc-box-help-at-point)
 
 ;; completion
 (use-package company
@@ -399,6 +397,11 @@
 (use-package graphql-mode
   :straight t)
 
+;;; TypeScript
+(use-package typescript-mode
+  :straight t
+  :hook (typescript-mode . lsp-deferred))
+
 ;;; SQL
 (use-package sql
   :straight t
@@ -429,7 +432,9 @@
 
 ;;; Web stuff
 (use-package web-mode
-  :straight t)
+  :straight t
+  :hook (web-mode . lsp-deferred))
+
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.svelte?\\'" . web-mode))
 (setq web-mode-enable-auto-pairing t)
@@ -437,7 +442,7 @@
 ;;; Tailwind
 ;; (straight-use-package
 ;;  '(lsp-tailwindcss :type git :host github :repo "merrickluo/lsp-tailwindcss"))
-   
+
 ;;; Nix
 (use-package nix-mode
   :straight t
@@ -570,11 +575,15 @@
 (use-package kubectx-mode
   :straight t)
 
-(use-package docker-tramp
+;; TreeSitter
+(use-package tree-sitter
   :straight t)
 
-(use-package kubernetes-tramp
+(use-package tree-sitter-langs
   :straight t)
+
+(global-tree-sitter-mode)
+(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
 ;; Modal editing
 (defun meow-setup ()
@@ -677,3 +686,7 @@
   (setq meow-use-cursor-position-hack t)
   (setf meow-use-clipboard t))
 
+(use-package envrc
+  :straight t)
+
+(envrc-global-mode)
