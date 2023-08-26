@@ -158,47 +158,172 @@
   (setq which-key-idle-delay 1))
 
 ;; ivy and counsel for autocomplete
-(use-package ivy
-  :straight t
-  :diminish
-  :bind (("C-s" . swiper)
-         ([remap list-buffers] . ivy-switch-buffer)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)
-         :map ivy-switch-buffer-map
-         ("C-d" . ivy-switch-buffer-kill))
-  :config
-  (ivy-mode 1))
+;; (use-package ivy
+;;   :straight t
+;;   :diminish
+;;   :bind (("C-s" . swiper)
+;;          ([remap list-buffers] . ivy-switch-buffer)
+;;          :map ivy-minibuffer-map
+;;          ("TAB" . ivy-alt-done)
+;;          :map ivy-switch-buffer-map
+;;          ("C-d" . ivy-switch-buffer-kill))
+;;   :config
+;;   (ivy-mode 1))
 
-(use-package ivy-rich
-  :straight t
-  :after ivy
-  :after counsel
-  :config
-  (ivy-rich-mode 1))
+;; (use-package ivy-rich
+;;   :straight t
+;;   :after ivy
+;;   :after counsel
+;;   :config
+;;   (ivy-rich-mode 1))
 
-(use-package ivy-hydra
-  :straight t
-  :after ivy
-  :after hydra)
+;; (use-package ivy-hydra
+;;   :straight t
+;;   :after ivy
+;;   :after hydra)
 
-(use-package counsel
+;; (use-package counsel
+;;   :straight t
+;;   :bind (("C-M-j" . 'counsel-switch-buffer)
+;;          :map minibuffer-local-map
+;;          ("C-r" . 'counsel-minibuffer-history))
+;;   :custom
+;;   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
+;;   :config
+;;   (counsel-mode 1))
+
+;; (use-package ivy-prescient
+;;   :straight t
+;;   :after counsel
+;;   :custom
+;;   (ivy-prescient-enable-filtering nil)
+;;   :config
+;;   (ivy-prescient-mode 1))
+
+;; ;; completion
+;; (use-package company
+;;   :straight t
+;;   :hook
+;;   (prog-mode . company-mode)
+;;   (lsp-mode . company-mode)
+;;   (eglot-mode . company-mode)
+;;   (emacs-lisp-mode . company-mode)
+;;   (sql-interactive-mode . company-mode)
+;;   (lisp-interaction-mode . company-mode)
+;;   :bind ("C-<tab>" . company-complete)
+;;   :custom
+;;   (company-minimum-prefix-length 1)
+;;   (company-idle-delay 0.0))
+
+;; (use-package company-box
+;;   :straight t
+;;   :hook (company-mode . company-box-mode))
+
+;; Autocomplete
+(use-package corfu
   :straight t
-  :bind (("C-M-j" . 'counsel-switch-buffer)
-         :map minibuffer-local-map
-         ("C-r" . 'counsel-minibuffer-history))
   :custom
-  (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
-  :config
-  (counsel-mode 1))
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-separator ?\s)          ;; Orderless field separator
+  (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+  (corfu-preview-current nil)    ;; Disable current candidate preview
+  (corfu-preselect 'prompt)      ;; Preselect the prompt
+  (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+  (corfu-scroll-margin 5)        ;; Use scroll margin
 
-(use-package ivy-prescient
+  ;; Enable Corfu only for certain modes.
+  :hook
+  (prog-mode . corfu-mode)
+  (lsp-mode . corfu-mode)
+  (sql-interactive-mode . corfu-mode)
+  (shell-mode . corfu-mode)
+  (eshell-mode . corfu-mode)
+
+  :bind
+  (:map corfu-map
+        ("TAB" . corfu-next)
+        ([tab] . corfu-next)
+        ("S-TAB" . corfu-previous)
+        ([backtab] . corfu-previous))
+
+  ;; Recommended: Enable Corfu globally.
+  ;; This is recommended since Dabbrev can be used globally (M-/).
+  ;; See also `global-corfu-modes'.
+  :init
+  (global-corfu-mode))
+
+(use-package marginalia
   :straight t
-  :after counsel
-  :custom
-  (ivy-prescient-enable-filtering nil)
   :config
-  (ivy-prescient-mode 1))
+  (marginalia-mode))
+
+(use-package embark
+  :straight t
+
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+
+  :init
+
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+  ;; Show the Embark target at point via Eldoc.  You may adjust the Eldoc
+  ;; strategy, if you want to see the documentation from multiple providers.
+  (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+
+  :config
+
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+(use-package orderless
+  :straight t
+  :custom
+  (completion-styles '(orderless partial-completion basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides nil)
+  (read-file-name-completion-ignore-case t)
+  (read-buffer-completion-ignore-case t)
+  (completion-ignore-case t))
+
+(use-package cape
+  :straight t
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-symbol))
+
+(use-package vertico
+  :straight t
+  :init
+  (vertico-mode))
+
+(use-package savehist
+  :straight t
+  :init
+  (savehist-mode))
+
+(use-package emacs
+  :init
+  ;; TAB cycle if there are only few candidates
+  (setq completion-cycle-threshold 3)
+
+  ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
+  ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
+  ;; (setq read-extended-command-predicate
+  ;;       #'command-completion-default-include-p)
+
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (setq tab-always-indent 'complete))
 
 ;; helpful
 (use-package helpful
@@ -262,10 +387,16 @@
   (lsp-modeline-code-actions-mode)
   (lsp-modeline-diagnostics-mode))
 
+(defun efs/lsp-completion-mode-setup ()
+  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+        '(flex)))
+
 (use-package lsp-mode
   :straight t
   :commands (lsp lsp-deferred)
-  :hook (lsp-mode . efs/lsp-mode-setup)
+  :hook
+  (lsp-mode . efs/lsp-mode-setup)
+  (lsp-completion-mode . efs/lsp-completion-mode-setup)
   :init
   (setq lsp-keymap-prefix "C-c l")
   :config
@@ -325,24 +456,6 @@
   (add-hook 'prog-mode-hook 'yas-minor-mode)
   (add-hook 'text-mode-hook 'yas-minor-mode))
 
-;; completion
-(use-package company
-  :straight t
-  :hook
-  (prog-mode . company-mode)
-  (lsp-mode . company-mode)
-  (eglot-mode . company-mode)
-  (emacs-lisp-mode . company-mode)
-  (sql-interactive-mode . company-mode)
-  (lisp-interaction-mode . company-mode)
-  :bind ("C-<tab>" . company-complete)
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
-
-(use-package company-box
-  :straight t
-  :hook (company-mode . company-box-mode))
 
 ;; project management
 (use-package projectile
