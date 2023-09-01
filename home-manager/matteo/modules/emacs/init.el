@@ -1,4 +1,4 @@
-;; boostrap straight.el
+; boostrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -55,6 +55,7 @@
   (save-some-buffers t))
 
 (add-hook 'focus-out-hook 'save-all)
+(add-hook 'meow-insert-exit-hook 'save-all)
 
 ;; UI stuff
 (setq inhibit-startup-message t)
@@ -226,10 +227,10 @@
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
   (corfu-separator ?\s)          ;; Orderless field separator
-  (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+  (corfu-quit-at-boundary 'separator)   ;; Never quit at completion boundary
+  (corfu-quit-no-match 'separator)      ;; Quit if there is no match
   (corfu-preview-current nil)    ;; Disable current candidate preview
-  (corfu-preselect 'prompt)      ;; Preselect the prompt
+  (corfu-preselect 'directory)   ;; Preselect the first result if it's not a directory
   (corfu-on-exact-match nil)     ;; Configure handling of exact matches
   (corfu-scroll-margin 5)        ;; Use scroll margin
 
@@ -285,6 +286,11 @@
                  nil
                  (window-parameters (mode-line-format . none)))))
 
+(use-package embark-consult
+  :straight t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 (use-package orderless
   :straight t
   :custom
@@ -298,8 +304,11 @@
 (use-package cape
   :straight t
   :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-symbol))
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-symbol))
 
 (use-package vertico
   :straight t
@@ -310,6 +319,13 @@
   :straight t
   :init
   (savehist-mode))
+
+(use-package consult
+  :straight t
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :init
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format))
 
 (use-package emacs
   :init
@@ -373,9 +389,24 @@
 
 (use-package neotree
   :straight t)
-(global-set-key [f8] 'neotree-toggle)
+
+(defun neotree-project-dir ()
+  "Open NeoTree using the git root."
+  (interactive)
+  (let ((project-dir (projectile-project-root))
+        (file-name (buffer-file-name)))
+    (neotree-toggle)
+    (if project-dir
+        (if (neo-global--window-exists-p)
+            (progn
+              (neotree-dir project-dir)
+              (neotree-find file-name)))
+      (message "Could not find git project root."))))
+
+(global-set-key [f8] 'neotree-project-dir)
 (setq neo-theme (if (display-graphic-p) 'nerd 'arrow))
 (setq neo-window-fixed-size nil)
+     (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; LSP
 (defun efs/lsp-mode-setup ()
@@ -405,8 +436,8 @@
   (lsp-rust-server 'rust-analyzer)
   (rustic-lsp-server 'rust-analyzer)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
-  (lsp-rust-analyzer-experimental-proc-attr-macros nil)
-  (lsp-rust-analyzer-proc-macro-enable nil)
+  (lsp-rust-analyzer-experimental-proc-attr-macros t)
+  (lsp-rust-analyzer-proc-macro-enable t)
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (gc-cons-threshold 100000000)
   (read-process-output-max (* 1024 1024)) ;; 1mb
@@ -444,9 +475,11 @@
   :straight t
   :after lsp)
 
-(use-package lsp-ivy
-  :straight t
-  :after lsp)
+(setq lsp-completion-provider :capfs)
+(defun corfu-lsp-setup ()
+  (setq-local completion-styles '(orderless)
+              completion-category-defaults nil))
+(add-hook 'lsp-mode-hook #'corfu-lsp-setup)
 
 (use-package yasnippet
   :straight t
@@ -462,18 +495,19 @@
   :straight t
   :diminish projectile-mode
   :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
+  :custom ((projectile-completion-system 'default))
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
   (setq projectile-switch-project-action #'projectile-dired))
 
-(use-package counsel-projectile
-  :straight t
-  :after projectile
-  :config (counsel-projectile-mode))
+;; (use-package counsel-projectile
+;;   :straight t
+;;   :after projectile
+;;   :config (counsel-projectile-mode))
 
 (setq projectile-project-search-path (cddr (directory-files "~/Software" t)))
+(setq shell-file-name "bash")
 
 ;; eye-candy
 (use-package rainbow-delimiters
@@ -485,7 +519,8 @@
 ;;; Rust
 
 (use-package toml-mode
-  :straight t)
+  :straight t
+  :hook (toml-mode . lsp-deferred))
 
 (use-package cargo
   :straight t
@@ -497,6 +532,7 @@
 
 (use-package rustic
   :straight t
+  :hook (rustic-mode . lsp-deferred)
   :config
   (setq rustic-spinner-type 'moon)
   (setq rustic-format-on-save t))
@@ -722,7 +758,7 @@
    '("0" . meow-digit-argument)
    '("d" . meow-keypad-describe-key)
    '("?" . meow-cheatsheet)
-   '("/" . swiper)
+   '("/" . consult-line)
    '("p" . projectile-command-map)
    '("e" . flycheck-command-map)
    '("w" . ace-window))
@@ -798,6 +834,18 @@
   (setq meow-keypad-describe-delay 0.2)
   (setq meow-use-cursor-position-hack t)
   (setf meow-use-clipboard t))
+
+(use-package scratch
+  :straight t)
+
+(use-package org-novelist
+  :straight nil
+  :load-path "~/Downloads/"  ; The directory containing 'org-novelist.el'
+  :custom
+    (org-novelist-language-tag "en-GB")  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
+    (org-novelist-author "Matteo Joliveau")  ; The default author name to use when exporting a story. Each story can also override this setting
+    (org-novelist-author-email "matteo@matteojoliveau.com")  ; The default author contact email to use when exporting a story. Each story can also override this setting
+    (org-novelist-automatic-referencing-p nil))  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
 (use-package envrc
   :straight t)

@@ -9,8 +9,10 @@ let
     nil
     nodePackages.svelte-language-server
     nodePackages.typescript-language-server
+    nodePackages.yaml-language-server
     sqls
     buf-language-server
+    taplo
   ];
 in
 {
