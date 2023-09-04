@@ -22,7 +22,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
-(setq electric-indent-mode t)
+(setq electric-indent-mode nil)
 (setq-default indent-tabs-mode nil) ;; <3 spaces
 
 ;; CamelCase movement
@@ -158,68 +158,6 @@
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
-;; ivy and counsel for autocomplete
-;; (use-package ivy
-;;   :straight t
-;;   :diminish
-;;   :bind (("C-s" . swiper)
-;;          ([remap list-buffers] . ivy-switch-buffer)
-;;          :map ivy-minibuffer-map
-;;          ("TAB" . ivy-alt-done)
-;;          :map ivy-switch-buffer-map
-;;          ("C-d" . ivy-switch-buffer-kill))
-;;   :config
-;;   (ivy-mode 1))
-
-;; (use-package ivy-rich
-;;   :straight t
-;;   :after ivy
-;;   :after counsel
-;;   :config
-;;   (ivy-rich-mode 1))
-
-;; (use-package ivy-hydra
-;;   :straight t
-;;   :after ivy
-;;   :after hydra)
-
-;; (use-package counsel
-;;   :straight t
-;;   :bind (("C-M-j" . 'counsel-switch-buffer)
-;;          :map minibuffer-local-map
-;;          ("C-r" . 'counsel-minibuffer-history))
-;;   :custom
-;;   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
-;;   :config
-;;   (counsel-mode 1))
-
-;; (use-package ivy-prescient
-;;   :straight t
-;;   :after counsel
-;;   :custom
-;;   (ivy-prescient-enable-filtering nil)
-;;   :config
-;;   (ivy-prescient-mode 1))
-
-;; ;; completion
-;; (use-package company
-;;   :straight t
-;;   :hook
-;;   (prog-mode . company-mode)
-;;   (lsp-mode . company-mode)
-;;   (eglot-mode . company-mode)
-;;   (emacs-lisp-mode . company-mode)
-;;   (sql-interactive-mode . company-mode)
-;;   (lisp-interaction-mode . company-mode)
-;;   :bind ("C-<tab>" . company-complete)
-;;   :custom
-;;   (company-minimum-prefix-length 1)
-;;   (company-idle-delay 0.0))
-
-;; (use-package company-box
-;;   :straight t
-;;   :hook (company-mode . company-box-mode))
-
 ;; Autocomplete
 (use-package corfu
   :straight t
@@ -304,11 +242,8 @@
 (use-package cape
   :straight t
   :init
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-abbrev)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-symbol))
+  (add-to-list 'completion-at-point-functions (cape-capf-super #'cape-dabbrev #'cape-keyword))
+  (add-to-list 'completion-at-point-functions #'cape-file))
 
 (use-package vertico
   :straight t
@@ -324,7 +259,7 @@
   :straight t
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :init
-  (setq register-preview-delay 0.5
+  (setq register-preview-delay 0.2
         register-preview-function #'consult-register-format))
 
 (use-package emacs
@@ -383,9 +318,6 @@
   :bind (("C-x C-j" . dired-jump)))
 
 (setq dired-listing-switches "-lXGh --group-directories-first")
-
-(use-package dired-hide-dotfiles
-  :straight t)
 
 (use-package neotree
   :straight t)
@@ -475,7 +407,7 @@
   :straight t
   :after lsp)
 
-(setq lsp-completion-provider :capfs)
+(setq lsp-completion-provider :none)
 (defun corfu-lsp-setup ()
   (setq-local completion-styles '(orderless)
               completion-category-defaults nil))
@@ -501,11 +433,6 @@
   :init
   (setq projectile-switch-project-action #'projectile-dired))
 
-;; (use-package counsel-projectile
-;;   :straight t
-;;   :after projectile
-;;   :config (counsel-projectile-mode))
-
 (setq projectile-project-search-path (cddr (directory-files "~/Software" t)))
 (setq shell-file-name "bash")
 
@@ -524,7 +451,7 @@
 
 (use-package cargo
   :straight t
-  :hook (rust-mode . cargo-minor-mode))  
+  :hook (rust-mode . cargo-minor-mode))
 
 (use-package flycheck-rust
   :straight t
@@ -711,6 +638,7 @@
 (global-set-key (kbd "M-<backspace>") 'vid0m/backward-delete-word-no-kill)
 (global-set-key (kbd "C-<S-backspace>")
                 'visd0m/delete-line-no-kill)
+(global-set-key (kbd "C-x /") 'consult-ripgrep)
 
 ;;; Undo tree
 (use-package undo-tree
@@ -760,8 +688,9 @@
    '("?" . meow-cheatsheet)
    '("/" . consult-line)
    '("p" . projectile-command-map)
-   '("e" . flycheck-command-map)
-   '("w" . ace-window))
+   '("e" . lsp-treemacs-errors-list)
+   '("w" . ace-window)
+   '("j" . justl))
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
@@ -845,7 +774,14 @@
     (org-novelist-language-tag "en-GB")  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
     (org-novelist-author "Matteo Joliveau")  ; The default author name to use when exporting a story. Each story can also override this setting
     (org-novelist-author-email "matteo@matteojoliveau.com")  ; The default author contact email to use when exporting a story. Each story can also override this setting
-    (org-novelist-automatic-referencing-p nil))  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
+    (org-novelist-automatic-referencing-p t))  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
+
+(use-package just-mode
+  :straight t)
+
+
+(use-package justl
+  :straight t)
 
 (use-package envrc
   :straight t)

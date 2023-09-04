@@ -25,6 +25,7 @@ in
     cmake
     unstable.cargo-leptos
     cargo-generate
+    dbeaver
     doctl
     git-town
     gnumake
