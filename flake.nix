@@ -16,6 +16,8 @@
 
     suite-py.url = "suite-py";
     prima-nix.url = "prima-nix";
+
+    megasploot.url = "github:matteojoliveau/megasploot.nix";
   };
 
   outputs =
@@ -26,6 +28,7 @@
     , home-manager
     , suite-py
     , prima-nix
+    , megasploot
     , ...
     }@attrs:
     let
@@ -38,6 +41,7 @@
         overlays = [
           prima-nix.overlays.default
           suite-py.overlays.default
+          megasploot.overlays.default
           (self: super: {
             unstable = import nixpkgs-unstable {
               inherit system;

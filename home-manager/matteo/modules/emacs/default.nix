@@ -1,12 +1,12 @@
 { pkgs, ... }:
 
 {
-    programs.emacs = {
-      enable = true;
-      package = pkgs.emacs28;
-    };
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs28;
+  };
 
-    xdg.configFile."emacs/init.el".source = ./init.el;
-    xdg.configFile."emacs/early-init.el".source = ./early-init.el;
-    xdg.configFile."emacs/straight/versions/default.el".source = ./lockfile.el;
+  xdg.configFile."emacs/init.el".source = ./init.el;
+  xdg.configFile."emacs/early-init.el".source = ./early-init.el;
+  xdg.configFile."emacs/straight/versions/default.el".source = ./lockfile.el;
 }

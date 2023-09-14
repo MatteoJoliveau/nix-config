@@ -1,4 +1,4 @@
-{ pkgs, system,  ... }:
+{ pkgs, system, ... }:
 
 let
   waybar = pkgs.unstable.waybar-hyprland;
