@@ -783,6 +783,12 @@
 (use-package justl
   :straight t)
 
+(use-package gdscript-mode
+  :straight t
+  :hook (web-mode . lsp-deferred)
+  :config
+  (setq gdscript-godot-executable "godot4"))
+
 (use-package envrc
   :straight t)
 
