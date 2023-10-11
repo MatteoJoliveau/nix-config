@@ -56,6 +56,13 @@
             httpie-desktop = super.callPackage nixpkgs/httpie-desktop.nix { };
             biscuit = super.callPackage nixpkgs/biscuit.nix { };
           })
+          # https://github.com/nix-community/home-manager/issues/322#issuecomment-1178614454
+          (self: super: {
+            openssh = super.openssh.overrideAttrs (old: {
+              patches = (old.patches or [ ]) ++ [ ./patches/openssh.patch ];
+              doCheck = false;
+            });
+          })
         ];
       };
       homeManagerWithArgs = { home-manager.extraSpecialArgs = attrs // { inherit system; }; };

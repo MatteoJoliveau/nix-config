@@ -21,10 +21,9 @@ in
     awscli2
     bacon
     biscuit
+    cargo-generate
     clang
     cmake
-    unstable.cargo-leptos
-    cargo-generate
     dbeaver
     doctl
     git-town
@@ -54,6 +53,7 @@ in
     rustup
     sqlite
     ssm-session-manager-plugin
+    steamos-devkit
     suite_py
     velero
     vpnc

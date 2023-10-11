@@ -1,7 +1,7 @@
 { pkgs, system, ... }:
 
 let
-  waybar = pkgs.unstable.waybar-hyprland;
+  waybar = pkgs.unstable.waybar;
 in
 {
   programs.waybar = {
