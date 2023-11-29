@@ -1,4 +1,4 @@
-; boostrap straight.el
+                                        ; boostrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -338,7 +338,7 @@
 (global-set-key [f8] 'neotree-project-dir)
 (setq neo-theme (if (display-graphic-p) 'nerd 'arrow))
 (setq neo-window-fixed-size nil)
-     (setq projectile-switch-project-action 'neotree-projectile-action)
+(setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; LSP
 (defun efs/lsp-mode-setup ()
@@ -771,10 +771,10 @@
   :straight nil
   :load-path "~/Downloads/"  ; The directory containing 'org-novelist.el'
   :custom
-    (org-novelist-language-tag "en-GB")  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
-    (org-novelist-author "Matteo Joliveau")  ; The default author name to use when exporting a story. Each story can also override this setting
-    (org-novelist-author-email "matteo@matteojoliveau.com")  ; The default author contact email to use when exporting a story. Each story can also override this setting
-    (org-novelist-automatic-referencing-p t))  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
+  (org-novelist-language-tag "en-GB")  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
+  (org-novelist-author "Matteo Joliveau")  ; The default author name to use when exporting a story. Each story can also override this setting
+  (org-novelist-author-email "matteo@matteojoliveau.com")  ; The default author contact email to use when exporting a story. Each story can also override this setting
+  (org-novelist-automatic-referencing-p t))  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
 (use-package just-mode
   :straight t)
@@ -788,6 +788,22 @@
   :hook (web-mode . lsp-deferred)
   :config
   (setq gdscript-godot-executable "godot4"))
+
+(use-package blamer
+  :straight t
+  :bind (("s-i" . blamer-show-commit-info)
+         ("C-c i" . blamer-show-posframe-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 120
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))
 
 (use-package envrc
   :straight t)

@@ -7,32 +7,33 @@ let
 in
 {
   home.packages = with pkgs; [
-    libsecret
-    firefox
-    google-chrome
-    slack
     # teams
-    discord
-    unstable.webcord
-    zoom-us
-    glib
-    tdesktop
-    bitwarden
-    spotify
-    libreoffice-fresh
-    deluge
     audacity
-    obs-studio
-    pavucontrol
-    paprefs
-    vlc
-    desktop-file-utils
-    scribus
+    bitwarden
     caffeine-ng
-    krita
-    nextcloud-client
+    deluge
+    desktop-file-utils
+    discord
+    firefox
     freeplane
+    glib
     gnome.nautilus
+    google-chrome
+    krita
+    libreoffice-fresh
+    libsecret
+    manuskript
+    nextcloud-client
+    obs-studio
+    paprefs
+    pavucontrol
+    scribus
+    slack
+    spotify
+    tdesktop
+    unstable.webcord
+    vlc
+    zoom-us
   ];
 
   home.file.".face".source = ../../../images/propic.jpg;

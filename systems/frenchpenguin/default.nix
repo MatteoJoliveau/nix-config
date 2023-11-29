@@ -45,4 +45,6 @@
       19000 # Expo mobile app
     ];
   };
+
+  programs.hyprland.package = pkgs.unstable.hyprland;
 }
