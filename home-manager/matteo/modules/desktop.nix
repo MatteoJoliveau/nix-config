@@ -43,6 +43,16 @@ in
     NSS_DEFAULT_DB_TYPE = "sql";
   };
 
+  xdg.desktopEntries = {
+    manuskript = {
+      name = "Manuskript";
+      type = "Application";
+      exec = "manuskript %U";
+      terminal = false;
+      categories = [ "Application" "TextEditor" ];
+    };
+  };
+
   gtk = {
     enable = true;
     iconTheme = {
