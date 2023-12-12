@@ -20,6 +20,7 @@ in
     gnome.nautilus
     google-chrome
     krita
+    languagetool
     libreoffice-fresh
     libsecret
     manuskript
