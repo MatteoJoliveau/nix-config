@@ -70,8 +70,6 @@
     wayland-utils # wayland-info
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
   # Fonts
   fonts.fonts = with pkgs; [
     noto-fonts
@@ -81,9 +79,6 @@
     jetbrains-mono
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
-  # Look, I don't like this either, but they are slow to fix those CVEs
-  nixpkgs.config.permittedInsecurePackages = [ ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
