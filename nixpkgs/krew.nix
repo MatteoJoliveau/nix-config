@@ -12,7 +12,7 @@ rec {
     sha256 = "1pwnkg7qsyixj2h8rrdcwyvsqpdvc7q1jd8d62jwbrp3ga8h337r";
   };
 
-  vendorSha256 = "08dfk33ich3bn4rqz545b50i8dp6l5wqpirvx1yafqjx9rlidng3";
+  vendorHash = "08dfk33ich3bn4rqz545b50i8dp6l5wqpirvx1yafqjx9rlidng3";
 
   subPackages = [ "cmd/krew" ];
 

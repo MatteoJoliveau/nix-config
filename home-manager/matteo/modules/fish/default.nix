@@ -15,7 +15,8 @@
       kns = "kubie ns";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       g = "git";
-      ls = "exa";
+      tree = "eza -T";
+      ls = "eza";
       grep = "rg";
       lg = "lazygit";
       rng = "ranger";
@@ -29,7 +30,6 @@
       reset_bg = "eval (~/.fehbg)";
       "code." = "code .";
       hm = "home-manager";
-      tree = "exa -T";
       ecrlogin = "eval (aws ecr get-login --no-include-email)";
       sb = "sonobuoy";
       sp = "suite-py";

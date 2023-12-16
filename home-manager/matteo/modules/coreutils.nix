@@ -6,7 +6,7 @@
     gotop
     ffmpeg
     pulseaudio
-    exa
+    eza
     bat
     ripgrep
     fd
