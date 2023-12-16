@@ -237,11 +237,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1690460368,
-        "narHash": "sha256-8AiTbdtdHBXiCySduzHYgJdsBMZ56EnqsvsmCZYsKOM=",
-        "ref": "crowdstrike-download-script",
-        "rev": "4fe273da856ae89bd98b1adad0e6be694ccd4130",
-        "revCount": 9,
+        "lastModified": 1702766129,
+        "narHash": "sha256-JMU9Ez4hbwRMhBO6v7+HtIUjyR1iJcWj0VHCCV1yx8U=",
+        "ref": "crowdstrike-autoupdate",
+        "rev": "2ac6fee43d4f1b58edfcfe5c2842b178d17f9268",
+        "revCount": 12,
         "type": "git",
         "url": "ssh://git@github.com/primait/prima.nix.git"
       },

@@ -1,12 +1,8 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    download-falcon-sensor
-  ];
-
   prima.crowdstrike-falcon = {
-    enable = true;
+    enable = false; # TODO: re-enable
     cid = "D4EDFBE5EBA84A68A94268C9FEA40D8F-C0";
   };
 }
