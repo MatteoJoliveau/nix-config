@@ -237,11 +237,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1702766129,
-        "narHash": "sha256-JMU9Ez4hbwRMhBO6v7+HtIUjyR1iJcWj0VHCCV1yx8U=",
-        "ref": "crowdstrike-autoupdate",
-        "rev": "2ac6fee43d4f1b58edfcfe5c2842b178d17f9268",
-        "revCount": 12,
+        "lastModified": 1702907407,
+        "narHash": "sha256-LUilT52+tkOfyGHtq+ocqUz7X+lEpZ6f8ry/4Xi2/Fo=",
+        "ref": "j/overlay-fix",
+        "rev": "7fed10d3b48fea71d5875126e336f6288590df1f",
+        "revCount": 23,
         "type": "git",
         "url": "ssh://git@github.com/primait/prima.nix.git"
       },
