@@ -9,6 +9,7 @@ let
     nil
     nodePackages.svelte-language-server
     nodePackages.typescript-language-server
+    typescript
     nodePackages.yaml-language-server
     sqls
     buf-language-server
