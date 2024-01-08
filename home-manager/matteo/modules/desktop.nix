@@ -1,10 +1,5 @@
 { pkgs, lib, ... }:
 
-let
-  discord = pkgs.discord.override {
-    nss = pkgs.nss_latest;
-  };
-in
 {
   home.packages = with pkgs; [
     # teams
@@ -13,7 +8,6 @@ in
     caffeine-ng
     deluge
     desktop-file-utils
-    discord
     firefox
     freeplane
     glib

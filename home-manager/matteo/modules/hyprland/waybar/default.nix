@@ -12,7 +12,7 @@ in
         layer = "top";
         position = "top";
         spacing = 10;
-        modules-left = [ "wlr/workspaces" "hyprland/window" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
         modules-right = [ "network" "battery" "pulseaudio" "custom/notification" ];
         "wlr/workspaces" = {
