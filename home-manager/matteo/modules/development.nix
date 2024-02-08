@@ -14,6 +14,7 @@ let
     sqls
     buf-language-server
     taplo
+    python311Packages.python-lsp-server
   ];
 in
 {

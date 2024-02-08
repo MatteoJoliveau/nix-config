@@ -789,21 +789,38 @@
   :config
   (setq gdscript-godot-executable "godot4"))
 
-(use-package blamer
+(use-package python-mode
+    :straight t
+    :hook (python-mode . lsp-deferred))
+
+(use-package pyvenv
   :straight t
-  :bind (("s-i" . blamer-show-commit-info)
-         ("C-c i" . blamer-show-posframe-commit-info))
-  :defer 20
-  :custom
-  (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
-                    :height 120
-                    :italic t)))
   :config
-  (global-blamer-mode 1))
+  (pyvenv-mode t)
+
+  ;; Set correct Python interpreter
+  (setq pyvenv-post-activate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python3")))))
+  (setq pyvenv-post-deactivate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter "python3")))))
+
+;; (use-package blamer
+;;   :straight t
+;;   :bind (("s-i" . blamer-show-commit-info)
+;;          ("C-c i" . blamer-show-posframe-commit-info))
+;;   :defer 20
+;;   :custom
+;;   (blamer-idle-time 0.3)
+;;   (blamer-min-offset 70)
+;;   :custom-face
+;;   (blamer-face ((t :foreground "#7a88cf"
+;;                     :background nil
+;;                     :height 120
+;;                     :italic t)))
+;;   :config
+;;   (global-blamer-mode 1))
 
 (use-package envrc
   :straight t)
