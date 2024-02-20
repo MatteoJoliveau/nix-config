@@ -24,6 +24,7 @@
     unzip
     pv
     fzf
+    zoxide
   ];
 
   programs.direnv = {
