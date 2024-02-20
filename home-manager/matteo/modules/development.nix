@@ -15,6 +15,7 @@ let
     buf-language-server
     taplo
     python311Packages.python-lsp-server
+    terraform-ls
   ];
 in
 {

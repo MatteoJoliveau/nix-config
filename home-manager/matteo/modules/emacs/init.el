@@ -367,7 +367,7 @@
   :custom
   (lsp-rust-server 'rust-analyzer)
   (rustic-lsp-server 'rust-analyzer)
-  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-rust-analyzer-cargo-watch-command "check")
   (lsp-rust-analyzer-experimental-proc-attr-macros t)
   (lsp-rust-analyzer-proc-macro-enable t)
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
@@ -805,6 +805,10 @@
   (setq pyvenv-post-deactivate-hooks
         (list (lambda ()
                 (setq python-shell-interpreter "python3")))))
+
+
+(use-package terraform-mode
+  :straight t)
 
 ;; (use-package blamer
 ;;   :straight t
