@@ -12,7 +12,7 @@
     freeplane
     glib
     gnome.nautilus
-    google-chrome
+    ungoogled-chromium
     krita
     languagetool
     libreoffice-fresh
