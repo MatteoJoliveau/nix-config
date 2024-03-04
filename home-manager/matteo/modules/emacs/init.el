@@ -17,6 +17,7 @@
 
 (setq debug-on-error t)
 (setq custom-file (concat user-emacs-directory "custom.el"))
+(setq suggest-key-bindings nil)
 
 ;; tabs
 (setq-default indent-tabs-mode nil)
@@ -317,7 +318,7 @@
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump)))
 
-(setq dired-listing-switches "-lXGh --group-directories-first")
+(setq dired-listing-switches "-lAXGh --group-directories-first")
 
 (use-package neotree
   :straight t)
