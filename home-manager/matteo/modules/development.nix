@@ -23,7 +23,6 @@ in
     asciinema
     awscli2
     bacon
-    biscuit
     cargo-generate
     clang
     cmake
