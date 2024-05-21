@@ -27,12 +27,8 @@ in
     cargo-generate
     clang
     cmake
-    dbeaver
-    doctl
-    git-town
     gnumake
     go
-    google-cloud-sdk
     httpie
     insomnia
     jo
@@ -45,9 +41,6 @@ in
     kubernetes-helm
     kubie
     kustomize
-    lapce
-    lazygit
-    luajitPackages.luarocks
     minikube
     nodejs
     postgresql
@@ -55,11 +48,8 @@ in
     ruby_3_1
     rustup
     sqlite
-    ssm-session-manager-plugin
     steamos-devkit
     suite_py
-    velero
-    vpnc
     yq
   ] ++ lsps;
 
