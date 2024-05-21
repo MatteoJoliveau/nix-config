@@ -48,7 +48,7 @@ in
     rustup
     sqlite
     steamos-devkit
-    suite_py
+    # suite_py
     yq
   ] ++ lsps;
 
