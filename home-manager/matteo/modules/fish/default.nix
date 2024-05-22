@@ -41,7 +41,7 @@
     shellInit = ''
       eval (direnv hook fish)
       zoxide init fish | source
-      set -gx PATH $PATH $HOME/.local/bin
+      set -gx PATH $PATH $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin
     '';
 
     plugins = with pkgs.fishPlugins; [

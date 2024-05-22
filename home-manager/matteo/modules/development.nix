@@ -35,6 +35,7 @@ in
     google-cloud-sdk
     httpie
     insomnia
+    jetbrains.datagrip
     jo
     jq
     k9s

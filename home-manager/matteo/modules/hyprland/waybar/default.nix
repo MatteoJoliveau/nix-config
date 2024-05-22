@@ -1,7 +1,7 @@
 { pkgs, system, ... }:
 
 let
-  waybar = pkgs.unstable.waybar;
+  waybar = pkgs.waybar;
 in
 {
   programs.waybar = {

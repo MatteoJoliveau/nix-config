@@ -1,4 +1,4 @@
-                                        ; boostrap straight.el
+; boostrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -14,6 +14,11 @@
 
 ;; initialize use-package on non-Linux platforms
 (straight-use-package 'use-package)
+
+;; install org mode very early to avoid issues
+;; https://github.com/syl20bnr/spacemacs/issues/15896#issuecomment-1435776540
+(use-package org
+  :straight t)
 
 (setq debug-on-error t)
 (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -61,15 +66,15 @@
 ;; UI stuff
 (setq inhibit-startup-message t)
 ;; disable visible scrollbar
-(scroll-bar-mode -1)        
+(scroll-bar-mode -1)
 ;; disable the toolbar
-(tool-bar-mode -1)          
+(tool-bar-mode -1)
 ;; disable tooltips
 (tooltip-mode -1)
 ;; give some breathing room
-(set-fringe-mode 10)        
+(set-fringe-mode 10)
 ;; disable the menu bar
-(menu-bar-mode -1)          
+(menu-bar-mode -1)
 
 ;; set up the visible bell
 (setq visible-bell nil)
@@ -140,6 +145,10 @@
                      (projects . 5)
                      (agenda . 5)
                      (registers . 5))))
+
+(use-package vterm
+  :straight t
+)
 
 (use-package spinner
   :straight t)
@@ -320,27 +329,6 @@
 
 (setq dired-listing-switches "-lAXGh --group-directories-first")
 
-(use-package neotree
-  :straight t)
-
-(defun neotree-project-dir ()
-  "Open NeoTree using the git root."
-  (interactive)
-  (let ((project-dir (projectile-project-root))
-        (file-name (buffer-file-name)))
-    (neotree-toggle)
-    (if project-dir
-        (if (neo-global--window-exists-p)
-            (progn
-              (neotree-dir project-dir)
-              (neotree-find file-name)))
-      (message "Could not find git project root."))))
-
-(global-set-key [f8] 'neotree-project-dir)
-(setq neo-theme (if (display-graphic-p) 'nerd 'arrow))
-(setq neo-window-fixed-size nil)
-(setq projectile-switch-project-action 'neotree-projectile-action)
-
 ;; LSP
 (defun efs/lsp-mode-setup ()
   (setq lsp-modeline-diagnostic-scope :workspace)
@@ -421,7 +409,6 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook 'yas-minor-mode)
   (add-hook 'text-mode-hook 'yas-minor-mode))
-
 
 ;; project management
 (use-package projectile
@@ -657,6 +644,9 @@
 (use-package tree-sitter
   :straight t)
 
+(use-package tree-sitter-indent
+  :straight t)
+
 (use-package tree-sitter-langs
   :straight t)
 
@@ -791,8 +781,8 @@
   (setq gdscript-godot-executable "godot4"))
 
 (use-package python-mode
-    :straight t
-    :hook (python-mode . lsp-deferred))
+  :straight t
+  :hook (python-mode . lsp-deferred))
 
 (use-package pyvenv
   :straight t
@@ -807,9 +797,16 @@
         (list (lambda ()
                 (setq python-shell-interpreter "python3")))))
 
+;; TODO: switch to regular package once they publish it
+(use-package gleam-mode
+ :load-path "~/Software/gleam-mode")
 
 (use-package terraform-mode
   :straight t)
+
+(use-package go-mode
+  :straight t
+  :hook (go-mode . lsp-deferred))
 
 ;; (use-package blamer
 ;;   :straight t
@@ -826,6 +823,13 @@
 ;;                     :italic t)))
 ;;   :config
 ;;   (global-blamer-mode 1))
+
+(use-package org-roam
+  :straight t)
+
+(use-package treemacs-icons-dired
+  :hook (dired-mode . treemacs-icons-dired-enable-once)
+  :straight t)
 
 (use-package envrc
   :straight t)

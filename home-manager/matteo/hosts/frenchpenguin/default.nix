@@ -7,6 +7,7 @@ in
   imports = [
     ../../modules/bluetooth.nix
     ../../modules/wifi.nix
+    ../../modules/hyprland
   ];
 
   home.packages = [

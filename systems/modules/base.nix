@@ -90,13 +90,7 @@
   programs.steam.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    xkbVariant = "altgr-intl";
-    xkbOptions = "eurosign:e ctrl:nocaps";
-    displayManager.gdm.enable = true;
-  };
+  services.xserver.enable = true;
 
   location.provider = "geoclue2";
 
@@ -109,10 +103,6 @@
 
   xdg.portal.enable = true;
   services.flatpak.enable = true;
-
-  # Keyring
-  services.gnome.gnome-keyring.enable = true;
-  programs.seahorse.enable = true;
 
   system = {
     autoUpgrade.enable = true;

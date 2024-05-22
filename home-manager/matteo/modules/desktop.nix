@@ -2,22 +2,20 @@
 
 {
   home.packages = with pkgs; [
-    # teams
     audacity
     bitwarden
     caffeine-ng
     deluge
     desktop-file-utils
+    easyeffects
     firefox
     freeplane
     glib
     gnome.nautilus
-    ungoogled-chromium
     krita
     languagetool
     libreoffice-fresh
     libsecret
-    manuskript
     nextcloud-client
     obs-studio
     paprefs
@@ -26,7 +24,11 @@
     slack
     spotify
     tdesktop
-    unstable.webcord
+    ungoogled-chromium
+    unstable.manuskript
+    unstable.obsidian
+    unstable.pandoc
+    unstable.vesktop
     vlc
     zoom-us
   ];

@@ -12,6 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager-unstable = {
+      url = github:nix-community/home-manager/master;
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     suite-py.url = "suite-py";
@@ -26,6 +31,7 @@
     , nixpkgs-unstable
     , flake-utils
     , home-manager
+    , home-manager-unstable
     , suite-py
     , prima-nix
     , megasploot
@@ -33,7 +39,8 @@
     }@attrs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
+      pks = import nixpkgs { inherit system; };
+      mkPkgs = channel: import channel {
         inherit system;
 
         config.allowUnfree = true;
@@ -65,7 +72,9 @@
           })
         ];
       };
+      pkgs = mkPkgs nixpkgs;
       homeManagerWithArgs = { home-manager.extraSpecialArgs = attrs // { inherit system; }; };
+      homeManagerUnstableWithArgs = { home-manager.extraSpecialArgs = attrs // { inherit system; }; };
     in
     {
       nixosConfigurations = {
@@ -80,11 +89,12 @@
           ];
         };
 
-        microwave = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
+        microwave = nixpkgs-unstable.lib.nixosSystem {
+          inherit system;
+          pkgs = mkPkgs nixpkgs-unstable;
 
-          specialArgs = attrs;
-          modules = [ ./systems/microwave homeManagerWithArgs ];
+          specialArgs = attrs // { home-manager = home-manager-unstable; };
+          modules = [ ./systems/microwave homeManagerUnstableWithArgs ];
         };
       };
     } // flake-utils.lib.eachDefaultSystem (system:

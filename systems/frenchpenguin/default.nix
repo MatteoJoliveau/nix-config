@@ -11,6 +11,7 @@
       ../modules/fingerprint.nix
       ../modules/hyprland.nix
       ../modules/games.nix
+      ../modules/gnome-keyring.nix
       ../modules/kernel.nix
       ../modules/networking.nix
       ../modules/power-management.nix
@@ -18,6 +19,7 @@
       ../modules/users
       ../modules/users/matteo.nix
       ../modules/virtualization.nix
+      ../modules/wireguard.nix
       ./hardware-configuration.nix
       nixos-hardware.nixosModules.lenovo-thinkpad
       nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -45,6 +47,4 @@
       19000 # Expo mobile app
     ];
   };
-
-  programs.hyprland.package = pkgs.unstable.hyprland;
 }

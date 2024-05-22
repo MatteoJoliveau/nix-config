@@ -5,7 +5,6 @@
     (./hosts + "/${nixosConfig.networking.hostName}")
     ./modules/alacritty
     ./modules/fish
-    ./modules/hyprland
     ./modules/neovim
     ./modules/emacs
     ./modules/coreutils.nix
@@ -18,10 +17,7 @@
     ./modules/ssh.nix
   ];
 
-  nixpkgs.overlays = [
-    # Re-enable if upstream is slacking off
-    # (import ./overlays/discord.nix)
-  ];
+  nixpkgs.overlays = [ ];
 
   programs.home-manager.enable = true;
   manual.manpages.enable = false;

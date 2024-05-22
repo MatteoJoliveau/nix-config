@@ -25,6 +25,8 @@
     pv
     fzf
     zoxide
+    du-dust
+    libtool
   ];
 
   programs.direnv = {
