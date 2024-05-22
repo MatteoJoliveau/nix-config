@@ -113,10 +113,9 @@
 
 ;; themes
 (use-package catppuccin-theme
-  :straight t
-  :init
-  (load-theme 'catppuccin :no-confirm)
-  )
+  :straight t)
+  
+(load-theme 'catppuccin :no-confirm)
 (setq catppuccin-flavor 'frappe)
 (catppuccin-reload)
 

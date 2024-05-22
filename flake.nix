@@ -97,6 +97,10 @@
           modules = [ ./systems/microwave homeManagerUnstableWithArgs ];
         };
       };
+
+      homes = {
+        frenchpenguinv5 = import ./home-manager/matteo/frenchpenguinv5.nix;
+      };
     } // flake-utils.lib.eachDefaultSystem (system:
     let pkgs = nixpkgs.legacyPackages.${system}; in
     rec {
