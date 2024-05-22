@@ -50,6 +50,7 @@ in
     steamos-devkit
     # suite_py
     yq
+    zellij
   ] ++ lsps;
 
   programs.vscode.enable = true;
