@@ -14,22 +14,23 @@
   manual.manpages.enable = false;
 
   home.packages = with pkgs; [
-    gotop
-    eza
     bat
-    ripgrep
+    eza
     fd
-    jetbrains-mono
-    fzf
-    zoxide
     firefox
-    ungoogled-chromium
+    fzf
+    gotop
+    jetbrains-mono
     nextcloud-client
     obs-studio
+    ripgrep
     slack
     spotify
     tdesktop
+    ungoogled-chromium
+    vesktop
     vlc
+    zoxide
   ];
 
   programs.direnv = {
