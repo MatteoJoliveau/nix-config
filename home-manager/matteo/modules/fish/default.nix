@@ -39,9 +39,9 @@
     interactiveShellInit = "eval (starship init fish)";
 
     shellInit = ''
+      set -gx PATH $PATH /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin
       eval (direnv hook fish)
       zoxide init fish | source
-      set -gx PATH $PATH $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin
     '';
 
     plugins = with pkgs.fishPlugins; [
