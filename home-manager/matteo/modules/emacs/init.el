@@ -146,8 +146,14 @@
                      (registers . 5))))
 
 (use-package vterm
+  :straight t)
+
+(use-package multi-vterm
   :straight t
-)
+  :config
+  (add-hook 'vterm-mode-hook
+			(lambda ()
+              (meow-insert))))
 
 (use-package spinner
   :straight t)
