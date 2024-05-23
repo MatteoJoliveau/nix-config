@@ -158,6 +158,9 @@
 (use-package spinner
   :straight t)
 
+(use-package eldoc
+  :straight t)
+
 (use-package rg
   :straight t)
 
