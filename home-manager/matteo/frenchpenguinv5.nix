@@ -20,7 +20,6 @@
     firefox
     fzf
     gotop
-    godot_4
     steam-run
     jetbrains-mono
     nextcloud-client
