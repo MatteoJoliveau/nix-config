@@ -24,7 +24,7 @@
     pulseaudio
     pv
     ripgrep
-    unstable.via
+    via
     unzip
     vips
     wireguard-tools
