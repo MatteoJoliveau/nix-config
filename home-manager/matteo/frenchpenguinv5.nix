@@ -21,7 +21,6 @@
     slack
     spotify
     tdesktop
-    ungoogled-chromium
     vesktop
     vlc
   ];
