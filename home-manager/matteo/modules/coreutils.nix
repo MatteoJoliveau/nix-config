@@ -2,31 +2,33 @@
 
 {
   home.packages = with pkgs; [
-    htop
-    gotop
-    ffmpeg
-    pulseaudio
-    eza
     bat
-    ripgrep
-    fd
-    jetbrains-mono
-    p7zip
-    nmap
-    file
-    patchelf
-    inetutils
-    wireguard-tools
-    vips
-    pciutils
     calc
+    du-dust
+    eza
+    fd
+    ffmpeg
+    file
+    fzf
+    git
+    gotop
+    htop
+    inetutils
+    jetbrains-mono
+    libtool
+    nmap
+    openssh
+    p7zip
+    patchelf
+    pciutils
+    pulseaudio
+    pv
+    ripgrep
     unstable.via
     unzip
-    pv
-    fzf
+    vips
+    wireguard-tools
     zoxide
-    du-dust
-    libtool
   ];
 
    fonts.fontconfig.enable = true;
