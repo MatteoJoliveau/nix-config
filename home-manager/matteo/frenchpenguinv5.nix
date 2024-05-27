@@ -16,8 +16,10 @@
   home.packages = with pkgs; [
     firefox
     steam-run
+    manuskript
     nextcloud-client
     obs-studio
+    pandoc
     slack
     spotify
     tdesktop

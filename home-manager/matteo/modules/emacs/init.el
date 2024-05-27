@@ -766,14 +766,6 @@
 (use-package scratch
   :straight t)
 
-(use-package org-novelist
-  :straight nil
-  :load-path "~/Downloads/"  ; The directory containing 'org-novelist.el'
-  :custom
-  (org-novelist-language-tag "en-GB")  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
-  (org-novelist-author "Matteo Joliveau")  ; The default author name to use when exporting a story. Each story can also override this setting
-  (org-novelist-author-email "matteo@matteojoliveau.com")  ; The default author contact email to use when exporting a story. Each story can also override this setting
-  (org-novelist-automatic-referencing-p t))  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
 (use-package just-mode
   :straight t)
@@ -804,10 +796,6 @@
   (setq pyvenv-post-deactivate-hooks
         (list (lambda ()
                 (setq python-shell-interpreter "python3")))))
-
-;; TODO: switch to regular package once they publish it
-(use-package gleam-mode
- :load-path "~/Software/gleam-mode")
 
 (use-package terraform-mode
   :straight t)
