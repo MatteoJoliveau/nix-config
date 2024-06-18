@@ -9,8 +9,8 @@ in
   networking.wg-quick.interfaces = {
     wg0 = {
       listenPort = port;
-      address = ["10.15.0.3/32"];
-      dns = ["10.20.0.4"];
+      address = [ "10.15.0.3/32" ];
+      dns = [ "10.20.0.4" ];
       privateKeyFile = "/home/matteo/.wireguard/private.key";
 
       peers = [

@@ -1,3 +1,4 @@
+{ suite-py, ... }:
 { config, pkgs, ... }:
 
 {
@@ -24,5 +25,6 @@
     tdesktop
     vesktop
     vlc
+    suite-py
   ];
 }

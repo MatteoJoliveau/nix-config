@@ -4,11 +4,11 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = github:nix-community/home-manager/release-23.11;
+      url = github:nix-community/home-manager/release-24.05;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -20,7 +20,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     suite-py.url = "suite-py";
-    prima-nix.url = "prima-nix";
 
     megasploot.url = "github:matteojoliveau/megasploot.nix";
   };
@@ -33,7 +32,6 @@
     , home-manager
     , home-manager-unstable
     , suite-py
-    , prima-nix
     , megasploot
     , ...
     }@attrs:
@@ -46,7 +44,6 @@
         config.allowUnfree = true;
 
         overlays = [
-          prima-nix.overlays.default
           suite-py.overlays.default
           megasploot.overlays.default
           (self: super: {
@@ -83,7 +80,6 @@
 
           specialArgs = attrs;
           modules = [
-            prima-nix.nixosModules.default
             ./systems/frenchpenguin
             homeManagerWithArgs
           ];
@@ -99,7 +95,7 @@
       };
 
       homes = {
-        frenchpenguinv5 = import ./home-manager/matteo/frenchpenguinv5.nix;
+        frenchpenguinv5 = import ./home-manager/matteo/frenchpenguinv5.nix { suite-py = suite-py.packages.${system}.suite_py; };
       };
     } // flake-utils.lib.eachDefaultSystem (system:
     let pkgs = nixpkgs.legacyPackages.${system}; in

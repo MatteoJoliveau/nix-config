@@ -31,7 +31,7 @@
     zoxide
   ];
 
-   fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = true;
 
   programs.direnv = {
     enable = true;
