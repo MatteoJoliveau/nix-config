@@ -14,8 +14,9 @@
   programs.home-manager.enable = true;
   manual.manpages.enable = false;
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
-    firefox
     steam-run
     nextcloud-client
     obs-studio
