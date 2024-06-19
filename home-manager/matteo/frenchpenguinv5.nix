@@ -28,4 +28,15 @@
     vlc
     suite-py
   ];
+
+  xdg.enable = true;
+  xdg.systemDirs.data = [
+    "/usr/share/glib-2.0/schemas"
+    "/usr/share/ubuntu"
+    "/usr/share/gnome"
+    "/usr/local/share"
+    "/usr/share"
+    "/var/lib/flatpak/exports/share"
+    "~/.local/share/flatpak/exports/share"
+  ];
 }

@@ -40,6 +40,7 @@
 
     shellInit = ''
       set -gx PATH /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $PATH
+      set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share/glib-2.0/schemas:/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
       eval (direnv hook fish)
       zoxide init fish | source
     '';
