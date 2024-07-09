@@ -379,9 +379,18 @@
 (global-set-key (kbd "C-c a") 'lsp-execute-code-action)
 (global-set-key (kbd "C-c f") 'lsp-format-buffer)
 
+(use-package lsp
+  :straight t)
+
+(use-package lsp-haskell
+  :straight t
+  :hook
+  (haskell-mode-hook . lsp)
+  (haskell-literate-mode-hook . lsp))
+
 (use-package lsp-ui
   :straight t
-  :hook 
+  :hook
   (lsp-mode . lsp-ui-mode)
   (lsp-mode . lsp-ui-doc-mode)
   :custom
@@ -825,6 +834,9 @@
 
 (use-package treemacs-icons-dired
   :hook (dired-mode . treemacs-icons-dired-enable-once)
+  :straight t)
+
+(use-package protobuf-mode
   :straight t)
 
 (use-package envrc
