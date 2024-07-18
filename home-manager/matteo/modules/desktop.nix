@@ -17,6 +17,7 @@
     libreoffice-fresh
     libsecret
     nextcloud-client
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     obs-studio
     paprefs
     pavucontrol
