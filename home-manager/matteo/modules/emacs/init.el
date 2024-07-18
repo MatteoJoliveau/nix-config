@@ -379,9 +379,6 @@
 (global-set-key (kbd "C-c a") 'lsp-execute-code-action)
 (global-set-key (kbd "C-c f") 'lsp-format-buffer)
 
-(use-package lsp
-  :straight t)
-
 (use-package lsp-haskell
   :straight t
   :hook
