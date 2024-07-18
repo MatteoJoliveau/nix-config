@@ -460,7 +460,7 @@
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (use-package rustic
-  :straight t
+  :straight (rustic :type git :host github :repo "emacs-rustic/rustic")
   :hook (rustic-mode . lsp-deferred)
   :config
   (setq rustic-spinner-type 'moon)
