@@ -7,6 +7,7 @@
     extraPackages = epkgs: with epkgs; [
       tree-sitter
       tree-sitter-langs
+      treesit-grammars.with-all-grammars
     ];
   };
 

@@ -459,6 +459,11 @@
   :straight t
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
+(use-package rust-mode
+  :straight t
+  :init
+  (setq rust-mode-treesitter-derive t))
+
 (use-package rustic
   :straight (rustic :type git :host github :repo "emacs-rustic/rustic")
   :hook (rustic-mode . lsp-deferred)
@@ -467,9 +472,9 @@
   (setq rustic-format-on-save t))
 
 ;;; Elixir
-(use-package elixir-mode
+(use-package elixir-ts-mode
   :straight t
-  :hook (elixir-mode . lsp-deferred))
+  :hook (elixir-ts-mode . lsp-deferred))
 
 ;;; GraphQL
 (use-package graphql-mode
