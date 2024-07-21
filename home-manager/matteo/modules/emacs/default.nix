@@ -3,7 +3,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs28;
+    package = pkgs.emacs-gtk;
   };
 
   xdg.configFile."emacs/init.el".source = ./init.el;
