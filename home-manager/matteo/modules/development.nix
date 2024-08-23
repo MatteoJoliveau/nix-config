@@ -25,6 +25,7 @@ in
     bacon
     cargo-generate
     clang
+    cloudflared
     cmake
     gnumake
     go
