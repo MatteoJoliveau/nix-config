@@ -49,7 +49,7 @@ in
     ruby_3_1
     rustup
     sqlite
-    steamos-devkit
+    # steamos-devkit
     # suite_py
     yq
     zellij
