@@ -4,11 +4,12 @@
 {
   imports = [
     ./modules/coreutils.nix
-    ./modules/fish
-    ./modules/emacs
     ./modules/development.nix
+    ./modules/emacs
+    ./modules/fish
     ./modules/git.nix
     ./modules/gpg.nix
+    ./modules/helix.nix
   ];
 
   programs.home-manager.enable = true;

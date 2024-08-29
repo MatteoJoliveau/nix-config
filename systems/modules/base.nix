@@ -18,7 +18,7 @@
     '';
   };
 
-  # Configure GRUB 
+  # Configure GRUB
   boot.loader = {
     efi = {
       canTouchEfiVariables = false;
