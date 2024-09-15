@@ -22,8 +22,6 @@
     nextcloud-client
     obs-studio
     pandoc
-    slack
-    spotify
     tdesktop
     vesktop
     vlc
