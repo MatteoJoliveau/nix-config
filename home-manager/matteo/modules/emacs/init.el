@@ -476,6 +476,11 @@
   :straight t
   :hook (elixir-ts-mode . lsp-deferred))
 
+;;; Kotlin
+(use-package kotlin-ts-mode
+  :straight (:host gitlab :repo "bricka/emacs-kotlin-ts-mode")
+  :mode "\\.kt\\'")
+
 ;;; GraphQL
 (use-package graphql-mode
   :straight t)
