@@ -479,7 +479,7 @@
 ;;; Kotlin
 (use-package kotlin-ts-mode
   :straight (:host gitlab :repo "bricka/emacs-kotlin-ts-mode")
-  :mode "\\.kt\\'")
+  :mode "\\.kts?\\'")
 
 ;;; GraphQL
 (use-package graphql-mode
