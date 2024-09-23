@@ -51,6 +51,7 @@ in
     sqlite
     # steamos-devkit
     # suite_py
+    vault-bin
     yq
     zellij
   ] ++ lsps;
