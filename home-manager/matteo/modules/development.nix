@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
   lsps = with pkgs; [
-    # rust-analyzer # already installed by rustup
     elixir_ls
     elmPackages.elm-language-server
     gopls
@@ -49,8 +48,6 @@ in
     ruby_3_1
     rustup
     sqlite
-    # steamos-devkit
-    # suite_py
     vault-bin
     yq
     zellij
