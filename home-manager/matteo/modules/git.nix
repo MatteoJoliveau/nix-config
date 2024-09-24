@@ -42,6 +42,9 @@
     };
     includes = [
       {
+        path = "~/.config/git/prima-hooks.cfg";
+      }
+      {
         condition = "gitdir:~/Software/prima";
         contents = {
           user = {
