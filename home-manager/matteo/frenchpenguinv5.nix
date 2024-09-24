@@ -18,14 +18,15 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    steam-run
+    gitleaks
     nextcloud-client
     obs-studio
     pandoc
+    steam-run
+    suite-py
     tdesktop
     vesktop
     vlc
-    suite-py
   ];
 
   xdg.enable = true;
