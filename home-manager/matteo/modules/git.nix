@@ -26,6 +26,7 @@
       psf = "push --force-with-lease";
       me = "merge";
       unst = "restore --staged";
+      wops = "!git add . && git commit --amend";
     };
     lfs.enable = true;
     delta.enable = true;
