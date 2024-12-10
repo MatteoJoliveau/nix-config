@@ -34,6 +34,7 @@
       sb = "sonobuoy";
       sp = "suite-py";
       v = "nvim";
+      rm="echo Use 'rip' instead of rm.";
     };
 
     interactiveShellInit = "eval (starship init fish)";
@@ -41,7 +42,10 @@
     shellInit = ''
       set -gx PATH /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $PATH
       set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share/glib-2.0/schemas:/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
+      set -gx RIP_GRAVEYARD /tmp/graveyard-$USER
+
       eval (direnv hook fish)
+      eval (rip completions fish)
       zoxide init fish | source
     '';
 

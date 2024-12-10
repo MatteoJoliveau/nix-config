@@ -4,11 +4,11 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = github:nix-community/home-manager/release-24.05;
+      url = github:nix-community/home-manager/release-24.11;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -94,8 +94,12 @@
         };
       };
 
-      homes = {
-        frenchpenguinv5 = import ./home-manager/matteo/frenchpenguinv5.nix { suite-py = suite-py.packages.${system}.suite_py; };
+      homeConfigurations."frenchpenguinv5" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          (import ./home-manager/matteo/frenchpenguinv5.nix)
+        ];
       };
     } // flake-utils.lib.eachDefaultSystem (system:
     let pkgs = nixpkgs.legacyPackages.${system}; in

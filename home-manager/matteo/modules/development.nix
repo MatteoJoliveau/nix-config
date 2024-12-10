@@ -11,7 +11,7 @@ let
     typescript
     nodePackages.yaml-language-server
     sqls
-    buf-language-server
+    buf
     taplo
     python311Packages.python-lsp-server
     terraform-ls

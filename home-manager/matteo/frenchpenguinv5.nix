@@ -1,4 +1,3 @@
-{ suite-py, ... }:
 { config, pkgs, ... }:
 
 {
@@ -23,7 +22,7 @@
     obs-studio
     pandoc
     steam-run
-    suite-py
+    suite_py
     tdesktop
     vesktop
     vlc
@@ -39,4 +38,8 @@
     "/var/lib/flatpak/exports/share"
     "~/.local/share/flatpak/exports/share"
   ];
+
+  home.username = "matteojoliveau";
+  home.homeDirectory = "/home/matteojoliveau";
+  home.stateVersion = "23.11";
 }

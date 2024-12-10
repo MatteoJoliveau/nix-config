@@ -23,6 +23,7 @@
     pciutils
     pulseaudio
     pv
+    rip2
     ripgrep
     via
     unzip
