@@ -41,6 +41,7 @@ in
     kubernetes-helm
     kubie
     kustomize
+    mergiraf
     minikube
     nodejs
     postgresql
