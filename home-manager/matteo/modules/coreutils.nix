@@ -25,6 +25,7 @@
     pv
     rip2
     ripgrep
+    television
     via
     unzip
     vips
