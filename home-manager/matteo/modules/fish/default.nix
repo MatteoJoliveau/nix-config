@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    starship
-  ];
-
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -35,7 +31,7 @@
       sb = "sonobuoy";
       sp = "suite-py";
       v = "nvim";
-      rm="echo Use 'rip' instead of rm.";
+      rm = "echo Use 'rip' instead of rm.";
     };
 
     interactiveShellInit = "eval (starship init fish)";
@@ -76,7 +72,7 @@
       '';
       goodnight = ''
         read -l -P 'Shutting down. Confirm? [y/N] ' confirm
-    
+
         switch $confirm
           case Y y
             shutdown -h now
@@ -93,5 +89,56 @@
 
   home.file = {
     ".kube/kubie.yaml".source = ./kubie.yaml;
+  };
+
+  programs.starship = {
+    enableBashIntegration = false;
+    enableFishIntegration = true;
+    enableIonIntegration = false;
+    enableNushellIntegration = false;
+    enableTransience = false;
+    enableZshIntegration = false;
+
+    settings = {
+      kubernetes.disabled = false;
+
+      # https://github.com/jj-vcs/jj/wiki/Starship
+      custom.jj = {
+        command = ''
+          jj log -r@ -n1 --ignore-working-copy --no-graph --color always  -T '
+            separate(" ",
+              bookmarks.map(|x| if(
+                  x.name().substr(0, 10).starts_with(x.name()),
+                  x.name().substr(0, 10),
+                  x.name().substr(0, 9) ++ "…")
+                ).join(" "),
+              tags.map(|x| if(
+                  x.name().substr(0, 10).starts_with(x.name()),
+                  x.name().substr(0, 10),
+                  x.name().substr(0, 9) ++ "…")
+                ).join(" "),
+              surround("\"","\"",
+                if(
+                   description.first_line().substr(0, 24).starts_with(description.first_line()),
+                   description.first_line().substr(0, 24),
+                   description.first_line().substr(0, 23) ++ "…"
+                )
+              ),
+              if(conflict, "conflict"),
+              if(divergent, "divergent"),
+              if(hidden, "hidden"),
+            )
+          '
+        '';
+        when = "jj root";
+        symbol = "jj";
+      };
+      custom.jjstate = {
+        when = "jj root";
+        command = ''
+          jj log -r@ -n1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
+        '';
+      };
+    };
   };
 }

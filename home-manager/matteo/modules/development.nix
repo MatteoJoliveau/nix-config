@@ -65,7 +65,7 @@ in
       };
 
       ui = {
-        diff.tool = ["difft" "--color=always" "$left" "$right"];
+        diff.tool = [ "difft" "--color=always" "$left" "$right" ];
         diff-editor = ":builtin";
       };
     };

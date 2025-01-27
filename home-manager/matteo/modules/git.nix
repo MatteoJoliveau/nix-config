@@ -55,7 +55,7 @@
       "*.sbt merge=mergiraf"
       "*.ts merge=mergiraf"
       "*.py merge=mergiraf"
-      ];
+    ];
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = false;
