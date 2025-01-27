@@ -68,6 +68,15 @@ in
         diff.tool = [ "difft" "--color=always" "$left" "$right" ];
         diff-editor = ":builtin";
       };
+
+      aliases = {
+        l = ["log"];
+        ps = ["git" "push"];
+        cim = ["commit" "-m"];
+        ci = ["commit"];
+        bm = ["bookmark" "move" "--to"];
+        bu = ["bookmark" "move" "--to" "@-"];
+      };
     };
   };
 }
