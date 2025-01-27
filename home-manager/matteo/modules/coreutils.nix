@@ -15,6 +15,7 @@
     htop
     inetutils
     jetbrains-mono
+    kondo
     libtool
     nmap
     openssh

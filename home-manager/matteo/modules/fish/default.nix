@@ -15,6 +15,7 @@
       kns = "kubie ns";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       g = "git";
+      j = "jj";
       tree = "eza -T";
       ls = "eza";
       grep = "rg";

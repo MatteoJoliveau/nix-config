@@ -64,7 +64,10 @@ in
         email = "matteo@matteojoliveau.com";
       };
 
-      ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
+      ui = {
+        diff.tool = ["difft" "--color=always" "$left" "$right"];
+        diff-editor = ":builtin";
+      };
     };
   };
 }
