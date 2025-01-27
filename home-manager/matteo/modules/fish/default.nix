@@ -34,8 +34,6 @@
       rm = "echo Use 'rip' instead of rm.";
     };
 
-    interactiveShellInit = "eval (starship init fish)";
-
     shellInit = ''
       set -gx PATH /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $PATH
       set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share/glib-2.0/schemas:/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
@@ -83,15 +81,12 @@
     };
   };
 
-  xdg.configFile = {
-    "starship.toml".source = ./starship.toml;
-  };
-
   home.file = {
     ".kube/kubie.yaml".source = ./kubie.yaml;
   };
 
   programs.starship = {
+    enable = true;
     enableBashIntegration = false;
     enableFishIntegration = true;
     enableIonIntegration = false;
@@ -101,44 +96,6 @@
 
     settings = {
       kubernetes.disabled = false;
-
-      # https://github.com/jj-vcs/jj/wiki/Starship
-      custom.jj = {
-        command = ''
-          jj log -r@ -n1 --ignore-working-copy --no-graph --color always  -T '
-            separate(" ",
-              bookmarks.map(|x| if(
-                  x.name().substr(0, 10).starts_with(x.name()),
-                  x.name().substr(0, 10),
-                  x.name().substr(0, 9) ++ "…")
-                ).join(" "),
-              tags.map(|x| if(
-                  x.name().substr(0, 10).starts_with(x.name()),
-                  x.name().substr(0, 10),
-                  x.name().substr(0, 9) ++ "…")
-                ).join(" "),
-              surround("\"","\"",
-                if(
-                   description.first_line().substr(0, 24).starts_with(description.first_line()),
-                   description.first_line().substr(0, 24),
-                   description.first_line().substr(0, 23) ++ "…"
-                )
-              ),
-              if(conflict, "conflict"),
-              if(divergent, "divergent"),
-              if(hidden, "hidden"),
-            )
-          '
-        '';
-        when = "jj root";
-        symbol = "jj";
-      };
-      custom.jjstate = {
-        when = "jj root";
-        command = ''
-          jj log -r@ -n1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
-        '';
-      };
     };
   };
 }
