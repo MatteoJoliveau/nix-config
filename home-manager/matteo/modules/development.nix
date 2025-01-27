@@ -69,6 +69,12 @@ in
         diff-editor = ":builtin";
       };
 
+      signing = {
+        sign-all = true;
+        backend = "gpg";
+        key = "matteo@matteojoliveau.com";
+      };
+
       aliases = {
         l = [ "log" ];
         ps = [ "git" "push" ];
