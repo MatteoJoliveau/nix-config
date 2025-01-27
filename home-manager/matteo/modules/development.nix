@@ -55,4 +55,16 @@ in
   ] ++ lsps;
 
   programs.vscode.enable = true;
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Matteo Joliveau";
+        email = "matteo@matteojoliveau.com";
+      };
+
+      ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
+    };
+  };
 }
