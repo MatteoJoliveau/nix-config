@@ -26,6 +26,7 @@ in
     clang
     cloudflared
     cmake
+    fastmod
     gnumake
     go
     httpie
