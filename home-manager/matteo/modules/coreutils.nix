@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
+let
+  aspell' = pkgs.aspellWithDicts (dicts: [dicts.en dicts.it]);
+in
 {
   home.packages = with pkgs; [
+    aspell'
     bat
     calc
     du-dust

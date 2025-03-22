@@ -152,7 +152,7 @@
   :straight t
   :config
   (add-hook 'vterm-mode-hook
-			(lambda ()
+      (lambda ()
               (meow-insert))))
 
 (use-package spinner
@@ -310,15 +310,15 @@
 ;; git
 (use-package magit
   :straight t
-                                        ; :init
-                                        ; (setq magit-blame-styles '((margin
-                                        ;      			(margin-format " %s%f" " %C %a" " %H")
-                                        ;      			(margin-width . 42)
-                                        ;      			(margin-face . magit-blame-margin)
-                                        ;      			(margin-body-face magit-blame-dimmed))))
-                                        ; (setq magit-blame-echo-style 'margin)
+; :init
+; (setq magit-blame-styles '((margin
+;   (margin-format " %s%f" " %C %a" " %H")
+;   (margin-width . 42)
+;   (margin-face . magit-blame-margin)
+;   (margin-body-face magit-blame-dimmed))))
+; (setq magit-blame-echo-style 'margin)
   :custom
-                                        ; :hook (prog-mode . (lambda () (magit-blame-echo nil)))
+; :hook (prog-mode . (lambda () (magit-blame-echo nil)))
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 (use-package diff-hl
@@ -429,7 +429,9 @@
   :straight t
   :diminish projectile-mode
   :config (projectile-mode)
-  :custom ((projectile-completion-system 'default))
+  :custom (
+           (projectile-completion-system 'default)
+           (projectile-jj-command "jj file list --no-pager . | tr '\\n' '\\0'"))
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
@@ -490,6 +492,12 @@
   :straight t
   :hook (typescript-mode . lsp-deferred))
 
+(use-package lsp-biome
+  :straight (lsp-biome :type git :host github :repo "cxa/lsp-biome")
+  :config
+  (setq lsp-biome-autofix-on-save t)
+  (setq lsp-biome-format-on-save t))
+
 ;;; SQL
 (use-package sql
   :straight t
@@ -503,8 +511,8 @@
   :straight t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-	     ("\\.md\\'" . markdown-mode)
-	     ("\\.markdown\\'" . markdown-mode))
+        ("\\.md\\'" . markdown-mode)
+        ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
 ;;; Elm
@@ -845,6 +853,33 @@
 
 (use-package protobuf-mode
   :straight t)
+
+(use-package writeroom-mode
+  :straight t)
+
+(use-package binder
+  :straight t)
+
+(use-package hl-sentence
+  :straight t)
+
+(use-package org-remark
+  :straight t
+  :bind
+  (;; :bind keyword also implicitly defers org-remark itself.
+   ;; Keybindings before :map is set for global-map. Adjust the keybinds
+   ;; as you see fit.
+   ("C-c n m" . org-remark-mark)
+   ("C-c n l" . org-remark-mark-line)
+   :map org-remark-mode-map
+   ("C-c n o" . org-remark-open)
+   ("C-c n ]" . org-remark-view-next)
+   ("C-c n [" . org-remark-view-prev)
+   ("C-c n r" . org-remark-remove)
+   ("C-c n d" . org-remark-delete))
+  :init
+  (org-remark-global-tracking-mode))
+
 
 (use-package envrc
   :straight t)
