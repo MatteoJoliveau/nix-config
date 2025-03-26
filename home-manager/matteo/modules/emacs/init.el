@@ -357,6 +357,9 @@
   :hook
   (lsp-mode . efs/lsp-mode-setup)
   (lsp-completion-mode . efs/lsp-completion-mode-setup)
+  ((tsx-ts-mode
+    typescript-ts-mode
+    js-ts-mode) . lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c l")
   :config
@@ -488,15 +491,8 @@
   :straight t)
 
 ;;; TypeScript
-(use-package typescript-mode
-  :straight t
-  :hook (typescript-mode . lsp-deferred))
-
 (use-package lsp-biome
-  :straight (lsp-biome :type git :host github :repo "cxa/lsp-biome")
-  :config
-  (setq lsp-biome-autofix-on-save t)
-  (setq lsp-biome-format-on-save t))
+  :straight (lsp-biome :type git :host github :repo "cxa/lsp-biome"))
 
 ;;; SQL
 (use-package sql

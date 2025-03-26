@@ -73,7 +73,7 @@
         contents = {
           user = {
             name = "Matteo Joliveau";
-            email = "matteo.joliveau@prima.it";
+            email = "matteo.joliveau@helloprima.com";
           };
         };
       }
