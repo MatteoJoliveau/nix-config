@@ -18,6 +18,10 @@ let
   ];
 in
 {
+  home.sessionVariables = {
+    COMPOSE_BAKE = "true";
+  };
+
   home.packages = with pkgs; [
     asciinema
     awscli2
@@ -51,11 +55,12 @@ in
     rustup
     sqlite
     vault-bin
+    xh
     yq
     zellij
   ] ++ lsps;
 
-  programs.vscode.enable = true;
+  programs.vscode.enable = false;
 
   programs.jujutsu = {
     enable = true;

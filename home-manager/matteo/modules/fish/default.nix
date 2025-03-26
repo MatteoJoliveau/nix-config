@@ -15,7 +15,7 @@
       g = "git";
       grep = "rg";
       hk = "heroku";
-      hm = "home-manager";
+      hm = "nh home";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       j = "jj";
       k = "kubectl";

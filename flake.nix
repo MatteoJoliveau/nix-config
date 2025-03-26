@@ -94,7 +94,7 @@
         };
       };
 
-      homeConfigurations."frenchpenguinv5" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."matteojoliveau@frenchpenguinv5" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [

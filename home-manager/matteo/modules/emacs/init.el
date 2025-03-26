@@ -493,6 +493,8 @@
 ;;; TypeScript
 (use-package lsp-biome
   :straight (lsp-biome :type git :host github :repo "cxa/lsp-biome"))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
 ;;; SQL
 (use-package sql

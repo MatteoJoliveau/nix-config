@@ -28,6 +28,7 @@ in
     pciutils
     pulseaudio
     pv
+    rfc
     rip2
     ripgrep
     television
@@ -43,6 +44,10 @@ in
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.nh = {
+    enable = true;
   };
 
   home.sessionVariables = {
