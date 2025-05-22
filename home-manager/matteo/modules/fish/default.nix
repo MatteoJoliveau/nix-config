@@ -16,6 +16,8 @@
       grep = "rg";
       hk = "heroku";
       hm = "nh home";
+      http = "echo Use 'xh' instead of http.";
+      https = "echo Use 'xhs' instead of https.";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       j = "jj";
       k = "kubectl";

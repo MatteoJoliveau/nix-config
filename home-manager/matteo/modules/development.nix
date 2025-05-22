@@ -33,7 +33,6 @@ in
     fastmod
     gnumake
     go
-    httpie
     insomnia
     jetbrains.datagrip
     jo

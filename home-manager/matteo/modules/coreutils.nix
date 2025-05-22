@@ -52,5 +52,6 @@ in
 
   home.sessionVariables = {
     EDITOR = "${pkgs.helix}/bin/hx";
+    PAGER = "${pkgs.bat}/bin/bat";
   };
 }
