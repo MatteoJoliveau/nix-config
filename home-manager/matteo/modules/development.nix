@@ -75,7 +75,7 @@ in
       };
 
       signing = {
-        sign-all = true;
+        behavior = "own";
         backend = "gpg";
         key = "matteo@matteojoliveau.com";
       };
