@@ -8,7 +8,11 @@
   systemd.user.services.mpris-proxy = {
     Unit = {
       Description = "Mpris proxy";
-      After = [ "network.target" "sound.target" "bluetooth.target" ];
+      After = [
+        "network.target"
+        "sound.target"
+        "bluetooth.target"
+      ];
       StartLimitInterval = 200;
       StartLimitBurst = 5;
     };

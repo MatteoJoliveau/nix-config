@@ -1,4 +1,8 @@
-{ stdenv, pkgs, lib }:
+{
+  stdenv,
+  pkgs,
+  lib,
+}:
 let
   name = "calc";
   version = "0.1.0";

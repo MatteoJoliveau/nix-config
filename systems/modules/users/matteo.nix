@@ -1,9 +1,19 @@
-{ config, pkgs, system, ... }:
+{
+  config,
+  pkgs,
+  system,
+  ...
+}:
 
 {
   users.users.matteo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "networkmanager" "libvirtd" ];
+    extraGroups = [
+      "wheel"
+      "docker"
+      "networkmanager"
+      "libvirtd"
+    ];
     shell = pkgs.fish;
   };
 

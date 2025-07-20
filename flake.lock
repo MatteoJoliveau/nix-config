@@ -128,6 +128,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-uber-unstable": {
+      "locked": {
+        "lastModified": 1752747119,
+        "narHash": "sha256-2Kp9St3Pbsmu+xMsobLcgzzUxPvZR7alVJWyuk2BAPc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1751792365,
@@ -184,6 +200,7 @@
         "megasploot": "megasploot",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-uber-unstable": "nixpkgs-uber-unstable",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "suite-py": "suite-py"
       }

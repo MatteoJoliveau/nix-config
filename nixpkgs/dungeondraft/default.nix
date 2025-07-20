@@ -1,13 +1,14 @@
-{ stdenv
-, lib
-, alsaLib
-, pulseaudio
-, gnome
-, xorg
-, libGL
-, zlib
-, autoPatchelfHook
-, makeDesktopItem
+{
+  stdenv,
+  lib,
+  alsaLib,
+  pulseaudio,
+  gnome,
+  xorg,
+  libGL,
+  zlib,
+  autoPatchelfHook,
+  makeDesktopItem,
 }:
 
 stdenv.mkDerivation rec {

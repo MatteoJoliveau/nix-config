@@ -96,7 +96,11 @@
 
   # USB devices (Yubikey, Logitech receiver)
   services.pcscd.enable = true;
-  services.udev.packages = [ pkgs.solaar pkgs.yubikey-personalization pkgs.libu2f-host ];
+  services.udev.packages = [
+    pkgs.solaar
+    pkgs.yubikey-personalization
+    pkgs.libu2f-host
+  ];
 
   # Thumbnail Service
   services.tumbler.enable = true;

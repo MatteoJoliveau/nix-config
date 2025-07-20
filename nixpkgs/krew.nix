@@ -1,7 +1,10 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 
-buildGoModule
-rec {
+buildGoModule rec {
   pname = "krew";
   version = "0.4.1";
 

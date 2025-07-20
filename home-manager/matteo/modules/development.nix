@@ -22,42 +22,45 @@ in
     COMPOSE_BAKE = "true";
   };
 
-  home.packages = with pkgs; [
-    asciinema
-    awscli2
-    bacon
-    cargo-generate
-    clang
-    cloudflared
-    cmake
-    fastmod
-    gnumake
-    go
-    insomnia
-    jetbrains.datagrip
-    jo
-    jq
-    k9s
-    kind
-    krew
-    kubectl
-    kubectx
-    kubernetes-helm
-    kubie
-    kustomize
-    mergiraf
-    minikube
-    nodejs
-    postgresql
-    remmina
-    ruby_3_1
-    rustup
-    sqlite
-    vault-bin
-    xh
-    yq
-    zellij
-  ] ++ lsps;
+  home.packages =
+    with pkgs;
+    [
+      asciinema
+      awscli2
+      bacon
+      cargo-generate
+      clang
+      cloudflared
+      cmake
+      fastmod
+      gnumake
+      go
+      insomnia
+      jetbrains.datagrip
+      jo
+      jq
+      k9s
+      kind
+      krew
+      kubectl
+      kubectx
+      kubernetes-helm
+      kubie
+      kustomize
+      mergiraf
+      minikube
+      nodejs
+      postgresql
+      remmina
+      ruby_3_1
+      rustup
+      sqlite
+      vault-bin
+      xh
+      yq
+      zellij
+    ]
+    ++ lsps;
 
   programs.vscode.enable = false;
 
@@ -70,7 +73,12 @@ in
       };
 
       ui = {
-        diff.tool = [ "difft" "--color=always" "$left" "$right" ];
+        diff.tool = [
+          "difft"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
         diff-editor = ":builtin";
       };
 
@@ -82,10 +90,25 @@ in
 
       aliases = {
         l = [ "log" ];
-        ps = [ "git" "push" ];
-        cim = [ "commit" "-m" ];
-        bm = [ "bookmark" "move" "--to" ];
-        bu = [ "bookmark" "move" "--to" "@-" ];
+        ps = [
+          "git"
+          "push"
+        ];
+        cim = [
+          "commit"
+          "-m"
+        ];
+        bm = [
+          "bookmark"
+          "move"
+          "--to"
+        ];
+        bu = [
+          "bookmark"
+          "move"
+          "--to"
+          "@-"
+        ];
       };
     };
   };

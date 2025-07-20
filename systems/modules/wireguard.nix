@@ -16,7 +16,10 @@ in
       peers = [
         {
           publicKey = "L15bA+cgPUuV5jLcjEKPNq6SI7YMLHcr+/cyzTwFjVU=";
-          allowedIPs = [ "10.20.0.0/24" "10.20.30.0/24" ];
+          allowedIPs = [
+            "10.20.0.0/24"
+            "10.20.30.0/24"
+          ];
           endpoint = "access.matteojoliveau.com:13231";
           persistentKeepalive = 25;
         }

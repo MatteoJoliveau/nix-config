@@ -47,7 +47,10 @@
       type = "Application";
       exec = "manuskript %U";
       terminal = false;
-      categories = [ "Application" "TextEditor" ];
+      categories = [
+        "Application"
+        "TextEditor"
+      ];
     };
   };
 
@@ -61,11 +64,10 @@
       name = "Adwaita";
       package = pkgs.gnome3.gnome-themes-extra;
     };
-    font =
-      {
-        package = pkgs.roboto;
-        name = "Roboto 14";
-      };
+    font = {
+      package = pkgs.roboto;
+      name = "Roboto 14";
+    };
     gtk3.extraConfig = {
       gtk-cursor-theme-name = "breeze";
       gtk-application-prefer-dark-theme = 1;

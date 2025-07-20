@@ -1,5 +1,4 @@
-self: super:
-{
+self: super: {
   discord = super.discord.overrideAttrs (old: rec {
     version = "0.0.21";
     src = super.fetchurl {

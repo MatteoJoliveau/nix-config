@@ -12,9 +12,17 @@ in
         layer = "top";
         position = "top";
         spacing = 10;
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
         modules-center = [ "clock" ];
-        modules-right = [ "network" "battery" "pulseaudio" "custom/notification" ];
+        modules-right = [
+          "network"
+          "battery"
+          "pulseaudio"
+          "custom/notification"
+        ];
         "wlr/workspaces" = {
           "format" = "{name}";
           "on-click" = "activate";
@@ -48,7 +56,13 @@ in
           "format-alt" = "{time} {icon}";
           # "format-good" = ""; # An empty format will hide the module
           # "format-full" = "";
-          "format-icons" = [ "" "" "" "" "" ];
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         "network" = {
           "format-wifi" = "{essid} ({signalStrength}%) ";
@@ -72,7 +86,11 @@ in
             "phone" = "";
             "portable" = "";
             "car" = "";
-            "default" = [ "" "" "" ];
+            "default" = [
+              ""
+              ""
+              ""
+            ];
           };
           "on-click" = "pavucontrol";
         };

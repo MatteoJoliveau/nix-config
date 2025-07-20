@@ -9,7 +9,12 @@
       key = "matteo@matteojoliveau.com";
       signByDefault = true;
     };
-    ignores = [ "*.iml" ".idea/" ".vscode" ".direnv" ];
+    ignores = [
+      "*.iml"
+      ".idea/"
+      ".vscode"
+      ".direnv"
+    ];
     aliases = {
       co = "checkout";
       br = "branch";

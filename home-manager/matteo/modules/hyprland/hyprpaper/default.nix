@@ -11,7 +11,6 @@ in
   xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
   home.file."Pictures/wallpaper.png".source = ../../../../../images/wallpaper.png;
 
-
   systemd.user.services.hyprpaper = {
     Unit = {
       Description = "Hyprpaper is a blazing fast wayland wallpaper utility with IPC controls.";

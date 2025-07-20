@@ -362,6 +362,7 @@
     js-ts-mode) . lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-auto-execute-action nil)
   :config
   (lsp-enable-which-key-integration t)
   :custom
