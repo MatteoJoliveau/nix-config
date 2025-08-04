@@ -15,6 +15,8 @@ let
     taplo
     python311Packages.python-lsp-server
     terraform-ls
+    nixd
+    ruff
   ];
 in
 {
@@ -27,6 +29,7 @@ in
     [
       asciinema
       awscli2
+      amazon-ecr-credential-helper
       bacon
       cargo-generate
       clang

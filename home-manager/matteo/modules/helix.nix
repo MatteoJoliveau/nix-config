@@ -3,7 +3,7 @@
 {
   programs.helix = {
     enable = true;
-    package = pkgs.helix-unstable;
+    package = pkgs.unstable.helix;
 
     settings = {
       theme = "onedark";
@@ -59,6 +59,13 @@
 
           select = common // { };
         };
+    };
+
+    languages = {
+      language-server.rust-analyzer.config = {
+        cachePriming.enable = false;
+        cargo.features = "all";
+      };
     };
   };
 }

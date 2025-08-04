@@ -23,6 +23,7 @@
     pavucontrol
     scribus
     slack
+    sniffnet
     spotify
     tdesktop
     ungoogled-chromium

@@ -9,6 +9,7 @@
     ./modules/git.nix
     ./modules/gpg.nix
     ./modules/helix.nix
+    ./modules/zed.nix
   ];
 
   programs.home-manager.enable = true;

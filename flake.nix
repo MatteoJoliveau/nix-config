@@ -6,7 +6,6 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-uber-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -30,7 +29,6 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nixpkgs-uber-unstable,
       flake-utils,
       home-manager,
       home-manager-unstable,
@@ -41,7 +39,7 @@
     let
       system = "x86_64-linux";
 
-      nuu = import nixpkgs-uber-unstable { inherit system; };
+      unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 
       mkPkgs =
         channel:
@@ -54,18 +52,11 @@
             suite-py.overlays.default
             megasploot.overlays.default
             (self: super: {
-              unstable = import nixpkgs-unstable {
-                inherit system;
-
-                config = {
-                  allowUnfree = true;
-                };
-              };
+              inherit unstable;
 
               krew = super.callPackage nixpkgs/krew.nix { };
               calc = super.callPackage nixpkgs/calc { };
               biscuit = super.callPackage nixpkgs/biscuit.nix { };
-              helix-unstable = nuu.helix;
             })
             # https://github.com/nix-community/home-manager/issues/322#issuecomment-1178614454
             (self: super: {
