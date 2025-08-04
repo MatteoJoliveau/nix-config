@@ -1,6 +1,5 @@
 {
-  config,
-  pkgs,
+  nixgl,
   nixosConfig,
   ...
 }:
@@ -23,6 +22,10 @@
   ];
 
   nixpkgs.overlays = [ ];
+
+  nixGL.packages = nixgl.packages;
+  nixGL.defaultWrapper = "mesa";
+  nixGL.installScripts = [ "mesa" ];
 
   programs.home-manager.enable = true;
   manual.manpages.enable = false;

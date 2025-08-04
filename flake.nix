@@ -6,6 +6,7 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-super-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -22,6 +23,11 @@
     suite-py.url = "suite-py";
 
     megasploot.url = "github:matteojoliveau/megasploot.nix";
+
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,17 +35,27 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      nixpkgs-super-unstable,
       flake-utils,
       home-manager,
       home-manager-unstable,
       suite-py,
       megasploot,
+      nixgl,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
 
-      unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      super-unstable = import nixpkgs-super-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       mkPkgs =
         channel:
@@ -51,8 +67,9 @@
           overlays = [
             suite-py.overlays.default
             megasploot.overlays.default
+            nixgl.overlays.default
             (self: super: {
-              inherit unstable;
+              inherit unstable super-unstable;
 
               krew = super.callPackage nixpkgs/krew.nix { };
               calc = super.callPackage nixpkgs/calc { };
@@ -108,6 +125,8 @@
 
       homeConfigurations."matteojoliveau@frenchpenguinv5" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
+
+        extraSpecialArgs = { inherit nixgl; };
 
         modules = [
           (import ./home-manager/matteo/frenchpenguinv5.nix)

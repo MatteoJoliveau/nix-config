@@ -338,71 +338,71 @@
 (setq dired-listing-switches "-lAXGh --group-directories-first")
 
 ;; LSP
-(defun efs/lsp-mode-setup ()
-  (setq lsp-modeline-diagnostic-scope :workspace)
-  (setq lsp-modeline-code-actions-segment '(count icon))
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (setq lsp-headerline-breadcrumb-icons-enable nil)
-  (lsp-headerline-breadcrumb-mode)
-  (lsp-modeline-code-actions-mode)
-  (lsp-modeline-diagnostics-mode))
+;; (defun efs/lsp-mode-setup ()
+;;   (setq lsp-modeline-diagnostic-scope :workspace)
+;;   (setq lsp-modeline-code-actions-segment '(count icon))
+;;   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+;;   (setq lsp-headerline-breadcrumb-icons-enable nil)
+;;   (lsp-headerline-breadcrumb-mode)
+;;   (lsp-modeline-code-actions-mode)
+;;   (lsp-modeline-diagnostics-mode))
 
-(defun efs/lsp-completion-mode-setup ()
-  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-        '(flex)))
+;; (defun efs/lsp-completion-mode-setup ()
+;;   (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+;;         '(flex)))
 
-(use-package lsp-mode
-  :straight t
-  :commands (lsp lsp-deferred)
-  :hook
-  (lsp-mode . efs/lsp-mode-setup)
-  (lsp-completion-mode . efs/lsp-completion-mode-setup)
-  ((tsx-ts-mode
-    typescript-ts-mode
-    js-ts-mode) . lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  (setq lsp-auto-execute-action nil)
-  :config
-  (lsp-enable-which-key-integration t)
-  :custom
-  (lsp-rust-server 'rust-analyzer)
-  (rustic-lsp-server 'rust-analyzer)
-  (lsp-rust-analyzer-cargo-watch-command "check")
-  (lsp-rust-analyzer-experimental-proc-attr-macros t)
-  (lsp-rust-analyzer-proc-macro-enable t)
-  ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-  (gc-cons-threshold 100000000)
-  (read-process-output-max (* 1024 1024)) ;; 1mb
-  (lsp-toggle-signature-auto-activate)
-  (lsp-idle-delay 0.500)
-  (lsp-progress-spinner-type 'moon)
-  (lsp-elm-only-update-diagnostics-on-save t)
-  (lsp-elm-disable-elmls-diagnostics t))
+;; (use-package lsp-mode
+;;   :straight t
+;;   :commands (lsp lsp-deferred)
+;;   :hook
+;;   (lsp-mode . efs/lsp-mode-setup)
+;;   (lsp-completion-mode . efs/lsp-completion-mode-setup)
+;;   ((tsx-ts-mode
+;;     typescript-ts-mode
+;;     js-ts-mode) . lsp-deferred)
+;;   :init
+;;   (setq lsp-keymap-prefix "C-c l")
+;;   (setq lsp-auto-execute-action nil)
+;;   :config
+;;   (lsp-enable-which-key-integration t)
+;;   :custom
+;;   (lsp-rust-server 'rust-analyzer)
+;;   (rustic-lsp-server 'rust-analyzer)
+;;   (lsp-rust-analyzer-cargo-watch-command "check")
+;;   (lsp-rust-analyzer-experimental-proc-attr-macros t)
+;;   (lsp-rust-analyzer-proc-macro-enable t)
+;;   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
+;;   (gc-cons-threshold 100000000)
+;;   (read-process-output-max (* 1024 1024)) ;; 1mb
+;;   (lsp-toggle-signature-auto-activate)
+;;   (lsp-idle-delay 0.500)
+;;   (lsp-progress-spinner-type 'moon)
+;;   (lsp-elm-only-update-diagnostics-on-save t)
+;;   (lsp-elm-disable-elmls-diagnostics t))
 
-(global-set-key (kbd "C-c a") 'lsp-execute-code-action)
-(global-set-key (kbd "C-c f") 'lsp-format-buffer)
+;; (global-set-key (kbd "C-c a") 'lsp-execute-code-action)
+;; (global-set-key (kbd "C-c f") 'lsp-format-buffer)
 
-(use-package lsp-haskell
-  :straight t
-  :hook
-  (haskell-mode-hook . lsp)
-  (haskell-literate-mode-hook . lsp))
+;; (use-package lsp-haskell
+;;   :straight t
+;;   :hook
+;;   (haskell-mode-hook . lsp)
+;;   (haskell-literate-mode-hook . lsp))
 
-(use-package lsp-ui
-  :straight t
-  :hook
-  (lsp-mode . lsp-ui-mode)
-  (lsp-mode . lsp-ui-doc-mode)
-  :custom
-  (lsp-ui-doc-enable nil)
-  (lsp-ui-sideline-show-diagnostics nil)
-  (lsp-ui-sideline-show-hover nil)
-  (lsp-ui-doc-show-with-mouse nil)
-  (lsp-ui-doc-position 'at-point)
-  (lsp-ui-sideline-show-code-actions nil))
+;; (use-package lsp-ui
+;;   :straight t
+;;   :hook
+;;   (lsp-mode . lsp-ui-mode)
+;;   (lsp-mode . lsp-ui-doc-mode)
+;;   :custom
+;;   (lsp-ui-doc-enable nil)
+;;   (lsp-ui-sideline-show-diagnostics nil)
+;;   (lsp-ui-sideline-show-hover nil)
+;;   (lsp-ui-doc-show-with-mouse nil)
+;;   (lsp-ui-doc-position 'at-point)
+;;   (lsp-ui-sideline-show-code-actions nil))
 
-(global-set-key (kbd "C-c k") 'lsp-ui-doc-glance)
+;; (global-set-key (kbd "C-c k") 'lsp-ui-doc-glance)
 
 (use-package flycheck
   :straight t
@@ -410,15 +410,25 @@
 
 ;; (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
-(use-package lsp-treemacs
-  :straight t
-  :after lsp)
+;; (use-package lsp-treemacs
+;;   :straight t
+;;   :after lsp)
 
-(setq lsp-completion-provider :none)
-(defun corfu-lsp-setup ()
-  (setq-local completion-styles '(orderless)
-              completion-category-defaults nil))
-(add-hook 'lsp-mode-hook #'corfu-lsp-setup)
+;; (setq lsp-completion-provider :none)
+;; (defun corfu-lsp-setup ()
+;;   (setq-local completion-styles '(orderless)
+;;               completion-category-defaults nil))
+;; (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               `(rustic-mode . ("rust-analyzer" :initializationOptions
+                                      (:assist (:preferSelf t)
+                                               :cargo (:features :all)
+                                               :check (:workspace :json-false))))))
+
+(setq completion-category-overrides '((eglot (styles orderless))
+                                      (eglot-capf (styles orderless))))
 
 (use-package yasnippet
   :straight t
@@ -455,7 +465,7 @@
 
 (use-package toml-mode
   :straight t
-  :hook (toml-mode . lsp-deferred))
+  :hook (toml-mode . eglot-ensure))
 
 (use-package cargo
   :straight t
@@ -472,7 +482,7 @@
 
 (use-package rustic
   :straight (rustic :type git :host github :repo "emacs-rustic/rustic")
-  :hook (rustic-mode . lsp-deferred)
+  :hook (rustic-mode . eglot-ensure)
   :config
   (setq rustic-spinner-type 'moon)
   (setq rustic-format-on-save t))
@@ -480,7 +490,7 @@
 ;;; Elixir
 (use-package elixir-ts-mode
   :straight t
-  :hook (elixir-ts-mode . lsp-deferred))
+  :hook (elixir-ts-mode . eglot-ensure))
 
 ;;; Kotlin
 (use-package kotlin-ts-mode
@@ -518,7 +528,7 @@
 (use-package elm-mode
   :straight t
   :hook
-  (elm-mode . lsp-deferred)
+  (elm-mode . eglot-ensure)
   (elm-mode . elm-format-on-save-mode))
 
 ;;; YAML
@@ -528,7 +538,7 @@
 ;;; Web stuff
 (use-package web-mode
   :straight t
-  :hook (web-mode . lsp-deferred))
+  :hook (web-mode . eglot-ensure))
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.svelte?\\'" . web-mode))
@@ -692,9 +702,10 @@
    '("k" . meow-prev)
    '("<escape>" . ignore))
   (meow-leader-define-key
-   ;; SPC j/k will run the original command in MOTION state.
-   '("j" . "H-j")
-   '("k" . "H-k")
+   '("k" . eldoc)
+   '("r" . eglot-rename)
+   '("f" . eglot-format-buffer)
+   '("a" . eglot-code-actions)
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
@@ -799,13 +810,13 @@
 
 (use-package gdscript-mode
   :straight t
-  :hook (web-mode . lsp-deferred)
+  :hook (web-mode . eglot-ensure)
   :config
   (setq gdscript-godot-executable "godot4"))
 
 (use-package python-mode
   :straight t
-  :hook (python-mode . lsp-deferred))
+  :hook (python-mode . eglot-ensure))
 
 (use-package pyvenv
   :straight t
@@ -825,7 +836,7 @@
 
 (use-package go-mode
   :straight t
-  :hook (go-mode . lsp-deferred))
+  :hook (go-mode . eglot-ensure))
 
 ;; (use-package blamer
 ;;   :straight t

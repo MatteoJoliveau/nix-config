@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  nixgl,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -17,9 +22,14 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixGL.packages = nixgl.packages;
+  nixGL.defaultWrapper = "mesa";
+  nixGL.installScripts = [ "mesa" ];
+  nixGL.vulkan.enable = true;
+
   home.packages = with pkgs; [
     gitleaks
-    nextcloud-client
+    (config.lib.nixGL.wrap nextcloud-client)
     obs-studio
     pandoc
     steam-run
