@@ -7,6 +7,7 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
     }
+    ./matteo.nix
   ];
 
   users.mutableUsers = true;

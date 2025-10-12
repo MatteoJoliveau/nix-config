@@ -11,28 +11,14 @@
       options = "--delete-older-than 30d";
     };
 
-    # Flakes
-    package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
   };
 
-  # Configure GRUB
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = false;
-    };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      useOSProber = true;
-      enableCryptodisk = true;
-    };
-  };
 
   boot.plymouth.enable = true;
 
@@ -43,7 +29,7 @@
   #   security.pki.certificates = [ (builtins.readFile ./codexlab-ca.crt) ];
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_GB.UTF-8";
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -73,24 +59,15 @@
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     font-awesome
     jetbrains-mono
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Firmware updates
   services.fwupd.enable = true;
-
-  # Setup all the Steam machinery
-  programs.steam.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   location.provider = "geoclue2";
 

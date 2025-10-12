@@ -39,6 +39,7 @@ in
     unzip
     vips
     wireguard-tools
+    wl-clipboard-rs
     zoxide
   ];
 

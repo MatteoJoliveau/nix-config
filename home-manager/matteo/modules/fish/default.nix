@@ -107,4 +107,6 @@
       kubernetes.disabled = false;
     };
   };
+
+  programs.nix-index.enableFishIntegration = true;
 }

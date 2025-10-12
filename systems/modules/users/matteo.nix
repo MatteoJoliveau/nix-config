@@ -8,6 +8,7 @@
 {
   users.users.matteo = {
     isNormalUser = true;
+    description = "Matteo";
     extraGroups = [
       "wheel"
       "docker"

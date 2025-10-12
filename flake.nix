@@ -20,7 +20,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    suite-py.url = "suite-py";
+#     suite-py.url = "suite-py";
 
     megasploot.url = "github:matteojoliveau/megasploot.nix";
 
@@ -39,7 +39,7 @@
       flake-utils,
       home-manager,
       home-manager-unstable,
-      suite-py,
+#       suite-py,
       megasploot,
       nixgl,
       ...
@@ -64,8 +64,10 @@
 
           config.allowUnfree = true;
 
+          nix.registry = pkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
+
           overlays = [
-            suite-py.overlays.default
+#             suite-py.overlays.default
             megasploot.overlays.default
             nixgl.overlays.default
             (self: super: {
@@ -98,33 +100,19 @@
     in
     {
       nixosConfigurations = {
-        frenchpenguin = nixpkgs.lib.nixosSystem {
-          inherit system;
-          pkgs = pkgs;
+        frenchnord = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
 
           specialArgs = inputs;
           modules = [
-            ./systems/frenchpenguin
+            ./systems/frenchnord/configuration.nix
             homeManagerWithArgs
-          ];
-        };
-
-        microwave = nixpkgs-unstable.lib.nixosSystem {
-          inherit system;
-          pkgs = mkPkgs nixpkgs-unstable;
-
-          specialArgs = inputs // {
-            home-manager = home-manager-unstable;
-          };
-          modules = [
-            ./systems/microwave
-            homeManagerUnstableWithArgs
           ];
         };
       };
 
       homeConfigurations."matteojoliveau@frenchpenguinv5" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+        inherit pkgs;
 
         extraSpecialArgs = { inherit nixgl; };
 
@@ -136,7 +124,7 @@
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs { inherit system; };
       in
       rec {
         formatter = pkgs.nixfmt-tree;

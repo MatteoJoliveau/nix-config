@@ -1,5 +1,5 @@
 {
-  nixgl,
+#   nixgl,
   nixosConfig,
   ...
 }:
@@ -7,25 +7,29 @@
 {
   imports = [
     (./hosts + "/${nixosConfig.networking.hostName}")
-    ./modules/alacritty
+    # ./modules/alacritty.nix
     ./modules/fish
-    ./modules/neovim
+#     ./modules/neovim
     ./modules/emacs
     ./modules/coreutils.nix
-    ./modules/desktop.nix
+#     ./modules/desktop.nix
     ./modules/development.nix
-    ./modules/games.nix
+#     ./modules/games.nix
     ./modules/git.nix
     ./modules/gpg.nix
     ./modules/helix.nix
     ./modules/ssh.nix
   ];
 
-  nixpkgs.overlays = [ ];
+#   nixpkgs.overlays = [ ];
 
-  nixGL.packages = nixgl.packages;
-  nixGL.defaultWrapper = "mesa";
-  nixGL.installScripts = [ "mesa" ];
+#   nixGL.packages = nixgl.packages;
+#   nixGL.defaultWrapper = "mesa";
+#   nixGL.installScripts = [ "mesa" ];
+
+  programs.nix-index.enable = true;
+
+  home.file.".face".source = ../../images/propic.jpg;
 
   programs.home-manager.enable = true;
   manual.manpages.enable = false;
