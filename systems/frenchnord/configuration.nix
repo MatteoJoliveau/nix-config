@@ -12,7 +12,6 @@
       ../modules/docker.nix
       ../modules/games.nix
       ../modules/desktop.nix
-      ../modules/cosmic.nix
       ../modules/plasma6.nix
       ../modules/cloudflare-warp.nix
       ./hardware-configuration.nix
