@@ -38,6 +38,7 @@ in
       fastmod
       gnumake
       go
+      gh
       insomnia
       jetbrains.datagrip
       jo
