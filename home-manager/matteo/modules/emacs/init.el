@@ -857,6 +857,9 @@
 (use-package org-roam
   :straight t)
 
+(use-package kdl-mode
+  :straight t)
+
 (use-package treemacs-icons-dired
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :straight t)

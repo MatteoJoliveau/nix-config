@@ -57,10 +57,11 @@ in
         };
       };
 
-      font = let
-        family = "JetBrains Mono";
-        mkFont = style: { inherit family style; };
-      in
+      font =
+        let
+          family = "JetBrains Mono";
+          mkFont = style: { inherit family style; };
+        in
         {
           normal = mkFont "Regular";
           bold = mkFont "Bold";

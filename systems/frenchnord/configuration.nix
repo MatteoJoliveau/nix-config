@@ -1,24 +1,26 @@
-{ config
-, pkgs
-, home-manager
-, nixos-hardware
-, ... }:
+{
+  config,
+  pkgs,
+  home-manager,
+  nixos-hardware,
+  ...
+}:
 
 {
-  imports =
-    [
-      ../modules/base.nix
-      ../modules/users
-      ../modules/docker.nix
-      ../modules/games.nix
-      ../modules/desktop.nix
-      ../modules/plasma6.nix
-      ../modules/cloudflare-warp.nix
-      ./hardware-configuration.nix
-      nixos-hardware.nixosModules.common-cpu-amd
-      nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-      nixos-hardware.nixosModules.common-pc-ssd
-    ];
+  imports = [
+    ../modules/base.nix
+    ../modules/users
+    ../modules/docker.nix
+    ../modules/games.nix
+    ../modules/desktop.nix
+    ../modules/plasma6.nix
+    ../modules/niri.nix
+    ../modules/cloudflare-warp.nix
+    ./hardware-configuration.nix
+    nixos-hardware.nixosModules.common-cpu-amd
+    nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+    nixos-hardware.nixosModules.common-pc-ssd
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -47,11 +49,10 @@
     LC_TIME = "it_IT.UTF-8";
   };
 
-
   hardware.nvidia.open = true;
 
   environment.systemPackages = with pkgs; [
-   vim
+    vim
   ];
 
   fileSystems."/home/matteo/Games/Steam1" = {
