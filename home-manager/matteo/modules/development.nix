@@ -31,6 +31,7 @@ in
       awscli2
       amazon-ecr-credential-helper
       bacon
+      unstable.bruno
       cargo-generate
       clang
       cloudflared
