@@ -63,7 +63,6 @@ in
       kubie
       kustomize
       mergiraf
-      minikube
       nodejs
       postgresql
       remmina

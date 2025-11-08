@@ -48,6 +48,7 @@
       home-manager-unstable,
       megasploot,
       nixgl,
+      noctalia,
       ...
     }@inputs:
     let
@@ -104,7 +105,7 @@
       homeConfigurations."matteojoliveau@frenchpenguin" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        extraSpecialArgs = { inherit nixgl; };
+        extraSpecialArgs = { inherit nixgl noctalia; };
 
         modules = [
           (import ./home-manager/systems/prima-laptop)

@@ -11,6 +11,8 @@ in
     }
   ];
 
+  nix.settings.trusted-users = ["matteo"];
+
   users.mutableUsers = true;
 
   users.users.matteo = {

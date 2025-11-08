@@ -34,6 +34,13 @@ with lib;
     programs.home-manager.enable = true;
     manual.manpages.enable = false;
     programs.nix-index.enable = true;
+
     home.file.".face".source = ../../images/propic.jpg;
+
+    home.keyboard = {
+      layout = "us";
+      variant = "altgr-intl";
+      options = "eurosign:e ctrl:nocaps";
+    };
   };
 }

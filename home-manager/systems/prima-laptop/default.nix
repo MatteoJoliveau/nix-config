@@ -1,10 +1,15 @@
-{ nixgl, pkgs, ... }:
+{ config, nixgl, pkgs, lib, ... }:
 
+with lib;
 {
   imports = [
     ../../modules
     ./noctalia.nix
+    ./niri.nix
   ];
+
+  roles.development = true;
+  desktops.niri = true;
 
   programs.niri.config = ./niri.kdl;
 
@@ -20,8 +25,8 @@
 
   home.packages = with pkgs; [
     gitleaks
-    (config.lib.nixGL.wrap nextcloud-client)
-    suite_py
+    niri
+    # (config.lib.nixGL.wrap nextcloud-client)
   ];
 
   xdg.enable = true;
