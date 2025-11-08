@@ -58,42 +58,26 @@
         config.allowUnfree = true;
       };
 
-      mkPkgs =
-        channel:
-        import channel {
-          inherit system;
+      pkgs = import nixpkgs {
+        inherit system;
 
-          config.allowUnfree = true;
+        config.allowUnfree = true;
 
-          nix.registry = pkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
+        nix.registry = pkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
 
-          overlays = [
-            #             suite-py.overlays.default
-            megasploot.overlays.default
-            nixgl.overlays.default
-            (self: super: {
-              inherit unstable;
+        overlays = [
+          megasploot.overlays.default
+          nixgl.overlays.default
+          (self: super: {
+            inherit unstable;
 
-              krew = super.callPackage nixpkgs/krew.nix { };
-              calc = super.callPackage nixpkgs/calc { };
-              biscuit = super.callPackage nixpkgs/biscuit.nix { };
-            })
-            # https://github.com/nix-community/home-manager/issues/322#issuecomment-1178614454
-            (self: super: {
-              openssh = super.openssh.overrideAttrs (old: {
-                patches = (old.patches or [ ]) ++ [ ./patches/openssh.patch ];
-                doCheck = false;
-              });
-            })
-          ];
-        };
-
-      pkgs = mkPkgs nixpkgs;
-
-      homeManagerUnstableWithArgs = {
-        home-manager.extraSpecialArgs = inputs // {
-          inherit system;
-        };
+          # https://github.com/nix-community/home-manager/issues/322#issuecomment-1178614454
+            openssh = super.openssh.overrideAttrs (old: {
+              patches = (old.patches or [ ]) ++ [ ./patches/openssh.patch ];
+              doCheck = false;
+            });
+          })
+        ];
       };
 
       homeManagerWithArgs = {
@@ -110,19 +94,20 @@
 
           specialArgs = inputs;
           modules = [
-            ./systems/frenchnord/configuration.nix
+            home-manager.nixosModules.home-manager
             homeManagerWithArgs
+            ./nixos/systems/frenchnord/configuration.nix
           ];
         };
       };
 
-      homeConfigurations."matteojoliveau@frenchpenguinv5" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."matteojoliveau@frenchpenguin" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = { inherit nixgl; };
 
         modules = [
-          (import ./home-manager/matteo/frenchpenguinv5.nix)
+          (import ./home-manager/systems/prima-laptop)
         ];
       };
     }
@@ -136,6 +121,7 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
+            nixfmt-tree
           ];
         };
       }

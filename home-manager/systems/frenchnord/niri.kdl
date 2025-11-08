@@ -1,0 +1,11 @@
+// include "common.kdl"
+
+output "AOC Q27G2G4 1284" {
+    mode "2560x1440@144"
+    scale 1.15
+}
+
+output "AOC Q27G2G4 7019" {
+    mode "2560x1440@144"
+    scale 1.15
+}
