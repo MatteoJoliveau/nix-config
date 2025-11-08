@@ -6,7 +6,6 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-super-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -20,13 +19,22 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    suite-py.url = "suite-py";
-
     megasploot.url = "github:matteojoliveau/megasploot.nix";
 
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
     };
   };
 
@@ -35,11 +43,9 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nixpkgs-super-unstable,
       flake-utils,
       home-manager,
       home-manager-unstable,
-      suite-py,
       megasploot,
       nixgl,
       ...
@@ -52,97 +58,70 @@
         config.allowUnfree = true;
       };
 
-      super-unstable = import nixpkgs-super-unstable {
+      pkgs = import nixpkgs {
         inherit system;
+
         config.allowUnfree = true;
+
+        nix.registry = pkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+        overlays = [
+          megasploot.overlays.default
+          nixgl.overlays.default
+          (self: super: {
+            inherit unstable;
+
+          # https://github.com/nix-community/home-manager/issues/322#issuecomment-1178614454
+            openssh = super.openssh.overrideAttrs (old: {
+              patches = (old.patches or [ ]) ++ [ ./patches/openssh.patch ];
+              doCheck = false;
+            });
+          })
+        ];
       };
 
-      mkPkgs =
-        channel:
-        import channel {
-          inherit system;
-
-          config.allowUnfree = true;
-
-          overlays = [
-            suite-py.overlays.default
-            megasploot.overlays.default
-            nixgl.overlays.default
-            (self: super: {
-              inherit unstable super-unstable;
-
-              krew = super.callPackage nixpkgs/krew.nix { };
-              calc = super.callPackage nixpkgs/calc { };
-              biscuit = super.callPackage nixpkgs/biscuit.nix { };
-            })
-            # https://github.com/nix-community/home-manager/issues/322#issuecomment-1178614454
-            (self: super: {
-              openssh = super.openssh.overrideAttrs (old: {
-                patches = (old.patches or [ ]) ++ [ ./patches/openssh.patch ];
-                doCheck = false;
-              });
-            })
-          ];
-        };
-      pkgs = mkPkgs nixpkgs;
       homeManagerWithArgs = {
         home-manager.extraSpecialArgs = inputs // {
           inherit system;
-        };
-      };
-      homeManagerUnstableWithArgs = {
-        home-manager.extraSpecialArgs = inputs // {
-          inherit system;
+          unstable = home-manager-unstable;
         };
       };
     in
     {
       nixosConfigurations = {
-        frenchpenguin = nixpkgs.lib.nixosSystem {
-          inherit system;
-          pkgs = pkgs;
+        frenchnord = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
 
           specialArgs = inputs;
           modules = [
-            ./systems/frenchpenguin
+            home-manager.nixosModules.home-manager
             homeManagerWithArgs
-          ];
-        };
-
-        microwave = nixpkgs-unstable.lib.nixosSystem {
-          inherit system;
-          pkgs = mkPkgs nixpkgs-unstable;
-
-          specialArgs = inputs // {
-            home-manager = home-manager-unstable;
-          };
-          modules = [
-            ./systems/microwave
-            homeManagerUnstableWithArgs
+            ./nixos/systems/frenchnord/configuration.nix
           ];
         };
       };
 
-      homeConfigurations."matteojoliveau@frenchpenguinv5" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+      homeConfigurations."matteojoliveau@frenchpenguin" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
         extraSpecialArgs = { inherit nixgl; };
 
         modules = [
-          (import ./home-manager/matteo/frenchpenguinv5.nix)
+          (import ./home-manager/systems/prima-laptop)
         ];
       };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs { inherit system; };
       in
       rec {
         formatter = pkgs.nixfmt-tree;
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
+            nixfmt-tree
           ];
         };
       }
