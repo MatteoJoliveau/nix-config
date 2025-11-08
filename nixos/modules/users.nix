@@ -32,6 +32,8 @@ in
     (with config; {
       inherit roles desktops;
 
+      programs.home-manager.enable = true;
+      manual.manpages.enable = false;
       home.stateVersion = config.system.stateVersion;
     })
   ];
