@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  programs.swaylock = {
+    enable = true;
+    settings = {};
+  };
+
   xdg.dataFile."niri/niri.desktop".source = let
     niri-session = pkgs.writeShellApplication {
       name = "niri-session";

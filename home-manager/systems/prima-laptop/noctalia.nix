@@ -7,6 +7,13 @@ let
   });
 in
 {
+  xdg.dataFile."pam.d/quickshell".text = ''
+    auth       required  pam_unix.so
+    account    required  pam_unix.so
+    password   required  pam_unix.so
+    session    required  pam_unix.so
+  '';
+
   programs.noctalia-shell = {
     settings = {
       general = {
