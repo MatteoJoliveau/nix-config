@@ -104,7 +104,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"firefox$"# title"^Extension:"
+    match app-id=r#"firefox$"# title="^Extension:"
     open-floating true
 }
 
