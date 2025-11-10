@@ -27,6 +27,7 @@
   networking.hostName = "frenchnord";
 
   hardware.nvidia.open = true;
+  hardware.nvidia.powerManagement.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
