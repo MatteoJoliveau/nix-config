@@ -17,6 +17,7 @@
   roles = {
     development = true;
     gaming = true;
+    writing = true;
   };
 
   desktops = {

@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 with lib;
 {
@@ -14,12 +14,14 @@ with lib;
       ./gpg.nix
       ./helix.nix
       ./niri
+      ./writing.nix
     ];
 
   options = {
     roles = {
       development = mkEnableOption "development";
       gaming = mkEnableOption "gaming";
+      writing = mkEnableOption "writing";
     };
 
     desktops = {

@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 with lib;
 {
@@ -19,6 +19,7 @@ with lib;
     roles = {
       development = mkEnableOption "development";
       gaming = mkEnableOption "gaming";
+      writing = mkEnableOption "writing";
     };
 
     desktops = {

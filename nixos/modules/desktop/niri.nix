@@ -18,6 +18,14 @@ mkIf enabled {
 
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
+    gnome-keyring
   ];
-  xdg.portal.config.niri.default = ["gnome"];
+
+  xdg.portal.config.niri = {
+    default = ["gnome" "gtk"];
+    "org.freedesktop.impl.portal.Access" = ["gtk"];
+    "org.freedesktop.impl.portal.Notification" = ["gtk"];
+    "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
+  };
 }
