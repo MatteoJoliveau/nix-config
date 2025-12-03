@@ -6,7 +6,6 @@ let
 in
 mkIf enabled {
   home.packages = with pkgs; [
-    bitwarden
     desktop-file-utils
     easyeffects
     deluge
@@ -21,7 +20,7 @@ mkIf enabled {
     slack
     sniffnet
     spotify
-    tdesktop
+    telegram-desktop
     vlc
   ];
 

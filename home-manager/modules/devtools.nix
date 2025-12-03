@@ -5,7 +5,7 @@ let
   enabled = config.roles.development;
 
   lsps = with pkgs; [
-    elixir_ls
+    elixir-ls
     elmPackages.elm-language-server
     gopls
     marksman
@@ -66,7 +66,6 @@ in
       nodejs
       postgresql
       remmina
-      ruby_3_1
       rustup
       sqlite
       vault-bin

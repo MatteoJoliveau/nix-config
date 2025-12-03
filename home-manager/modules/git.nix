@@ -1,10 +1,10 @@
 { ... }:
 
 {
+  programs.difftastic.enable = true;
+
   programs.git = {
     enable = true;
-    userName = "Matteo Joliveau";
-    userEmail = "matteo@matteojoliveau.com";
     signing = {
       key = "matteo@matteojoliveau.com";
       signByDefault = true;
@@ -15,26 +15,7 @@
       ".vscode"
       ".direnv"
     ];
-    aliases = {
-      co = "checkout";
-      br = "branch";
-      ci = "commit -s";
-      cim = "commit -s -m";
-      cin = "commit -s -n";
-      st = "status";
-      aa = "add .";
-      a = "add";
-      pl = "pull";
-      l = "log --graph --name-status";
-      ps = "push";
-      psu = "push -u origin HEAD";
-      psf = "push --force-with-lease";
-      me = "merge";
-      unst = "restore --staged";
-      wops = "!git add . && git commit --amend";
-    };
     lfs.enable = true;
-    difftastic.enable = true;
     attributes = [
       "*.java merge=mergiraf"
       "*.rs merge=mergiraf"
@@ -61,7 +42,32 @@
       "*.ts merge=mergiraf"
       "*.py merge=mergiraf"
     ];
-    extraConfig = {
+
+    settings = {
+      user = {
+        name = "Matteo Joliveau";
+        email = "matteo@matteojoliveau.com";
+      };
+
+      aliases = {
+        co = "checkout";
+        br = "branch";
+        ci = "commit -s";
+        cim = "commit -s -m";
+        cin = "commit -s -n";
+        st = "status";
+        aa = "add .";
+        a = "add";
+        pl = "pull";
+        l = "log --graph --name-status";
+        ps = "push";
+        psu = "push -u origin HEAD";
+        psf = "push --force-with-lease";
+        me = "merge";
+        unst = "restore --staged";
+        wops = "!git add . && git commit --amend";
+      };
+
       init.defaultBranch = "main";
       pull.rebase = true;
       merge.mergiraf = {

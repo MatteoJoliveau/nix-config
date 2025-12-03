@@ -12,7 +12,7 @@ in
     bat
     calc
     cpufetch
-    du-dust
+    dust
     eza
     fd
     ffmpeg
@@ -25,7 +25,7 @@ in
     jetbrains-mono
     kondo
     libtool
-    neofetch
+    fastfetch
     nmap
     openssh
     p7zip
