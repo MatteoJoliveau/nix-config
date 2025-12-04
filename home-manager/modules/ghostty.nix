@@ -7,7 +7,7 @@
     enableFishIntegration = true;
 
     settings = {
-      theme = "catppuccin-macchiato";
+      theme = "Catppuccin Macchiato";
       background-opacity = 0.85;
 
       keybind = [

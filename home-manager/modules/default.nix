@@ -14,6 +14,7 @@ with lib;
       ./gpg.nix
       ./helix.nix
       ./niri
+      ./ssh.nix
       ./writing.nix
     ];
 
@@ -31,8 +32,6 @@ with lib;
   };
 
   config = {
-    programs.ssh.enable = true;
-
     programs.home-manager.enable = true;
     manual.manpages.enable = false;
     programs.nix-index.enable = true;
