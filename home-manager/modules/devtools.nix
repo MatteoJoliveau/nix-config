@@ -17,7 +17,6 @@ let
     sqls
     buf
     taplo
-    python311Packages.python-lsp-server
     terraform-ls
     nixd
     ruff
@@ -78,7 +77,9 @@ in
   programs.vscode.enable = false;
 
   programs.jujutsu = {
-    enable = true;
+    enable = false;
+    package = pkgs.jujutsu;
+
     settings = {
       user = {
         name = "Matteo Joliveau";

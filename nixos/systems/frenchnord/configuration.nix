@@ -22,7 +22,6 @@
 
   desktops = {
     niri = true;
-    plasma = true;
   };
 
   networking.hostName = "frenchnord";

@@ -49,7 +49,7 @@
         email = "matteo@matteojoliveau.com";
       };
 
-      aliases = {
+      alias = {
         co = "checkout";
         br = "branch";
         ci = "commit -s";

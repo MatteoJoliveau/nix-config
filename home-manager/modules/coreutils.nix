@@ -10,22 +10,22 @@ in
   home.packages = with pkgs; [
     aspell'
     bat
+    bottom
     calc
     cpufetch
     dust
     eza
+    fastfetch
     fd
     ffmpeg
     file
     fzf
     git
-    gotop
     htop
     inetutils
     jetbrains-mono
     kondo
     libtool
-    fastfetch
     nmap
     openssh
     p7zip

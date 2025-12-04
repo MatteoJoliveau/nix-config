@@ -6,7 +6,19 @@ let
   enabled = any id (attrValues config.desktops);
 in
 mkIf enabled {
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "catppuccin-mocha-mauve";
+  };
+
+  environment.systemPackages = [(
+    pkgs.catppuccin-sddm.override {
+      flavor = "mocha";
+      accent = "mauve";
+      loginBackground = true;
+    }
+  )];
 
   services.xserver.xkb = {
     layout = "us";

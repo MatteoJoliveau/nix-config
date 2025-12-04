@@ -26,13 +26,8 @@ in
 
   config = mkIf enabled {
     xdg.configFile = {
-      "niri/config.kdl".source = pkgs.concatTextFile {
-        name = "config.kdl";
-        files = [config.programs.niri.config ./common.kdl];
-      };
-
-      # TODO: when niri releases support for native includes, remove the concatTextFile above
-      # "niri/common.kdl".source = ./common.kdl;
+      "niri/config.kdl".source = config.programs.niri.config;
+      "niri/common.kdl".source = ./common.kdl;
     };
 
     home.packages = with pkgs; [

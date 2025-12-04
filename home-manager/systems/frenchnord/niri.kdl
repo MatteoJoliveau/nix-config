@@ -1,11 +1,11 @@
-// include "common.kdl"
+include "common.kdl"
 
 output "DP-1" {
     mode "2560x1440@143.912"
-    scale 1.15
+    scale 1.0
 }
 
 output "DP-2" {
     mode "2560x1440@143.912"
-    scale 1.15
+    scale 1.0
 }
