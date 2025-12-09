@@ -10,7 +10,7 @@
       serverAliveInterval = 0;
       serverAliveCountMax = 3;
       compression = false;
-      addKeysToAgent = "confirm";
+      addKeysToAgent = "no";
       hashKnownHosts = false;
       userKnownHostsFile = "~/.ssh/known_hosts";
       controlMaster = "no";
