@@ -13,10 +13,12 @@ with lib;
 
   nixpkgs.config.allowUnfree = true;
 
-  nixGL.packages = nixgl.packages;
-  nixGL.defaultWrapper = "mesa";
-  nixGL.installScripts = [ "mesa" ];
-  nixGL.vulkan.enable = true;
+  targets.genericLinux.nixGL = {
+    packages = nixgl.packages;
+    defaultWrapper = "mesa";
+    installScripts = [ "mesa" ];
+    vulkan.enable = true;
+  };
 
   home.packages = with pkgs; [
     gitleaks

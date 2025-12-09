@@ -42,6 +42,7 @@ in
       bacon
       unstable.bruno
       cargo-generate
+      cargo-binstall
       clang
       cloudflared
       cmake
