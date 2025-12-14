@@ -10,5 +10,6 @@ mkIf enabled {
     godotPackages_4_5.godot-mono
     godotPackages_4_5.export-templates-mono-bin
     steam-run
+    prismlauncher
   ];
 }
