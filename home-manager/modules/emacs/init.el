@@ -391,7 +391,6 @@
   :hook
   (lsp-mode . lsp-ui-mode)
   (lsp-mode . lsp-ui-doc-mode)
-  (lsp-mode . lsp-ui-peek-mode)
   (lsp-mode . lsp-inlay-hints-mode)
   :custom
   (lsp-ui-doc-enable t)
