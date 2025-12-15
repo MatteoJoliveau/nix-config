@@ -378,7 +378,9 @@
   (lsp-idle-delay 0.500)
   (lsp-progress-spinner-type 'moon)
   (lsp-elm-only-update-diagnostics-on-save t)
-  (lsp-elm-disable-elmls-diagnostics t))
+  (lsp-elm-disable-elmls-diagnostics t)
+  (lsp-typescript-format-enable nil)
+  (lsp-javascript-format-enable nil))
 
 (use-package lsp-haskell
   :straight t
