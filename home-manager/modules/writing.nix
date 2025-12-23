@@ -7,6 +7,7 @@ in
 mkIf enabled {
   home.packages = with pkgs; [
     unstable.novelwriter
+    kdePackages.ghostwriter
   ];
 }
 

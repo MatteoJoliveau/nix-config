@@ -24,6 +24,11 @@ in
         generateTemplatesForPredefined = true;
       };
 
+      location = {
+        name = "Milan";
+        firstDayOfWeek = 1;
+      };
+
       bar = {
         density = "default";
         exclusive = true;
