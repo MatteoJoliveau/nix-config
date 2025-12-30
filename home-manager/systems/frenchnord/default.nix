@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -7,4 +7,6 @@
   ];
 
   programs.niri.config = ./niri.kdl;
+
+  home.packages = with pkgs; [ solaar ];
 }
