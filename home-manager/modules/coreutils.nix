@@ -58,6 +58,19 @@ in
     enable = true;
   };
 
+  programs.yazi = {
+    enable = true;
+  };
+
+  programs.fish.functions.y.body = ''
+    set -l tmp (mktemp -t "yazi-cwd.XXXXX")
+    command yazi $argv --cwd-file="$tmp"
+    if read cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+      builtin cd -- "$cwd"
+    end
+    command rm -f -- "$tmp"
+  '';
+
   home.sessionVariables = {
     EDITOR = "${pkgs.helix}/bin/hx";
     PAGER = "${pkgs.bat}/bin/bat";

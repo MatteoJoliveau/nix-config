@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 let
@@ -6,7 +11,7 @@ let
 in
 mkIf enabled {
   virtualisation.docker.enable = true;
-  environment.systemPackages = with pkgs;  [
+  environment.systemPackages = with pkgs; [
     docker-compose
   ];
 }

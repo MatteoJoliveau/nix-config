@@ -1,5 +1,9 @@
-
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 let
@@ -12,13 +16,13 @@ mkIf enabled {
     theme = "catppuccin-mocha-mauve";
   };
 
-  environment.systemPackages = [(
-    pkgs.catppuccin-sddm.override {
+  environment.systemPackages = [
+    (pkgs.catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
       loginBackground = true;
-    }
-  )];
+    })
+  ];
 
   services.xserver.xkb = {
     layout = "us";

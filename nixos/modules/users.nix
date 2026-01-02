@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   hostname = config.networking.hostName;
@@ -11,7 +16,7 @@ in
     }
   ];
 
-  nix.settings.trusted-users = ["matteo"];
+  nix.settings.trusted-users = [ "matteo" ];
 
   users.mutableUsers = true;
 

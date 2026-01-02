@@ -109,8 +109,18 @@ window-rule {
 }
 
 window-rule {
-  geometry-corner-radius 8
-  clip-to-geometry true
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    default-column-width { proportion 0.33333; }
+}
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
 }
 
 debug {

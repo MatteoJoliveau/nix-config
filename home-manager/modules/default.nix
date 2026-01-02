@@ -2,21 +2,21 @@
 
 with lib;
 {
-    imports = [
-      ./bluetooth.nix
-      ./coreutils.nix
-      ./desktop.nix
-      ./devtools.nix
-      ./fish
-      ./gaming.nix
-      ./ghostty.nix
-      ./git.nix
-      ./gpg.nix
-      ./helix.nix
-      ./niri
-      ./ssh.nix
-      ./writing.nix
-    ];
+  imports = [
+    ./bluetooth.nix
+    ./coreutils.nix
+    ./desktop.nix
+    ./devtools.nix
+    ./fish
+    ./gaming.nix
+    ./ghostty.nix
+    ./git.nix
+    ./gpg.nix
+    ./helix.nix
+    ./niri
+    ./ssh.nix
+    ./writing.nix
+  ];
 
   options = {
     roles = {
