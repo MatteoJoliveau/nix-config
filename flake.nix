@@ -53,6 +53,8 @@
         config.allowUnfree = true;
       };
 
+      localPackages = import ./pkgs pkgs;
+
       pkgs = import nixpkgs {
         inherit system;
 
@@ -60,9 +62,11 @@
 
         nix.registry = pkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
 
+
         overlays = [
           megasploot.overlays.default
           nixgl.overlays.default
+          localPackages.overlays.default
           (self: super: {
             inherit unstable;
 

@@ -25,6 +25,7 @@
       ktx = "kubie ctx";
       lg = "lazygit";
       ls = "eza";
+      actions = "lazyactions";
       nethack = "telnet nethack.alt.org";
       rebar = "rebar3";
       reset_bg = "eval (~/.fehbg)";

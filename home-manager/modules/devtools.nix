@@ -67,6 +67,7 @@ in
         kubernetes-helm
         kubie
         kustomize
+        lazyactions
         mergiraf
         nodejs
         postgresql

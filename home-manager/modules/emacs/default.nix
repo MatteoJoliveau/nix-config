@@ -12,6 +12,10 @@
       ];
   };
 
+  home.packages = with pkgs; [
+    emacs-lsp-booster
+  ];
+
   xdg.configFile."emacs/init.el".source = ./init.el;
   xdg.configFile."emacs/early-init.el".source = ./early-init.el;
 }
