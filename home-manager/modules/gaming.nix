@@ -17,5 +17,6 @@ mkIf enabled {
     unstable.shadps4
     steam-run
     prismlauncher
+    openmw
   ];
 }
