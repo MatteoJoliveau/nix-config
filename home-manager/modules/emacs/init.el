@@ -925,6 +925,9 @@
   :init
   (org-remark-global-tracking-mode))
 
+(use-package typst-ts-mode
+  :straight '(:type git :host codeberg :repo "meow_king/typst-ts-mode" :branch "main"))
+(add-to-list 'auto-mode-alist '("\\.typst\\'" . typst-ts-mode))
 
 (use-package envrc
   :straight t)
