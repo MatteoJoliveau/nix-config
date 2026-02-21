@@ -13,6 +13,7 @@ with lib;
     ./git.nix
     ./gpg.nix
     ./helix.nix
+    ./hledger.nix
     ./niri
     ./ssh.nix
     ./writing.nix

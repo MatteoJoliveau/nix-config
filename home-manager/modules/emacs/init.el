@@ -929,6 +929,11 @@
   :straight '(:type git :host codeberg :repo "meow_king/typst-ts-mode" :branch "main"))
 (add-to-list 'auto-mode-alist '("\\.typst\\'" . typst-ts-mode))
 
+;;; HLedger
+(use-package hledger-mode
+  :straight t)
+(add-to-list 'auto-mode-alist '("\\.journal\\'" . hledger-mode))
+
 (use-package envrc
   :straight t)
 

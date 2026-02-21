@@ -16,7 +16,7 @@ mkIf enabled {
     deluge
     krita
     languagetool
-    # libreoffice-fresh
+    libreoffice-fresh
     libsecret
     nextcloud-client
     obs-studio
