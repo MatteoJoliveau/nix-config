@@ -62,7 +62,6 @@
 
         nix.registry = pkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
 
-
         overlays = [
           megasploot.overlays.default
           nixgl.overlays.default
