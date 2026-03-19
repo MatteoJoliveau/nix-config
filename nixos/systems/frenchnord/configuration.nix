@@ -18,6 +18,7 @@
     development = true;
     gaming = true;
     writing = true;
+    gamedev = true;
   };
 
   desktops = {

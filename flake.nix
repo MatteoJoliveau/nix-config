@@ -59,6 +59,7 @@
         inherit system;
 
         config.allowUnfree = true;
+        config.cudaSupport = true;
 
         nix.registry = pkgs.lib.mapAttrs (_: value: { flake = value; }) inputs;
 

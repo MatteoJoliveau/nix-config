@@ -9,6 +9,7 @@ with lib;
     ./devtools.nix
     ./fish
     ./gaming.nix
+    ./gamedev.nix
     ./ghostty.nix
     ./git.nix
     ./gpg.nix
@@ -24,6 +25,7 @@ with lib;
       development = mkEnableOption "development";
       gaming = mkEnableOption "gaming";
       writing = mkEnableOption "writing";
+      gamedev = mkEnableOption "gamedev";
     };
 
     desktops = {

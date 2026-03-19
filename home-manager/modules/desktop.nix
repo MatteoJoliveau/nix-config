@@ -13,6 +13,7 @@ mkIf enabled {
   home.packages = with pkgs; [
     desktop-file-utils
     easyeffects
+    discord
     deluge
     krita
     languagetool
