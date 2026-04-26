@@ -9,3 +9,25 @@ output "DP-2" {
     mode "2560x1440@143.912"
     scale 1.0
 }
+
+// Right Monitor
+workspace "browser-1" {
+    open-on-output "DP-1"
+}
+
+workspace "browser-2" {
+    open-on-output "DP-1"
+}
+
+workspace "editor" {
+    open-on-output "DP-1"
+}
+
+workspace "terminals" {
+    open-on-output "DP-1"
+}
+
+// Left Monitor
+workspace "chat" {
+    open-on-output "DP-2"
+}

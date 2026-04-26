@@ -77,7 +77,6 @@ in
         vault-bin
         xh
         yq
-        zellij
       ]
       ++ lsps;
 

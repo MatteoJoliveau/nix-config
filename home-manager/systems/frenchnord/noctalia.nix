@@ -43,6 +43,9 @@ in
               useDistroLogo = true;
             }
             {
+              id = "ActiveWindow";
+            }
+            {
               id = "MediaMini";
               hideWhenIdle = false;
               hideMode = "hidden";
@@ -52,8 +55,12 @@ in
             }
             {
               id = "Workspace";
-              labelMode = "index";
+              labelMode = "index+name";
               hideUnoccupied = false;
+              showLabelsOnlyWhenOccupied = false;
+              fontWeight = "semibold";
+              characterCount = 10;
+              pillSize = 0.7;
             }
           ];
           center = [

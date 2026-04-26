@@ -13,5 +13,6 @@ mkIf enabled {
   home.packages = with pkgs.unstable; [
     blender
     tiled
+    # steamos-devkit
   ];
 }

@@ -32,6 +32,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    egl-wayland
   ];
 
   fileSystems."/home/matteo/Games/Steam1" = {

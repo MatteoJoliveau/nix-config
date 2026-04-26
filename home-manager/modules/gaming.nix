@@ -16,5 +16,8 @@ mkIf enabled {
     steam-run
     prismlauncher
     openmw
+    protonup-qt
+    uhexen2
+    dungeondraft
   ];
 }

@@ -44,6 +44,7 @@ mkIf enabled {
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
     gnome-keyring
+    nautilus
   ];
 
   xdg.portal.config.niri = {

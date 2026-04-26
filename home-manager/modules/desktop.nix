@@ -15,9 +15,7 @@ mkIf enabled {
     easyeffects
     discord
     deluge
-    krita
     languagetool
-    libreoffice-fresh
     libsecret
     nextcloud-client
     obs-studio
