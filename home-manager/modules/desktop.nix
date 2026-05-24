@@ -11,10 +11,11 @@ let
 in
 mkIf enabled {
   home.packages = with pkgs; [
-    desktop-file-utils
-    easyeffects
-    discord
     deluge
+    desktop-file-utils
+    discord
+    easyeffects
+    google-chrome
     languagetool
     libsecret
     nextcloud-client

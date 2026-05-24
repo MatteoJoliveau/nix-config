@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  niri = pkgs.unstable.niri;
+in
 {
   programs.swaylock = {
     enable = true;
@@ -14,7 +17,7 @@
           nixgl.nixGLIntel
         ];
         text = ''
-          GBM_BACKENDS_PATH="${pkgs.mesa}/lib/gbm" nixGLIntel ${pkgs.niri}/bin/niri-session
+          GBM_BACKENDS_PATH="${pkgs.mesa}/lib/gbm" nixGLIntel ${niri}/bin/niri-session
         '';
       };
     in
@@ -46,7 +49,7 @@
     Service = {
       Slice = "session.slice";
       Type = "notify";
-      ExecStart = "${pkgs.niri}/bin/niri --session";
+      ExecStart = "${niri}/bin/niri --session";
     };
   };
 

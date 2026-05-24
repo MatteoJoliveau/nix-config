@@ -10,6 +10,11 @@ output "DP-2" {
     scale 1.0
 }
 
+output "HDMI-A-1" {
+    mode "1920x1080"
+    scale 1.0
+}
+
 // Right Monitor
 workspace "browser-1" {
     open-on-output "DP-1"

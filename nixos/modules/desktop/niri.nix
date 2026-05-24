@@ -10,7 +10,10 @@ let
   enabled = config.desktops.niri;
 in
 mkIf enabled {
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.unstable.niri;
+  };
 
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;

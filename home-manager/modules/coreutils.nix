@@ -13,6 +13,7 @@ in
     bottom
     calc
     cpufetch
+    dig
     dust
     eza
     fastfetch
