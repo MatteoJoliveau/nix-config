@@ -20,7 +20,6 @@ mkIf enabled {
     libsecret
     nextcloud-client
     obs-studio
-    obsidian
     scribus
     slack
     sniffnet

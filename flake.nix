@@ -30,6 +30,8 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    prismlauncher.url = "github:PrismLauncher/PrismLauncher";
   };
 
   outputs =
@@ -43,6 +45,7 @@
       megasploot,
       nixgl,
       noctalia,
+      prismlauncher,
       ...
     }@inputs:
     let
@@ -75,6 +78,8 @@
               patches = (old.patches or [ ]) ++ [ ./patches/openssh.patch ];
               doCheck = false;
             });
+
+            prismlauncher = prismlauncher.packages.${system}.prismlauncher;
           })
         ];
       };
