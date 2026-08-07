@@ -19,5 +19,6 @@ mkIf enabled {
     protonup-qt
     uhexen2
     dungeondraft
+    wonderdraft
   ];
 }

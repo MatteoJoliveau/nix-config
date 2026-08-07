@@ -57,7 +57,7 @@ stdenv.mkDerivation rec {
     install -Dm655 -t $out/share/applications Dungeondraft.desktop
     install -Dm755 Dungeondraft.x86_64 $out/bin/dungeondraft
     install -Dm655 -t $out Dungeondraft.pck
-    install -Dm655 -t $out EULA.txt
+    install -Dm655 -t $out/Dungeondraft.EULA.txt EULA.txt
     install -Dm655 -t $out example_template.zip
     install -Dm655 -t $out Dungeondraft.png
     cp -r data_Dungeondraft $out/
