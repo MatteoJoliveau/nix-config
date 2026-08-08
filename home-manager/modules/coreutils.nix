@@ -61,6 +61,7 @@ in
 
   programs.yazi = {
     enable = true;
+    shellWrapperName = "yy";
   };
 
   programs.fish.functions.y.body = ''

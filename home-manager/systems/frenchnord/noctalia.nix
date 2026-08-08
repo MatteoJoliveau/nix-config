@@ -7,7 +7,7 @@ let
   });
 in
 {
-  programs.noctalia-shell = {
+  programs.noctalia = {
     settings = {
       general = {
         avatarImage = ../../../images/propic.jpg;
@@ -144,23 +144,23 @@ in
       };
     };
 
-    colors = {
-      mError = "#f7768e";
-      mHover = "#9ece6a";
-      mOnError = "#16161e";
-      mOnHover = "#16161e";
-      mOnPrimary = "#16161e";
-      mOnSecondary = "#16161e";
-      mOnSurface = "#c0caf5";
-      mOnSurfaceVariant = "#9aa5ce";
-      mOnTertiary = "#16161e";
-      mOutline = "#565f89";
-      mPrimary = "#7aa2f7";
-      mSecondary = "#bb9af7";
-      mShadow = "#15161e";
-      mSurface = "#1a1b26";
-      mSurfaceVariant = "#24283b";
-      mTertiary = "#9ece6a";
-    };
+    # colors = {
+    #   mError = "#f7768e";
+    #   mHover = "#9ece6a";
+    #   mOnError = "#16161e";
+    #   mOnHover = "#16161e";
+    #   mOnPrimary = "#16161e";
+    #   mOnSecondary = "#16161e";
+    #   mOnSurface = "#c0caf5";
+    #   mOnSurfaceVariant = "#9aa5ce";
+    #   mOnTertiary = "#16161e";
+    #   mOutline = "#565f89";
+    #   mPrimary = "#7aa2f7";
+    #   mSecondary = "#bb9af7";
+    #   mShadow = "#15161e";
+    #   mSurface = "#1a1b26";
+    #   mSurfaceVariant = "#24283b";
+    #   mTertiary = "#9ece6a";
+    # };
   };
 }

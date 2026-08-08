@@ -58,7 +58,7 @@ layer-rule {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-at-startup "firefox"
 spawn-at-startup "Telegram"
 
@@ -124,6 +124,14 @@ window-rule {
     clip-to-geometry true
 }
 
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
 debug {
   // Allows notification actions and window activation from Noctalia.
   honor-xdg-activation-with-invalid-serial
@@ -158,7 +166,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
-    Shift+Mod+X hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+    Shift+Mod+X hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia msg session lock"; }
     Mod+D { spawn-sh "fuzzel"; }
     Alt+Grave { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
     // Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "noctalia-shell ipc call launcher toggle"; }

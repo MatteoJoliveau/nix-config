@@ -15,10 +15,10 @@ let
     gopls
     marksman
     nil
-    nodePackages.svelte-language-server
-    nodePackages.typescript-language-server
+    svelte-language-server
+    typescript-language-server
     typescript
-    nodePackages.yaml-language-server
+    yaml-language-server
     sqls
     buf
     taplo

@@ -19,6 +19,7 @@ mkIf enabled {
     languagetool
     libsecret
     nextcloud-client
+    libreoffice-qt-fresh
     obs-studio
     scribus
     slack
@@ -28,5 +29,8 @@ mkIf enabled {
     vlc
   ];
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+  };
 }

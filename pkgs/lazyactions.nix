@@ -1,6 +1,6 @@
-{ buildGo124Module, fetchFromGitHub, ... }:
+{ buildGoModule, fetchFromGitHub, ... }:
 
-buildGo124Module rec {
+buildGoModule rec {
   pname = "lazyactions";
   version = "0.0.12";
 

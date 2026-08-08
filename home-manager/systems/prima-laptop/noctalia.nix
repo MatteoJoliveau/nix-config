@@ -14,7 +14,7 @@ in
     session    required  pam_unix.so
   '';
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     settings = {
       general = {
         avatarImage = ../../../images/propic.jpg;

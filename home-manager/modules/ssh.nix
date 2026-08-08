@@ -5,17 +5,19 @@
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks."*" = {
-      forwardAgent = false;
-      serverAliveInterval = 0;
-      serverAliveCountMax = 3;
-      compression = false;
-      addKeysToAgent = "no";
-      hashKnownHosts = false;
-      userKnownHostsFile = "~/.ssh/known_hosts";
-      controlMaster = "no";
-      controlPath = "~/.ssh/master-%r@%n:%p";
-      controlPersist = "no";
+    settings = {
+      "Host *" = {
+        ForwardAgent = "no";
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        Compression = "no";
+        AddKeysToAgent = "no";
+        HashKnownHosts = "no";
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+        ControlMaster = "no";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
+        ControlPersist = "no";
+      };
     };
   };
 }

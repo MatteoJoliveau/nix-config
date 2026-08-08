@@ -35,7 +35,7 @@ in
       networkmanagerapplet # provides nm-connection-editor
     ];
 
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
     };
 
