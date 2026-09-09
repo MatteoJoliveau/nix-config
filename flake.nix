@@ -73,12 +73,6 @@
           (self: super: {
             inherit unstable;
 
-            # https://github.com/nix-community/home-manager/issues/322#issuecomment-1178614454
-            openssh = super.openssh.overrideAttrs (old: {
-              patches = (old.patches or [ ]) ++ [ ./patches/openssh.patch ];
-              doCheck = false;
-            });
-
             prismlauncher = prismlauncher.packages.${system}.prismlauncher;
           })
         ];
