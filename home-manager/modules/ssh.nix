@@ -18,6 +18,10 @@
         ControlPath = "~/.ssh/master-%r@%n:%p";
         ControlPersist = "no";
       };
+
+      "Host codeberg.org" = {
+        AddressFamily = "inet";
+      };
     };
   };
 }
