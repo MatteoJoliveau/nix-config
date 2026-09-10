@@ -99,7 +99,7 @@
         };
       };
 
-      homeConfigurations."matteojoliveau@frenchpenguin" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."matteojoliveau@L-PA-PW05DEBA" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = { inherit nixgl noctalia; };
