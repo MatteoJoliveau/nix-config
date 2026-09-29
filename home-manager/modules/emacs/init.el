@@ -1,4 +1,4 @@
-; bootstrap straight.el
+                                        ; bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -114,7 +114,7 @@
 ;; themes
 (use-package catppuccin-theme
   :straight t)
-  
+
 (load-theme 'catppuccin :no-confirm)
 (setq catppuccin-flavor 'frappe)
 (catppuccin-reload)
@@ -381,6 +381,13 @@
   (lsp-elm-disable-elmls-diagnostics t)
   (lsp-typescript-format-enable nil)
   (lsp-javascript-format-enable nil))
+
+(use-package lsp-bridge
+  :straight '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
+            :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
+            :build (:not compile))
+  :init
+  (global-lsp-bridge-mode))
 
 (use-package lsp-haskell
   :straight t
