@@ -1,4 +1,4 @@
-                                        ; bootstrap straight.el
+ 
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -352,7 +352,7 @@
         '(flex)))
 
 (use-package lsp-mode
-  :straight t
+  :straight (lsp-mode :type git :host github :repo "emacs-lsp/lsp-mode" :fork (:host github :repo "cxa/lsp-mode" :commit "dee1f61c4375b764762ad5a4b91b4b84ff4175a0"))
   :commands (lsp lsp-deferred)
   :hook
   (lsp-mode . efs/lsp-mode-setup)
@@ -382,13 +382,6 @@
   (lsp-typescript-format-enable nil)
   (lsp-javascript-format-enable nil)
   (lsp-apply-edits-after-file-operations nil))
-
-(use-package lsp-bridge
-  :straight '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
-            :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
-            :build (:not compile))
-  :init
-  (global-lsp-bridge-mode))
 
 (use-package lsp-haskell
   :straight t
