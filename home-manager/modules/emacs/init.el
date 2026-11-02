@@ -380,7 +380,8 @@
   (lsp-elm-only-update-diagnostics-on-save t)
   (lsp-elm-disable-elmls-diagnostics t)
   (lsp-typescript-format-enable nil)
-  (lsp-javascript-format-enable nil))
+  (lsp-javascript-format-enable nil)
+  (lsp-apply-edits-after-file-operations nil))
 
 (use-package lsp-bridge
   :straight '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
